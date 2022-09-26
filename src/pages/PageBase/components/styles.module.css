@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_list {
+    display: flex;
+}
+
+.header_buttons {
+    display: flex;
+}
+
+.content {
+    height: 100vh;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_first_list {
+    display: flex;
+}
+
+.footer_second_list {
+    display: flex;
+}

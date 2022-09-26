@@ -1,0 +1,9 @@
+@import url('./fonts.css');
+@import url('./normalize.css');
+
+body {
+  margin: 0;
+  font-family: 'GoogleSans', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
