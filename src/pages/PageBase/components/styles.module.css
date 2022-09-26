@@ -1,18 +1,77 @@
 .header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    padding: 0 80px;
+    background-image: linear-gradient(0deg,rgba(17,17,19,0),rgba(17,17,19,.6));
 }
 
 .header_list {
     display: flex;
+    align-items: center;
+}
+
+.header_logo {
+    text-transform: uppercase;
+    margin-right: 32px;
+    color: #ffff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.header_list_item {
+    margin-right: 20px;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.header_list_item:last-child {
+    margin-right: 0;
 }
 
 .header_buttons {
     display: flex;
+    gap: 12px;
+}
+
+.header_buttons_signin,
+.header_buttons_signup {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 0 12px;
+    height: 32px;
+    background-color: #565c67;
+    border: 1px solid #565c67;
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.header_buttons_signup {
+    background-color: #feba2b;
+    border: 1px solid #feba2b;
+    color: #111113;
+}
+
+.header_buttons_signin:hover,
+.header_buttons_signup:hover,
+.header_logo:hover,
+.header_list_item:hover {
+    opacity: 1;
 }
 
 .content {
     height: 100vh;
+    background: red;
 }
 
 .footer {
