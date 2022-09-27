@@ -4,11 +4,11 @@ import css from "./components/styles.module.css"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-export interface PageBase {
+export interface PageBaseProps {
     children: React.ReactNode
 }
 
-const PageBase = ({children}: PageBase) => {
+const PageBase = ({children}: PageBaseProps) => {
     return (
         <div>
             <Header/>
