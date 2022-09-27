@@ -1,7 +1,7 @@
 import React from "react";
 import css from './styles.module.css';
 
-import GitLogo from '../assets/gitHub.jpg';
+import GitLogo from '../assets/gitHub.png';
 import API from '../assets/API.svg';
 
 const Footer = () => {
@@ -25,18 +25,26 @@ const Footer = () => {
                 <ul className={css.footer_dev_list}>
                     <li className={css.dev_list_item}>
                         <a href="https://github.com/AlexKarseka/watcher">
-                            <img src={GitLogo} alt="gitLogo" height={100} width={100} />
+                            <img src={GitLogo} alt="gitLogo" height={30} width={80} />
                         </a>
                     </li>
                     <li className={css.dev_list_item}>
                         <a href="https://developers.themoviedb.org/3/getting-started/introduction">
-                            <img src={API} alt="APILogo" height={100} width={100} />
+                            <img src={API} alt="APILogo" height={30} width={80} />
                         </a>
                     </li>
                 </ul>
+                <div className={css.description_text}>
+                    © 2022 Watcher, All rights reserved. Watcher® and all related service marks are the property of Alex Karseka.
+                </div>
             </div>
-            <div>
-                Поддержка
+            <div className={css.support}>
+                <div className={css.support_text}>
+                    Support
+                </div>
+                <div className={css.support_address}>
+                    alexkarseko@gmail.com
+                </div>
             </div>
         </div>
     );
