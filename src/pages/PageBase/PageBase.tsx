@@ -4,7 +4,7 @@ import css from "./components/styles.module.css"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-export interface PageBaseProps {
+interface PageBaseProps {
     children: React.ReactNode
 }
 
