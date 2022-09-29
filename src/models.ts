@@ -3,3 +3,9 @@ export interface IFroTest {
     altNumber: string,
     nameFilm: string
 }
+
+export interface IForTestTop {
+    id: number,
+    image: string,
+    nameFilm: string
+}
