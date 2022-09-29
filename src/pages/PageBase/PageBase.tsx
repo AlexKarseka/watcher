@@ -1,5 +1,4 @@
 import React from "react";
-import css from "./components/styles.module.css"
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -12,7 +11,7 @@ const PageBase = ({children}: PageBaseProps) => {
     return (
         <div>
             <Header/>
-            <div className={css.content}>
+            <div className="h-full">
                 {children}
             </div>
             <Footer/>

@@ -1,5 +1,4 @@
 import React from "react";
-import css from "./styles.module.css";
 import {IFroTest} from "../../../models";
 
 const forTest: Array<IFroTest> = [
@@ -34,7 +33,7 @@ const MainCarousel = () => {
     const [activeSlide, setActiveSlide] = React.useState(0);
 
     return (
-        <div className={css.slider_wrapper}>
+        <div>
             <button onClick={() => {setActiveSlide(activeSlide <= 0 ? forTest.length - 1 : activeSlide -1)}}>{"<"}</button>
             <img src={forTest[activeSlide].image} alt={forTest[activeSlide].altNumber} width={600} height={300}/>
             <button onClick={() => {setActiveSlide(activeSlide >= forTest.length -1 ? 0 : activeSlide +1)}}>{">"}</button>
