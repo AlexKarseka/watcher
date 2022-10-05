@@ -1,9 +1,8 @@
 import React from "react";
 import {IForTestTop} from "../../../models";
 
-import LeftLine from '../assets/Line-a.svg';
-import RightLine from '../assets/Line-b.svg';
-
+import ArrowLeft from '../assets/left.svg';
+import ArrowRight from '../assets/right.svg';
 
 const forTestTop: Array<IForTestTop> = [
     {
@@ -50,29 +49,53 @@ const forTestTop: Array<IForTestTop> = [
 ]
 
 const TopFilms = () => {
+    const [scroller, setScroller] = React.useState(0);
+
     return (
-        <div className="overflow-x-hidden">
-            <div className="flex items-center justify-center my-6">
-                <img className="mr-10 w-2/6" src={LeftLine} alt="leftLine" />
-                <div className="uppercase text-base text-[#e7bd99]">most popular movies</div>
-                <img className="ml-10 w-2/6" src={RightLine} alt="rightLine" />
-            </div>
-            <div className="flex py-1.5 px-16 w-[2380px] h-full overflow-x-scroll flex-nowrap">
-                {forTestTop.map((film) => {
-                    return (
-                        <div
-                            className="mr-4 "
-                            key={film.id}
-                        >
-                            <img
-                                className="w-72 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-200 transition hover:scale-105"
-                                src={film.image}
-                                alt={film.nameFilm}
-                            />
-                            <div className="mt-3.5 text-base text-white opacity-80">{film.nameFilm}</div>
-                        </div>
-                    )
-                })}
+        <div className="relative">
+            {scroller === 0 ?
+                null
+                :
+                <button
+                    className="flex justify-center items-center absolute top-0 left-0 z-10 h-[365px] mt-3 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]"
+                    onClick={() => {
+                        setScroller(scroller +295)
+                    }}
+                >
+                    <img src={ArrowLeft} alt="ArrowLeft"/>
+                </button>
+            }
+            {scroller === -1180 ?
+                null
+                :
+                <button
+                    className="flex justify-center items-center absolute top-0 right-0 z-10 h-[365px] mt-3 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]"
+                    onClick={() => {
+                        setScroller(scroller -295)
+                    }}
+                >
+                    <img src={ArrowRight} alt="ArrowRight"/>
+                </button>
+            }
+
+            <div className={`px-14 w-[2480px] ml-[${scroller}px]`}>
+                <nav className="flex flex-nowrap p-2.5">
+                    {forTestTop.map((film) => {
+                        return (
+                            <a
+                                className="mr-4"
+                                key={film.id}
+                            >
+                                <img
+                                    className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-200 transition hover:scale-105"
+                                    src={film.image}
+                                    alt={film.nameFilm}
+                                />
+                                <div className="mt-3.5 text-base text-white opacity-80">{film.nameFilm}</div>
+                            </a>
+                        )
+                    })}
+                </nav>
             </div>
         </div>
     );

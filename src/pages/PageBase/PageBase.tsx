@@ -9,7 +9,7 @@ interface PageBaseProps {
 
 const PageBase = ({children}: PageBaseProps) => {
     return (
-        <div>
+        <div className="overflow-hidden">
             <Header/>
             <div className="h-full">
                 {children}
