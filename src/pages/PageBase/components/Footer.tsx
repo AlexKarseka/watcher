@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import GitLogo from '../assets/gitHub.png';
 import API from '../assets/API.svg';
@@ -9,18 +10,18 @@ const Footer = () => {
             <div
                 className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 hover:opacity-100"
             >
-                <a href="/">Watcher</a>
+                <Link to="/">Watcher</Link>
             </div>
             <div>
                 <ul className="flex items-center justify-center">
                     <li className="mr-5 text-white text-base opacity-80 hover:opacity-100">
-                        <a href="/movies">Movies</a>
+                        <Link to="/movies">Movies</Link>
                     </li>
                     <li className="mr-5 text-white text-base opacity-80 hover:opacity-100">
-                        <a href="/serials">Serials</a>
+                        <Link to="/serials">Serials</Link>
                     </li>
                     <li className="text-white text-base opacity-80 hover:opacity-100">
-                        <a href="/search">Search</a>
+                        <Link to="/search">Search</Link>
                     </li>
                 </ul>
                 <ul className="flex items-center justify-center pt-8">
