@@ -1,12 +1,14 @@
 import React from 'react';
+
 import PageBase from "../PageBase/PageBase";
+import Header from "./components/Header";
+import MenuSettings from "./components/MenuSettings";
 
 const FilmsPage = () => {
     return (
         <PageBase>
-            <div>
-                Hello world!
-            </div>
+            <Header />
+            <MenuSettings />
         </PageBase>
     );
 };
