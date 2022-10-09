@@ -49,7 +49,7 @@ const forTest: Array<IFroTest> = [
 ]
 
 const MainCarousel = () => {
-    const [activeSlide, setActiveSlide] = React.useState(0);
+    const [activeSlide, setActiveSlide] = React.useState<number>(0);
 
     return (
         <div className="flex items-center">

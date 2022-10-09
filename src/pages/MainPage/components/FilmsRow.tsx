@@ -54,7 +54,7 @@ interface FilmsRowProps {
 }
 
 const FilmsRow = ({nameCategory}: FilmsRowProps) => {
-    const [scroller, setScroller] = React.useState(0);
+    const [scroller, setScroller] = React.useState<number>(0);
 
     return (
         <div className="relative mb-8">

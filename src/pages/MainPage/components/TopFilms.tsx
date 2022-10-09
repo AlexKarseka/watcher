@@ -49,7 +49,7 @@ const forTestTop: Array<IForTestTop> = [
 ]
 
 const TopFilms = () => {
-    const [scroller, setScroller] = React.useState(0);
+    const [scroller, setScroller] = React.useState<number>(0);
 
     return (
         <div className="relative">
