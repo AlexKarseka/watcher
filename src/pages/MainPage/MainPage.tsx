@@ -8,6 +8,8 @@ import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
 
+const genres = ['Comedy', 'Cartoons', 'Horrors', 'Science fiction', 'Action', 'Melodramas', 'Drama', 'Detective', 'Adventure', 'Historical'];
+
 const MainPage = () => {
     return (
         <PageBase>
@@ -23,16 +25,11 @@ const MainPage = () => {
 
             <img className="mt-8 mb-10" src={Line} alt="Line" />
 
-            <FilmsRow nameCategory="Comedy"/>
-            <FilmsRow nameCategory="Cartoons"/>
-            <FilmsRow nameCategory="Horrors"/>
-            <FilmsRow nameCategory="Science fiction"/>
-            <FilmsRow nameCategory="Action" />
-            <FilmsRow nameCategory="Melodramas" />
-            <FilmsRow nameCategory="Drama" />
-            <FilmsRow nameCategory="Detective" />
-            <FilmsRow nameCategory="Adventure" />
-            <FilmsRow nameCategory="Historical" />
+            {genres.map((genres) => {
+                return (
+                    <FilmsRow nameCategory={genres} />
+                )
+            })}
         </PageBase>
     )
 }

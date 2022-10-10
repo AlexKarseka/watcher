@@ -9,3 +9,13 @@ export interface IForTestTop {
     image: string,
     nameFilm: string
 }
+
+export interface IForTestList {
+    id: number,
+    image: string,
+    nameFilm: string,
+    rating: number,
+    limits: string,
+    genres: string,
+    description: string,
+}

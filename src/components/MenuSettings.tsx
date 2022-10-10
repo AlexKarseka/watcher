@@ -11,31 +11,29 @@ const MenuSettings = () => {
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
 
-    console.log(genresList)
-
     return (
         <div className="relative pt-6 pb-10 px-14">
             <div
                 className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-10 py-6 px-14 z-50 bg-[#434852]`}
             >
                 <div className="flex items-baseline gap-10 text-white text-sm">
-                    {genres.map((elem, index) => {
+                    {genres.map((genres, index) => {
                         return (
 
                             <button key={index}
                                     onClick={() => {
-                                        setGenresName(elem);
+                                        setGenresName(genres);
                                         setGenresList(true);
                                     }}
                             >
-                                {elem}
+                                {genres}
                             </button>
                         )
                     })}
                 </div>
             </div>
             <div className="flex justify-between items-center">
-                <div
+                <button
                     onClick={() => {
                         setGenresList(!genresList)
                     }}
@@ -47,7 +45,7 @@ const MenuSettings = () => {
                         :
                         <img className="rotate-180" src={ArrowDown} alt="ArrowDown"/>
                     }
-                </div>
+                </button>
                 <div className="flex items-center rounded bg-[rgba(86,92,103,.16)]">
                     <button
                         onClick={() => {

@@ -87,7 +87,7 @@ const TopFilms = () => {
                                 key={film.id}
                             >
                                 <img
-                                    className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-200 transition hover:scale-105"
+                                    className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105"
                                     src={film.image}
                                     alt={film.nameFilm}
                                 />

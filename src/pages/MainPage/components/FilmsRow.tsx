@@ -50,7 +50,6 @@ const forTestTop: Array<IForTestTop> = [
 
 interface FilmsRowProps {
     nameCategory: string,
-
 }
 
 const FilmsRow = ({nameCategory}: FilmsRowProps) => {
@@ -95,7 +94,7 @@ const FilmsRow = ({nameCategory}: FilmsRowProps) => {
                                 key={film.id}
                             >
                                 <img
-                                    className="w-80 h-[201px] rounded-2xl cursor-pointer will-change-transform duration-200 transition hover:scale-105 hover:opacity-80 hover:drop-shadow-[0_4px_3px_black]"
+                                    className="w-80 h-[201px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105 hover:opacity-80 hover:drop-shadow-[0_4px_3px_black]"
                                     src={film.image}
                                     alt={film.nameFilm}
                                 />
