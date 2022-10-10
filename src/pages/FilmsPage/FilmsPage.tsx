@@ -5,10 +5,12 @@ import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";
 import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
+import SecondCardVersion from "../../components/SecondCardVersion";
 
 const forTestList: Array<IForTestList> = [
     {
         id: 1,
+        year: 2001,
         image: "https://images.kinorium.com/movie/poster/195927/w1500_50263483.jpg",
         nameFilm: 'Harry Potter and the Sorcerer\'s Stone',
         rating: 8.2,
@@ -18,6 +20,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 2,
+        year: 2002,
         image: "https://cs10.pikabu.ru/post_img/2019/08/30/11/1567192276196750703.jpg",
         nameFilm: 'Harry Potter and the Chamber of Secrets',
         rating: 8.1,
@@ -27,6 +30,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 3,
+        year: 2003,
         image: "https://www.kinofilms.ua/images/media/2020/11/18/1.jpg",
         nameFilm: 'Harry Potter and the Prisoner of Azkaban',
         rating: 8.2,
@@ -36,6 +40,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 4,
+        year: 2004,
         image: "https://shkolazhizni.ru/img/content/i217/217389_intext.jpg",
         nameFilm: 'Harry Potter and the Goblet of Fire',
         rating: 7.9,
@@ -45,6 +50,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 5,
+        year: 2005,
         image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/5f3fef90-4e22-440b-9bdb-656835fae445/1920x",
         nameFilm: 'Harry Potter and the Order of the Phoenix',
         rating: 7.8,
@@ -54,6 +60,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 6,
+        year: 2006,
         image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/d5459129-ab94-4c9b-aa9b-c30184cafaf0/1920x",
         nameFilm: 'Harry Potter and the Half-Blood Prince',
         rating: 7.8,
@@ -63,6 +70,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 7,
+        year: 2010,
         image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/8c9668c6-876e-4710-a3b3-a4a0a21a0887/1920x",
         nameFilm: 'Harry Potter and the Deathly Hallows: Part 1',
         rating: 7.9,
@@ -72,6 +80,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 8,
+        year: 2012,
         image: "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/f3a9f4b6-de82-40ce-b1ed-daa3829a04f3/1920x",
         nameFilm: 'Harry Potter and the Deathly Hallows: Part 2',
         rating: 8.1,
@@ -84,11 +93,16 @@ const forTestList: Array<IForTestList> = [
 
 
 const FilmsPage = () => {
+    const [listStyle, setListStyle] = React.useState<boolean>(true);
     return (
         <PageBase>
             <HeaderPage nameCategory="movies" />
-            <MenuSettings />
-            <FirstCardVersion content={forTestList} />
+            <MenuSettings styleCard={(card) => {setListStyle(card)}} />
+            {listStyle ?
+                <FirstCardVersion content={forTestList} />
+                :
+                <SecondCardVersion content={forTestList} />
+            }
         </PageBase>
     );
 };

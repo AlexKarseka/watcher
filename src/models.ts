@@ -12,6 +12,7 @@ export interface IForTestTop {
 
 export interface IForTestList {
     id: number,
+    year: number,
     image: string,
     nameFilm: string,
     rating: number,

@@ -4,9 +4,13 @@ import ArrowDown from '../assets/ArrowDown.svg';
 import Extended from '../assets/Extended.svg';
 import Tiles from '../assets/Tiles.svg';
 
-const genres = ['Comedy', 'Cartoons', 'Horrors', 'Science fiction', 'Action', 'Melodramas', 'Drama', 'Detective', 'Adventure', 'Historical']
+const genres = ['Comedy', 'Cartoons', 'Horrors', 'Science fiction', 'Action', 'Melodramas', 'Drama', 'Detective', 'Adventure', 'Historical'];
 
-const MenuSettings = () => {
+interface MenuSettingsProps {
+    styleCard: (card: boolean) => void,
+}
+
+const MenuSettings = ({styleCard}: MenuSettingsProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
@@ -50,6 +54,7 @@ const MenuSettings = () => {
                     <button
                         onClick={() => {
                             setListStyle(false);
+                            styleCard(false);
                         }}
                         className={`flex justify-center items-center h-8 w-10 rounded ${listStyle ? '' : 'bg-[#434852]'}`}
                     >
@@ -57,7 +62,8 @@ const MenuSettings = () => {
                     </button>
                     <button
                         onClick={() => {
-                            setListStyle(true)
+                            setListStyle(true);
+                            styleCard(true);
                         }}
                         className={`flex justify-center items-center h-8 w-10 rounded ${listStyle ? 'bg-[#434852]' : ''}`}
                     >

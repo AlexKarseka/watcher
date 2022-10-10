@@ -5,10 +5,12 @@ import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";
 import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
+import SecondCardVersion from "../../components/SecondCardVersion";
 
 const forTestList: Array<IForTestList> = [
     {
         id: 1,
+        year: 2010,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/4/49/Game_of_Thrones.jpg/262px-Game_of_Thrones.jpg",
         nameFilm: 'Game of tron 01',
         rating: 9.8,
@@ -18,6 +20,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 2,
+        year: 2011,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/5/56/Game_of_Thrones_2.jpg/270px-Game_of_Thrones_2.jpg",
         nameFilm: 'Game of tron 02',
         rating: 8.8,
@@ -27,6 +30,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 3,
+        year: 2012,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/e/eb/Game_of_Thrones_3.jpg/270px-Game_of_Thrones_3.jpg",
         nameFilm: 'Game of tron 03',
         rating: 9.8,
@@ -36,6 +40,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 4,
+        year: 2013,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/7/77/Game_of_Thrones_4.jpg/270px-Game_of_Thrones_4.jpg",
         nameFilm: 'Game of tron 04',
         rating: 8.8,
@@ -45,6 +50,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 5,
+        year: 2014,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/2/2a/Game_of_Thrones_5.jpg/270px-Game_of_Thrones_5.jpg",
         nameFilm: 'Game of tron 05',
         rating: 5.8,
@@ -54,6 +60,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 6,
+        year: 2015,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/1/1c/GoT_season_6_official_poster.jpg/270px-GoT_season_6_official_poster.jpg",
         nameFilm: 'Game of tron 06',
         rating: 9.8,
@@ -63,6 +70,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 7,
+        year: 2016,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/0/04/Game_of_Thrones_Season_7.jpg/269px-Game_of_Thrones_Season_7.jpg",
         nameFilm: 'Game of tron 07',
         rating: 6.8,
@@ -72,6 +80,7 @@ const forTestList: Array<IForTestList> = [
     },
     {
         id: 8,
+        year: 2017,
         image: "https://upload.wikimedia.org/wikipedia/ru/thumb/f/f6/GOT8_poster.jpg/274px-GOT8_poster.jpg",
         nameFilm: 'Game of tron 08',
         rating: 7.8,
@@ -83,11 +92,16 @@ const forTestList: Array<IForTestList> = [
 ]
 
 const SerialsPage = () => {
+    const [listStyle, setListStyle] = React.useState<boolean>(true);
     return (
         <PageBase>
             <HeaderPage nameCategory="serials" />
-            <MenuSettings />
-            <FirstCardVersion content={forTestList} />
+            <MenuSettings styleCard={(card) => {setListStyle(card)}} />
+            {listStyle ?
+                <FirstCardVersion content={forTestList} />
+                :
+                <SecondCardVersion content={forTestList} />
+            }
         </PageBase>
     );
 };

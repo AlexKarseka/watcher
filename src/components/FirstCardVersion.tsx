@@ -21,7 +21,7 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                         <img
                             className="w-full h-3/5 rounded-t drop-shadow-[0_9px_3px_black]"
                             src={movie.image}
-                            alt="12"
+                            alt="image"
                         />
                         <div className="relative pt-3.5 px-2.5">
                             <div className="absolute bottom-32 text-white uppercase">{movie.nameFilm}</div>
