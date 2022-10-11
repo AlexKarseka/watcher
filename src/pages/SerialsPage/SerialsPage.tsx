@@ -97,11 +97,13 @@ const SerialsPage = () => {
         <PageBase>
             <HeaderPage nameCategory="serials" />
             <MenuSettings styleCard={(card) => {setListStyle(card)}} />
-            {listStyle ?
-                <FirstCardVersion content={forTestList} />
-                :
-                <SecondCardVersion content={forTestList} />
-            }
+            <div className="pb-32">
+                {listStyle ?
+                    <FirstCardVersion content={forTestList} />
+                    :
+                    <SecondCardVersion content={forTestList} />
+                }
+            </div>
         </PageBase>
     );
 };

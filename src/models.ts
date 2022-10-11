@@ -10,6 +10,11 @@ export interface IForTestTop {
     nameFilm: string
 }
 
+export interface IForTestTopSearch {
+    id: number,
+    nameFilm: string
+}
+
 export interface IForTestList {
     id: number,
     year: number,

@@ -1,12 +1,53 @@
-import React from 'react';
-import {IForTestList} from "../../models";
+import React from "react";
+import {IForTestList, IForTestTopSearch} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
-import HeaderPage from "../../components/HeaderPage";
-import MenuSettings from "../../components/MenuSettings";
-import FirstCardVersion from "../../components/FirstCardVersion";
-import SecondCardVersion from "../../components/SecondCardVersion";
+import Header from "./components/Header";
+import DefaultContent from "./components/DefaultContent";
+import SearchContent from "./components/SearchContent";
 
+const forTest: Array<IForTestTopSearch> = [
+    {
+        id: 1,
+        nameFilm: 'Game of tron',
+    },
+    {
+        id: 2,
+        nameFilm: 'Avengers',
+    },
+    {
+        id: 3,
+        nameFilm: 'Iron Man',
+    },
+    {
+        id: 4,
+        nameFilm: 'Harry Potter',
+    },
+    {
+        id: 5,
+        nameFilm: 'True detective',
+    },
+    {
+        id: 6,
+        nameFilm: 'Hercules',
+    },
+    {
+        id: 7,
+        nameFilm: 'Oblivion',
+    },
+    {
+        id: 8,
+        nameFilm: 'Spider Man',
+    },
+    {
+        id: 9,
+        nameFilm: 'Gladiator',
+    },
+    {
+        id: 10,
+        nameFilm: 'Hows of Dragon',
+    },
+]
 const forTestList: Array<IForTestList> = [
     {
         id: 1,
@@ -91,22 +132,29 @@ const forTestList: Array<IForTestList> = [
 
 ]
 
+const SearchPage = () => {
+    const [searchValue, setSearchValue] = React.useState<string>('');
 
-const FilmsPage = () => {
-    const [listStyle, setListStyle] = React.useState<boolean>(true);
-    return (
+    return(
         <PageBase>
-            <HeaderPage nameCategory="movies" />
-            <MenuSettings styleCard={(card) => {setListStyle(card)}} />
-            <div className="pb-32">
-                {listStyle ?
-                    <FirstCardVersion content={forTestList} />
+            <div className="pt-6">
+                <Header />
+                <div className="border-b-2 border-[#d8d8d8] mb-8 mx-14">
+                    <input
+                        className="w-full bg-[transparent] text-2xl text-[#d8d8d8] pb-2 outline-none"
+                        type="text"
+                        placeholder="Serial or movie name..."
+                        value={searchValue}
+                        onChange={(event) => {setSearchValue(event.target.value)}}
+                    />
+                </div>
+                {searchValue === '' ?
+                    <DefaultContent popular={forTest} />
                     :
-                    <SecondCardVersion content={forTestList} />
-                }
+                    <SearchContent found={forTestList} />}
             </div>
         </PageBase>
     );
 };
 
-export default FilmsPage;
+export default SearchPage;

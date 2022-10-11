@@ -14,22 +14,20 @@ const MainPage = () => {
     return (
         <PageBase>
             <MainCarousel />
-
             <div className="flex items-center justify-center my-6">
                 <img className="mr-10 w-2/6" src={LeftLine} alt="leftLine" />
                 <div className="uppercase text-base text-[#e7bd99]">most popular movies</div>
                 <img className="ml-10 w-2/6" src={RightLine} alt="rightLine" />
             </div>
-
             <TopFilms />
-
             <img className="mt-8 mb-10" src={Line} alt="Line" />
-
-            {genres.map((genres, index) => {
-                return (
-                    <FilmsRow key={index} nameCategory={genres} />
-                )
-            })}
+            <div className="pb-32">
+                {genres.map((genres, index) => {
+                    return (
+                        <FilmsRow key={index} nameCategory={genres} />
+                    )
+                })}
+            </div>
         </PageBase>
     )
 }
