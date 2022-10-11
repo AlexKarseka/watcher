@@ -25,9 +25,9 @@ const MainPage = () => {
 
             <img className="mt-8 mb-10" src={Line} alt="Line" />
 
-            {genres.map((genres) => {
+            {genres.map((genres, index) => {
                 return (
-                    <FilmsRow nameCategory={genres} />
+                    <FilmsRow key={index} nameCategory={genres} />
                 )
             })}
         </PageBase>
