@@ -13,7 +13,7 @@ const SearchContent = ({found}: SearchContentProps) => {
             <div className="text-xl text-white mb-4 px-14">
                 Search results:
             </div>
-            <SecondCardVersion content={found} />
+            <SecondCardVersion content={found} year={false} />
         </div>
     );
 };

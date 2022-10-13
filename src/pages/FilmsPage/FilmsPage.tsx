@@ -102,7 +102,7 @@ const FilmsPage = () => {
                 {listStyle ?
                     <FirstCardVersion content={forTestList} />
                     :
-                    <SecondCardVersion content={forTestList} />
+                    <SecondCardVersion content={forTestList} year />
                 }
             </div>
         </PageBase>

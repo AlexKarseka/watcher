@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 const Header = () => {
+    const [authorisation, setAuthorisation] = React.useState<boolean>(true);
     return (
         <div className="flex items-center justify-between w-full h-20 px-20">
             <ul className="flex items-center justify-center">
@@ -20,19 +21,34 @@ const Header = () => {
                     <Link to="/search">Search</Link>
                 </li>
             </ul>
-            <div className="flex gap-3">
-                <Link
-                    className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#565c67] border border-[#565c67] text-white text-sm opacity-80 hover:opacity-100"
-                    to="/signin"
-                >
-                   Log in
-                </Link>
-                <Link
-                    className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
-                    to="/signup">
-                    Sign up
-                </Link>
-            </div>
+            {authorisation ?
+                <div className="flex gap-3">
+                    <button
+                        className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#565c67] border border-[#565c67] text-white text-sm opacity-80 hover:opacity-100"
+                        onClick={() => {setAuthorisation(false)}}
+                    >
+                        Exit
+                    </button>
+                    <Link
+                        className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
+                        to="/favourite">
+                        Favourite
+                    </Link>
+                </div>
+                :
+                <div className="flex gap-3">
+                    <Link
+                        className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#565c67] border border-[#565c67] text-white text-sm opacity-80 hover:opacity-100"
+                        to="/signin"
+                    >
+                        Log in
+                    </Link>
+                    <Link
+                        className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
+                        to="/signup">
+                        Sign up
+                    </Link>
+                </div>}
         </div>
     );
 };

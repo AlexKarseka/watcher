@@ -3,9 +3,10 @@ import {IForTestList} from "../models";
 
 interface SecondCardVersionProps {
     content: Array<IForTestList>
+    year: boolean
 }
 
-const SecondCardVersion = ({content}: SecondCardVersionProps) => {
+const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
     return (
         <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
             {content.map((movie) => {
@@ -24,7 +25,7 @@ const SecondCardVersion = ({content}: SecondCardVersionProps) => {
                             </div>
                         </div>
                         <div className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">{movie.nameFilm}</div>
-                        <div className="text-sm text-[#565c67] ">{movie.year}</div>
+                        {year ? <div className="text-sm text-[#565c67] ">{movie.year}</div> : ""}
                     </div>
                 )
             })}

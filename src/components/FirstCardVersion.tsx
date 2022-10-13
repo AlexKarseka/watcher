@@ -45,10 +45,18 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                             <div className="mt-3.5 text-xs text-white text-ellipsis h-12 w-full overflow-hidden">
                                 {movie.description}
                             </div>
-                            <Link className="flex items-center justify-center bg-amber-400 rounded mt-2 h-8 hover:bg-amber-500" to="/">
-                                <img className="h-3.5" src={Play} alt="Play" />
-                                <div className="ml-2 text-xs">Watch</div>
-                            </Link>
+                            <div className="flex gap-2">
+                                <Link className="w-2/4 flex items-center justify-center bg-amber-400 rounded mt-2 h-8 hover:bg-amber-500" to="/">
+                                    <img className="h-3.5" src={Play} alt="Play" />
+                                    <div className="ml-2 text-xs">Watch</div>
+                                </Link>
+                                <button
+                                    className="w-2/4 flex items-center justify-center bg-gray-700 rounded mt-2 h-8 hover:bg-gray-800"
+                                    type="button"
+                                >
+                                    <div className="ml-2 text-xs text-white">Add to favourites</div>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )
