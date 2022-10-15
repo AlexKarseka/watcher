@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 const Header = () => {
     const [authorisation, setAuthorisation] = React.useState<boolean>(true);
     return (
-        <div className="flex items-center justify-between w-full h-20 px-20">
+        <div className="relative z-20 flex items-center justify-between w-full h-20 px-20">
             <ul className="flex items-center justify-center">
                 <li
                     className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 hover:opacity-100"

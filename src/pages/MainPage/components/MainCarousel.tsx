@@ -3,6 +3,7 @@ import {IFroTest} from "../../../models";
 
 import ArrowLeft from '../assets/ArrowLeft.svg';
 import ArrowRight from '../assets/ArrowRight.svg';
+import {Link} from "react-router-dom";
 
 
 const forTest: Array<IFroTest> = [
@@ -61,7 +62,7 @@ const MainCarousel = () => {
             >
                 <img className="w-20 hover:drop-shadow-[0_4px_3px_white]" src={ArrowLeft} alt="arrow" />
             </button>
-            <div className="relative w-full">
+            <Link to="/list" className="relative w-full">
                 <img
                     className="w-full h-[500px] rounded-2xl"
                     src={forTest[activeSlide].image}
@@ -70,7 +71,7 @@ const MainCarousel = () => {
                 {/*    className="absolute uppercase text-5xl font-bold text-white bottom-10 left-10"*/}
                 {/*>{forTest[activeSlide].nameFilm}*/}
                 {/*</div>*/}
-            </div>
+            </Link>
 
             <button
                 className="text-white text-4xl px-2"

@@ -25,3 +25,20 @@ export interface IForTestList {
     genres: string,
     description: string,
 }
+
+export interface IForTestListMovie {
+    id: number,
+    year: number,
+    image: string,
+    nameFilm: string,
+    rating: number,
+    limits: string,
+    genres: string,
+    description: string,
+    type: string,
+    country: string,
+    studios: string,
+    budget: number,
+    fees: number,
+    duration: number,
+}

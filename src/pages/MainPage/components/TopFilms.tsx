@@ -3,6 +3,7 @@ import {IForTestTop} from "../../../models";
 
 import ArrowLeft from '../assets/left.svg';
 import ArrowRight from '../assets/right.svg';
+import {Link} from "react-router-dom";
 
 const forTestTop: Array<IForTestTop> = [
     {
@@ -82,9 +83,10 @@ const TopFilms = () => {
                 <nav className="flex flex-nowrap p-2.5">
                     {forTestTop.map((film) => {
                         return (
-                            <a
+                            <Link
                                 className="mr-4"
                                 key={film.id}
+                                to="/list"
                             >
                                 <img
                                     className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105"
@@ -92,7 +94,7 @@ const TopFilms = () => {
                                     alt={film.nameFilm}
                                 />
                                 <div className="mt-3.5 text-base text-white opacity-80">{film.nameFilm}</div>
-                            </a>
+                            </Link>
                         )
                     })}
                 </nav>

@@ -6,7 +6,7 @@ import API from '../assets/API.svg';
 
 const Footer = () => {
     return (
-        <div className="flex items-center justify-between py-6 px-14">
+        <div className="relative z-20 flex items-center justify-between py-6 px-14">
             <div
                 className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 hover:opacity-100"
             >
