@@ -1,5 +1,7 @@
 import React from "react";
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
+import MovieService from "../../services/MovieService";
+import {IGenresList} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import MainCarousel from "./components/MainCarousel";
@@ -10,14 +12,12 @@ import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
 
-import MovieService from "../../services/MovieService"
-
-const genres = ['Comedy', 'Cartoons', 'Horrors', 'Science fiction', 'Action', 'Melodramas', 'Drama', 'Detective', 'Adventure', 'Historical'];
-
 const MainPage = () => {
-    const { data } = useQuery('gameProfiles', () => MovieService.getTop(""));
+    const {data} = useQuery('genres', () => MovieService.getGenres());
 
-    console.log(data);
+    if (!data) return null
+
+    const genres: Array<IGenresList> = data.genres
 
     return (
         <PageBase>
@@ -30,9 +30,9 @@ const MainPage = () => {
             <TopFilms />
             <img className="mt-8 mb-10" src={Line} alt="Line" />
             <div className="pb-32">
-                {genres.map((genres, index) => {
+                {genres.map((genres) => {
                     return (
-                        <FilmsRow key={index} nameCategory={genres} />
+                        <FilmsRow key={genres.id} nameCategory={genres.name} />
                     )
                 })}
             </div>
