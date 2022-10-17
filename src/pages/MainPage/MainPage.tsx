@@ -1,4 +1,6 @@
 import React from "react";
+import { useQuery } from 'react-query';
+
 import PageBase from "../PageBase/PageBase";
 import MainCarousel from "./components/MainCarousel";
 import TopFilms from "./components/TopFilms";
@@ -8,9 +10,15 @@ import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
 
+import MovieService from "../../services/MovieService"
+
 const genres = ['Comedy', 'Cartoons', 'Horrors', 'Science fiction', 'Action', 'Melodramas', 'Drama', 'Detective', 'Adventure', 'Historical'];
 
 const MainPage = () => {
+    const { data } = useQuery('gameProfiles', () => MovieService.getTop(""));
+
+    console.log(data);
+
     return (
         <PageBase>
             <MainCarousel />
