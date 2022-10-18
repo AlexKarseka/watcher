@@ -2,9 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {ITopMovies} from "../../../models";
 
+import useGetListGenres from "../../../hooks/useGetListGenres";
+
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
-import useGetListGenres from "../../../hooks/useGetListGenres";
 
 interface FilmsRowProps {
     nameCategory: string,

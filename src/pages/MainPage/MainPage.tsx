@@ -1,22 +1,22 @@
 import React from "react";
 import {useQuery} from 'react-query';
 import MovieService from "../../services/MovieService";
-import {IGenresList, ITopMovies} from "../../models";
+import {IGenresList} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import MainCarousel from "./components/MainCarousel";
 import TopFilms from "./components/TopFilms";
 import FilmsRow from "./components/FilmsRow";
+import useCreateAllMoviesArray from "../../hooks/useCreateAllMoviesArray";
 
 import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
-import useCreateAllMoviesArray from "../../hooks/useCreateAllMoviesArray";
 
 const MainPage = () => {
     const {data} = useQuery('genres', () => MovieService.getGenres());
 
-    const getMovies = useCreateAllMoviesArray();
+    const getMovies = useCreateAllMoviesArray('popular');
 
     if (!data || !getMovies) return null
 
@@ -32,7 +32,7 @@ const MainPage = () => {
             </div>
             <TopFilms />
             <img className="mt-8 mb-10" src={Line} alt="Line" />
-            <div className="pb-32">
+            <div className="pb-24">
                 {genres.map((genres) => {
                     return (
                         <FilmsRow key={genres.id} id={genres.id} getMovies={getMovies} nameCategory={genres.name} />

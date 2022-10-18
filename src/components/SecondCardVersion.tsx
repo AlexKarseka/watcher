@@ -1,9 +1,9 @@
 import React from "react";
-import {IForTestList} from "../models";
+import {ITopMovies} from "../models";
 import {Link} from "react-router-dom";
 
 interface SecondCardVersionProps {
-    content: Array<IForTestList>
+    content: Array<ITopMovies>
     year: boolean
 }
 
@@ -16,17 +16,17 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                         <div className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
                             <img
                                 className="w-full h-52 rounded"
-                                src={movie.image}
+                                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                                 alt="image"
                             />
                             <div
                                 className="absolute top-1.5 left-1.5 text-xs rounded-sm bg-[#8c8e95] opacity-80 px-1 text-white"
                             >
-                                {movie.limits}
+                                {movie.adult ? '12+' : '18+'}
                             </div>
                         </div>
-                        <div className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">{movie.nameFilm}</div>
-                        {year ? <div className="text-sm text-[#565c67] ">{movie.year}</div> : ""}
+                        <div className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">{movie.title}</div>
+                        {year ? <div className="text-sm text-[#565c67] ">{movie.release_date.slice(0,4)}</div> : ""}
                     </Link>
                 )
             })}

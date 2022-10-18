@@ -3,8 +3,9 @@ import React from 'react';
 import ArrowDown from '../assets/ArrowDown.svg';
 import Extended from '../assets/Extended.svg';
 import Tiles from '../assets/Tiles.svg';
-
-const genres = ['Comedy', 'Cartoons', 'Horrors', 'Science fiction', 'Action', 'Melodramas', 'Drama', 'Detective', 'Adventure', 'Historical'];
+import {useQuery} from "react-query";
+import MovieService from "../services/MovieService";
+import {IGenresList} from "../models";
 
 interface MenuSettingsProps {
     styleCard: (card: boolean) => void,
@@ -15,22 +16,29 @@ const MenuSettings = ({styleCard}: MenuSettingsProps) => {
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
 
+    const {data} = useQuery('genres', () => MovieService.getGenres());
+
+    if (!data) return null
+
+    const genres: Array<IGenresList> = data.genres
+
     return (
         <div className="relative pt-6 pb-10 px-14">
             <div
-                className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-10 py-6 px-14 z-50 bg-[#434852]`}
+                className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-48 py-6 px-14 z-50 bg-[#434852]`}
             >
-                <div className="flex items-baseline gap-10 text-white text-sm">
-                    {genres.map((genres, index) => {
+                <div className="grid grid-cols-4 gap-4 text-white text-sm">
+                    {genres.map((genres) => {
                         return (
-
-                            <button key={index}
-                                    onClick={() => {
-                                        setGenresName(genres);
-                                        setGenresList(true);
-                                    }}
+                            <button
+                                className="text-left"
+                                key={genres.id}
+                                onClick={() => {
+                                    setGenresName(genres.name);
+                                    setGenresList(true);
+                                }}
                             >
-                                {genres}
+                                {genres.name}
                             </button>
                         )
                     })}
