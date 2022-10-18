@@ -11,7 +11,9 @@ import Play from "../assets/Play.svg";
 const MainCarousel = () => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
 
-    const {data} = useQuery('topRated', () => MovieService.getTop("top_rated"));
+    const {data} = useQuery('topRated', () =>
+        MovieService.getTop("top_rated", "1")
+    );
 
     if (!data) return null
 

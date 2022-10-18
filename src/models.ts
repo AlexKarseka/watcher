@@ -1,5 +1,5 @@
 export interface IGenresList {
-    id: string,
+    id: number,
     name: string,
 }
 
@@ -18,12 +18,6 @@ export interface ITopMovies {
     video: boolean,
     vote_average: number,
     vote_count: number,
-}
-
-export interface IForTestTop {
-    id: number,
-    image: string,
-    nameFilm: string
 }
 
 export interface IForTestTopSearch {

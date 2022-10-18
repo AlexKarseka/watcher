@@ -10,7 +10,9 @@ import ArrowRight from '../assets/right.svg';
 const TopFilms = () => {
     const [scroller, setScroller] = React.useState<number>(0);
 
-    const {data} = useQuery('topMovies', () => MovieService.getTop("popular"));
+    const {data} = useQuery('topMovies', () =>
+        MovieService.getTop("popular", "1")
+    );
 
     if (!data) return null
 
