@@ -42,7 +42,7 @@ const MainCarousel = () => {
                         {topRated[activeSlide].title}
                     </div>
                     <Link
-                        to="/list"
+                        to={`/list/${topRated[activeSlide].id}`}
                         className="w-2/4 flex items-center justify-center bg-amber-400 rounded-lg h-10 hover:bg-amber-500"
                     >
                         <img className="h-3.5" src={Play} alt="Play" />

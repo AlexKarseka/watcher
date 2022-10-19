@@ -20,7 +20,7 @@ function App() {
           <Route path="/signin" element={ <SignInPage /> } />
           <Route path="/signup" element={ <SignUpPage /> } />
           <Route path="/favourite" element={ <FavouritePage /> } />
-          <Route path="/list" element={ <MovieList /> } />
+          <Route path="/list/:id" element={ <MovieList /> } />
       </Routes>
   );
 }

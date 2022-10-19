@@ -36,9 +36,22 @@ const getGenres = async () => {
     }
 };
 
+const getDetails = async (movie_id: string | undefined) => {
+    try {
+        const url = 'movie';
+        const append = 'videos'
+        const result = await axios.get(`${defaultPath}/${url}/${movie_id}?api_key=${API_KEY}&language=${language}&append_to_response=${append}`);
+        return result.data;
+    } catch (err) {
+        console.error(`Failed to fetch details`, err);
+        throw err;
+    }
+};
+
 export default {
     getTopMovies,
     getTopSerials,
     getGenres,
+    getDetails,
 };
 

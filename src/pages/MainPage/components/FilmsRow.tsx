@@ -55,7 +55,7 @@ const FilmsRow = ({nameCategory, getMovies, id}: FilmsRowProps) => {
                             <Link
                                 className="mr-4 w-80"
                                 key={movie.id}
-                                to="/list"
+                                to={`/list/${movie.id}`}
                             >
                                 <img
                                     className="w-80 h-[201px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105 hover:opacity-80 hover:drop-shadow-[0_4px_3px_black]"

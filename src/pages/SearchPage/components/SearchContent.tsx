@@ -24,8 +24,6 @@ const SearchContent = ({found}: SearchContentProps) => {
 
     const searchData = [...movies.results, ...serials.results];
 
-    console.log(searchData)
-
     return (
         <div className="pb-32">
             <div className="text-xl text-white mb-4 px-14">

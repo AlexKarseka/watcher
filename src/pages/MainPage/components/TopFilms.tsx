@@ -52,7 +52,7 @@ const TopFilms = () => {
                             <Link
                                 className="mr-4"
                                 key={movie.id}
-                                to="/list"
+                                to={`/list/${movie.id}`}
                             >
                                 <img
                                     className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105"

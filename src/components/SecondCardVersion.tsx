@@ -14,7 +14,7 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
         <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
             {content.map((movie) => {
                 return (
-                    <Link to="/list" key={movie.id}>
+                    <Link to={`/list/${movie.id}`} key={movie.id}>
                         <div className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
                             <img
                                 className="w-full h-52 rounded"
@@ -32,7 +32,15 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                         >
                             {movie.title ? movie.title : movie.name}
                         </div>
-                        {year ? <div className="text-sm text-[#565c67] ">{movie.release_date.slice(0,4)}</div> : ""}
+                        {year ?
+                            <div
+                                className="text-sm text-[#565c67]"
+                            >
+                                {movie.release_date ? movie.release_date.slice(0, 4) : movie.first_air_date.slice(0, 4)}
+                            </div>
+                            :
+                            ""
+                        }
                     </Link>
                 )
             })}
