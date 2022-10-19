@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {IGenresList, ITopMovies} from "../models";
-
-import Play from '../assets/Play.svg';
 import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
+
+import Play from '../assets/Play.svg';
+import Empty from "../assets/Empty.png";
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>
@@ -13,9 +14,11 @@ interface FirstCardVersionProps {
 const FirstCardVersion = ({content}: FirstCardVersionProps) => {
     const {data} = useQuery('genres', () => MovieService.getGenres());
 
-    if (!data) return null
+    if (!data) return null;
 
-    const genres: Array<IGenresList> = data.genres
+    const genres: Array<IGenresList> = data.genres;
+
+    delete genres[14];
 
     const genresRow = (tree: number) => {
         return genres.map((elem) => {
@@ -26,10 +29,11 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                         key={elem.id}>
                         {elem.name}
                     </div>
-                )
+                );
             }
-        })
-    }
+            ;
+        });
+    };
 
     return (
         <div className="grid grid-cols-3 gap-6 px-14">
@@ -41,11 +45,15 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                     >
                         <img
                             className="w-full h-3/5 rounded-t drop-shadow-[0_9px_3px_black]"
-                            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                            src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : Empty}
                             alt="image"
                         />
                         <div className="relative pt-3.5 px-2.5">
-                            <div className="absolute bottom-32 text-white uppercase">{movie.title}</div>
+                            <div
+                                className="absolute bottom-32 text-white uppercase drop-shadow-[0_1px_2px_white]"
+                            >
+                                {movie.title ? movie.title : movie.name}
+                            </div>
                             <div className="flex text-xs">
                                 <div
                                     className={`${movie.vote_average <= 7 ? "text-red-600" : "text-green-500"} border border-[hsla(0,0%,100%,.24)] rounded-sm px-1`}
@@ -56,6 +64,11 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                                     className="flex items-center justify-center rounded-sm bg-[hsla(0,0%,100%,.08)] ml-1 px-1 text-white"
                                 >
                                     {movie.adult ? '12+' : '18+'}
+                                </div>
+                                <div
+                                    className="flex items-center justify-center rounded-sm bg-[hsla(0,0%,100%,.08)] ml-1 px-1 text-white"
+                                >
+                                    {movie.release_date ? movie.release_date.slice(0, 4) : movie.first_air_date.slice(0, 4)}
                                 </div>
                                 {movie.genre_ids.map(elem => genresRow(elem))}
                             </div>

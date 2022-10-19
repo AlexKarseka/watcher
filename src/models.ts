@@ -18,11 +18,8 @@ export interface ITopMovies {
     video: boolean,
     vote_average: number,
     vote_count: number,
-}
-
-export interface IForTestTopSearch {
-    id: number,
-    nameFilm: string
+    name: string,
+    first_air_date: string,
 }
 
 export interface IForTestList {

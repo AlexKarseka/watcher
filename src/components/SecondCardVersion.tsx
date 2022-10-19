@@ -2,6 +2,8 @@ import React from "react";
 import {ITopMovies} from "../models";
 import {Link} from "react-router-dom";
 
+import Empty from "../assets/Empty.png";
+
 interface SecondCardVersionProps {
     content: Array<ITopMovies>
     year: boolean
@@ -16,7 +18,7 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                         <div className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
                             <img
                                 className="w-full h-52 rounded"
-                                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                                src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : Empty}
                                 alt="image"
                             />
                             <div
@@ -25,7 +27,11 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                                 {movie.adult ? '12+' : '18+'}
                             </div>
                         </div>
-                        <div className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">{movie.title}</div>
+                        <div
+                            className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis"
+                        >
+                            {movie.title ? movie.title : movie.name}
+                        </div>
                         {year ? <div className="text-sm text-[#565c67] ">{movie.release_date.slice(0,4)}</div> : ""}
                     </Link>
                 )

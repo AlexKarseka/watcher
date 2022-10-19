@@ -12,12 +12,12 @@ const MainCarousel = () => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
 
     const {data} = useQuery('topRated', () =>
-        MovieService.getTop("top_rated", "1")
+        MovieService.getTopMovies("top_rated", "1")
     );
 
     if (!data) return null
 
-    const topRated: Array<ITopMovies> = data.results
+    const topRated: Array<ITopMovies> = data.results.slice(0, 5);
 
     return (
         <div className="flex items-center">
@@ -32,7 +32,7 @@ const MainCarousel = () => {
             <div className="relative w-full">
                 <img
                     className="w-full h-[500px] rounded-2xl"
-                    src={`https://image.tmdb.org/t/p/w500${topRated[activeSlide].backdrop_path}`}
+                    src={`https://image.tmdb.org/t/p/original${topRated[activeSlide].backdrop_path}`}
                     alt="image"
                 />
                 <div className="w-2/4 absolute bottom-10 left-10">

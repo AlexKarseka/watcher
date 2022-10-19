@@ -3,66 +3,66 @@ import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 import {ITopMovies} from "../models";
 
-const useCreateAllMoviesArray = (grading: string) => {
+const useCreateAll = () => {
     const {data: page1} = useQuery('popularMovies', () =>
-        MovieService.getTop(grading, "1")
+        MovieService.getTopMovies('popular', "1")
     );
     const {data: page2} = useQuery('popularMovies2', () =>
-        MovieService.getTop(grading, "2")
+        MovieService.getTopMovies('popular', "2")
     );
     const {data: page3} = useQuery('popularMovies3', () =>
-        MovieService.getTop(grading, "3")
+        MovieService.getTopMovies('popular', "3")
     );
     const {data: page4} = useQuery('popularMovies4', () =>
-        MovieService.getTop(grading, "4")
+        MovieService.getTopMovies('popular', "4")
     );
     const {data: page5} = useQuery('popularMovies5', () =>
-        MovieService.getTop(grading, "5")
+        MovieService.getTopMovies('popular', "5")
     );
     const {data: page6} = useQuery('popularMovies6', () =>
-        MovieService.getTop(grading, "6")
+        MovieService.getTopMovies('popular', "6")
     );
     const {data: page7} = useQuery('popularMovies7', () =>
-        MovieService.getTop(grading, "7")
+        MovieService.getTopMovies('popular', "7")
     );
     const {data: page8} = useQuery('popularMovies8', () =>
-        MovieService.getTop(grading, "8")
+        MovieService.getTopMovies('popular', "8")
     );
     const {data: page9} = useQuery('popularMovies9', () =>
-        MovieService.getTop(grading, "9")
+        MovieService.getTopMovies('popular', "9")
     );
     const {data: page10} = useQuery('popularMovies10', () =>
-        MovieService.getTop(grading, "10")
+        MovieService.getTopMovies('popular', "10")
     );
-    const {data: page11} = useQuery('popularMovies11', () =>
-        MovieService.getTop(grading, "11")
+    const {data: page11} = useQuery('popularSerials1', () =>
+        MovieService.getTopSerials('popular', "1")
     );
-    const {data: page12} = useQuery('popularMovies12', () =>
-        MovieService.getTop(grading, "12")
+    const {data: page12} = useQuery('popularSerials2', () =>
+        MovieService.getTopSerials('popular', "2")
     );
-    const {data: page13} = useQuery('popularMovies13', () =>
-        MovieService.getTop(grading, "13")
+    const {data: page13} = useQuery('popularSerials3', () =>
+        MovieService.getTopSerials('popular', "3")
     );
-    const {data: page14} = useQuery('popularMovies14', () =>
-        MovieService.getTop(grading, "14")
+    const {data: page14} = useQuery('popularSerials4', () =>
+        MovieService.getTopSerials('popular', "4")
     );
-    const {data: page15} = useQuery('popularMovies15', () =>
-        MovieService.getTop(grading, "15")
+    const {data: page15} = useQuery('popularSerials5', () =>
+        MovieService.getTopSerials('popular', "5")
     );
-    const {data: page16} = useQuery('popularMovies16', () =>
-        MovieService.getTop(grading, "16")
+    const {data: page16} = useQuery('popularSerials6', () =>
+        MovieService.getTopSerials('popular', "6")
     );
-    const {data: page17} = useQuery('popularMovies17', () =>
-        MovieService.getTop(grading, "17")
+    const {data: page17} = useQuery('popularSerials7', () =>
+        MovieService.getTopSerials('popular', "7")
     );
-    const {data: page18} = useQuery('popularMovies18', () =>
-        MovieService.getTop(grading, "18")
+    const {data: page18} = useQuery('popularSerials8', () =>
+        MovieService.getTopSerials('popular', "8")
     );
-    const {data: page19} = useQuery('popularMovies19', () =>
-        MovieService.getTop(grading, "19")
+    const {data: page19} = useQuery('popularSerials9', () =>
+        MovieService.getTopSerials('popular', "9")
     );
-    const {data: page20} = useQuery('popularMovies20', () =>
-        MovieService.getTop(grading, "20")
+    const {data: page20} = useQuery('popularSerials10', () =>
+        MovieService.getTopSerials('popular', "10")
     );
 
     if (!page1 ||
@@ -113,4 +113,4 @@ const useCreateAllMoviesArray = (grading: string) => {
     return bigArray;
 }
 
-export default useCreateAllMoviesArray;
+export default useCreateAll;

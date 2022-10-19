@@ -7,7 +7,7 @@ import PageBase from "../PageBase/PageBase";
 import MainCarousel from "./components/MainCarousel";
 import TopFilms from "./components/TopFilms";
 import FilmsRow from "./components/FilmsRow";
-import useCreateAllMoviesArray from "../../hooks/useCreateAllMoviesArray";
+import useCreateAll from "../../hooks/useCreateAll";
 
 import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
@@ -16,11 +16,11 @@ import Line from "./assets/Line.svg";
 const MainPage = () => {
     const {data} = useQuery('genres', () => MovieService.getGenres());
 
-    const getMovies = useCreateAllMoviesArray('popular');
+    const getMovies = useCreateAll();
 
-    if (!data || !getMovies) return null
+    if (!data || !getMovies) return null;
 
-    const genres: Array<IGenresList> = data.genres
+    const genres: Array<IGenresList> = data.genres;
 
     return (
         <PageBase>
