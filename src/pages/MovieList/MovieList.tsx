@@ -12,19 +12,19 @@ import ButtonList from "../../components/ButtonList";
 import DescriptionList from "../../components/DescriptionList";
 import FounderList from "../../components/FounderList";
 import BgList from "../../components/BgList";
-import BudgetList from "../../components/BudgetList";
+import BudgetList from "./components/BudgetList";
 
 const MovieList = () => {
     const {id} = useParams();
 
     const {data: movieDetails} = useQuery('movie', () =>
         MovieService.getDetails(id, 'movie'), {
-        refetchInterval: 15,
+        refetchInterval: 500,
     });
 
     const {data} = useQuery('recommendations', () =>
         MovieService.getRecommendations(id, 'movie'), {
-        refetchInterval: 15,
+        refetchInterval: 500,
     });
 
     if (!movieDetails || !data) return null;
@@ -33,7 +33,7 @@ const MovieList = () => {
 
     return (
         <PageBase>
-            <div key={movieDetails.id} className="relative px-14 pt-56 pb-16">
+            <div className="relative px-14 pt-56 pb-16">
                 <BgList poster={movieDetails.poster_path} />
 
                 <HeaderList nameCategory='movies' nameMovie={movieDetails.title} />
@@ -43,7 +43,7 @@ const MovieList = () => {
                 <div className="flex justify-between gap-10 relative z-20">
                     <div className="w-2/4">
                         <ButtonList homepage={movieDetails.homepage} nameCategory='movie' />
-                        <DescriptionList description={movieDetails} />
+                        <DescriptionList description={movieDetails} elementsGenres={4} />
                     </div>
 
                     <div className="w-2/4">
@@ -54,7 +54,7 @@ const MovieList = () => {
             </div>
             <div className="pb-24">
                 <div className="px-14 mb-2.5 text-white text-xl">You may be interested</div>
-                <SecondCardVersion content={recommendations.slice(0, 8)} year={false}/>
+                <SecondCardVersion content={recommendations.slice(0, 8)} year={false} type='movies' />
             </div>
         </PageBase>
     );

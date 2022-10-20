@@ -9,6 +9,7 @@ import SignInPage from "./pages/SignInPage/SignInPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import FavouritePage from "./pages/FavouritePage/FavouritePage";
 import MovieList from "./pages/MovieList/MovieList";
+import SerialsList from "./pages/SerialsList/SerialsList";
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
           <Route path="/signin" element={ <SignInPage /> } />
           <Route path="/signup" element={ <SignUpPage /> } />
           <Route path="/favourite" element={ <FavouritePage /> } />
-          <Route path="/list/:id" element={ <MovieList /> } />
+          <Route path="/list/movies/:id" element={ <MovieList /> } />
+          <Route path="/list/serials/:id" element={ <SerialsList /> } />
       </Routes>
   );
 }

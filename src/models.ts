@@ -49,6 +49,24 @@ export interface IProduction {
     origin_country: string,
 }
 
+export interface IDirectors {
+    credit_id: string,
+    gender: number,
+    id: number,
+    name: string,
+    profile_path: string,
+}
+
+export interface ISeasons {
+    air_date: string,
+    episode_count: number,
+    id: number,
+    name: string,
+    overview: string,
+    poster_path: string,
+    season_number: string,
+}
+
 export interface IForTestList {
     id: number,
     year: number,

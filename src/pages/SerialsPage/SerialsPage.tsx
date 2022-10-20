@@ -22,9 +22,9 @@ const SerialsPage = () => {
 
             <div className="pb-24">
                 {listStyle ?
-                    <FirstCardVersion content={getSerials} />
+                    <FirstCardVersion content={getSerials} type='serials' />
                     :
-                    <SecondCardVersion content={getSerials} year />
+                    <SecondCardVersion content={getSerials} year type='serials' />
                 }
             </div>
         </PageBase>
