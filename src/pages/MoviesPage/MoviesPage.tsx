@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";
@@ -16,8 +16,10 @@ const MoviesPage = () => {
 
     return (
         <PageBase>
-            <HeaderPage nameCategory="movies" />
+            <HeaderPage nameCategory='movies' />
+
             <MenuSettings styleCard={(card) => {setListStyle(card)}} />
+
             <div className="pb-24">
                 {listStyle ?
                     <FirstCardVersion content={getMovies} />

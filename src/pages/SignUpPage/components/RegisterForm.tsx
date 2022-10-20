@@ -2,12 +2,14 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 const RegisterForm = () => {
+
     return (
         <div className="relative -top-[50px] mx-auto">
             <div className="flex flex-col items-center justify-center mb-4">
                 <div className="text-3xl pb-4 text-white">Registration</div>
                 <div className="text-sm text-white">Register to watch and download movies and series</div>
             </div>
+
             <div
                 className="flex flex-col justify-center border border-[#565c67] bg-[rgba(31,33,37,.8)] rounded-lg px-8 max-w-sm mx-auto h-96"
             >
@@ -34,6 +36,7 @@ const RegisterForm = () => {
                         Sign up
                     </button>
                 </form>
+
                 <div className="flex justify-center items-center text-sm text-white">
                     <div>Do you already have an account?</div>
                     <Link className="ml-1.5 text-[#feba2b]" to="/signin">Log in!</Link>

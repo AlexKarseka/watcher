@@ -8,12 +8,16 @@ interface PageBaseProps {
 }
 
 const PageBase = ({children}: PageBaseProps) => {
+
     return (
         <div className="overflow-hidden">
+
             <Header/>
+
             <div className="h-full">
                 {children}
             </div>
+
             <Footer/>
         </div>
     )

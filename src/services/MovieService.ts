@@ -36,14 +36,23 @@ const getGenres = async () => {
     }
 };
 
-const getDetails = async (movie_id: string | undefined) => {
+const getDetails = async (movie_id: string | undefined, type: string) => {
     try {
-        const url = 'movie';
-        const append = 'videos'
-        const result = await axios.get(`${defaultPath}/${url}/${movie_id}?api_key=${API_KEY}&language=${language}&append_to_response=${append}`);
+        const append = 'images'
+        const result = await axios.get(`${defaultPath}/${type}/${movie_id}?api_key=${API_KEY}&language=${language}&append_to_response=${append}`);
         return result.data;
     } catch (err) {
-        console.error(`Failed to fetch details`, err);
+        console.error(`Failed to fetch details for id ${movie_id}`, err);
+        throw err;
+    }
+};
+
+const getRecommendations = async (movie_id: string | undefined, type: string) => {
+    try {
+        const result = await axios.get(`${defaultPath}/${type}/${movie_id}/recommendations?api_key=${API_KEY}&language=${language}`);
+        return result.data;
+    } catch (err) {
+        console.error(`Failed to fetch recommendations for id ${movie_id}`, err);
         throw err;
     }
 };
@@ -53,5 +62,6 @@ export default {
     getTopSerials,
     getGenres,
     getDetails,
+    getRecommendations,
 };
 

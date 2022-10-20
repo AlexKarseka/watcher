@@ -18,6 +18,8 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
 
     const genres: Array<IGenresList> = data.genres;
 
+    const elementsPerPage = 3;
+
     const genresRow = (tree: number) => {
         return genres.map((elem) => {
             if (tree === elem.id) {
@@ -29,22 +31,21 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                     </div>
                 );
             }
-            ;
         });
     };
 
     return (
         <div className="grid grid-cols-3 gap-6 px-14">
             {content.map((movie) => {
-                return (
+                return movie.backdrop_path ?
                     <div
                         key={movie.id}
                         className="overflow-hidden bg-[#1f2125] h-[360px] border border-[hsla(0,0%,100%,.08)] border-b-2 border-b-amber-400 rounded cursor-pointer duration-300 hover:scale-110"
                     >
                         <img
                             className="w-full h-3/5 rounded-t drop-shadow-[0_9px_3px_black]"
-                            src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : Empty}
-                            alt="image"
+                            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                            alt="logo"
                         />
                         <div className="relative pt-3.5 px-2.5">
                             <div
@@ -68,7 +69,7 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                                 >
                                     {movie.release_date ? movie.release_date.slice(0, 4) : movie.first_air_date.slice(0, 4)}
                                 </div>
-                                {movie.genre_ids.map(elem => genresRow(elem))}
+                                {movie.genre_ids.slice(0, elementsPerPage).map(elem => genresRow(elem))}
                             </div>
                             <div className="mt-3.5 text-xs text-white text-ellipsis h-12 w-full overflow-hidden">
                                 {movie.overview}
@@ -90,7 +91,8 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                             </div>
                         </div>
                     </div>
-                )
+                    :
+                    null
             })}
         </div>
     );

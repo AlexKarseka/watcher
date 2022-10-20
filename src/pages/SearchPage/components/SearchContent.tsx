@@ -11,12 +11,12 @@ interface SearchContentProps {
 const SearchContent = ({found}: SearchContentProps) => {
     const {data: movies} = useQuery('searchMovies', () =>
             SearchService.getSearchMovies(found, 'movie'), {
-            refetchInterval: 1500,
+            refetchInterval: 1000,
         }
     );
     const {data: serials} = useQuery('searchSerials', () =>
         SearchService.getSearchMovies(found, 'tv'), {
-            refetchInterval: 1500,
+            refetchInterval: 1000,
         }
     );
 

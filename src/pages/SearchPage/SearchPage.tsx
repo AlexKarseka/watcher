@@ -16,7 +16,9 @@ const SearchPage = () => {
     return(
         <PageBase>
             <div className="pt-6">
+
                 <Header />
+
                 <div className="border-b-2 border-[#d8d8d8] mb-8 mx-14">
                     <input
                         className="w-full bg-[transparent] text-2xl text-[#d8d8d8] pb-2 outline-none"
@@ -26,10 +28,12 @@ const SearchPage = () => {
                         onChange={(event) => {setSearchValue(event.target.value)}}
                     />
                 </div>
+
                 {searchValue === '' ?
                     <DefaultContent popular={defaultList} />
                     :
-                    <SearchContent found={searchValue} />}
+                    <SearchContent found={searchValue} />
+                }
             </div>
         </PageBase>
     );

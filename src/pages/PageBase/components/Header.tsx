@@ -3,8 +3,10 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     const [authorisation, setAuthorisation] = React.useState<boolean>(true);
+
     return (
         <div className="relative z-20 flex items-center justify-between w-full h-20 px-20">
+
             <ul className="flex items-center justify-center">
                 <li
                     className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 hover:opacity-100"
@@ -21,6 +23,7 @@ const Header = () => {
                     <Link to="/search">Search</Link>
                 </li>
             </ul>
+
             {authorisation ?
                 <div className="flex gap-3">
                     <button
@@ -48,7 +51,8 @@ const Header = () => {
                         to="/signup">
                         Sign up
                     </Link>
-                </div>}
+                </div>
+            }
         </div>
     );
 };

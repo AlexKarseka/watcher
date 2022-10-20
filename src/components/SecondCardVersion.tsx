@@ -2,8 +2,6 @@ import React from "react";
 import {ITopMovies} from "../models";
 import {Link} from "react-router-dom";
 
-import Empty from "../assets/Empty.png";
-
 interface SecondCardVersionProps {
     content: Array<ITopMovies>
     year: boolean
@@ -13,12 +11,13 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
     return (
         <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
             {content.map((movie) => {
-                return (
+                return movie.backdrop_path ?
                     <Link to={`/list/${movie.id}`} key={movie.id}>
-                        <div className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
+                        <div
+                            className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
                             <img
                                 className="w-full h-52 rounded"
-                                src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : Empty}
+                                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                                 alt="image"
                             />
                             <div
@@ -42,7 +41,8 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                             ""
                         }
                     </Link>
-                )
+                    :
+                    null
             })}
         </div>
     );

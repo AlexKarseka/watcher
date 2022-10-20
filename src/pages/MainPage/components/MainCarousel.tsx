@@ -33,7 +33,7 @@ const MainCarousel = () => {
                 <img
                     className="w-full h-[500px] rounded-2xl"
                     src={`https://image.tmdb.org/t/p/original${topRated[activeSlide].backdrop_path}`}
-                    alt="image"
+                    alt="logo"
                 />
                 <div className="w-2/4 absolute bottom-10 left-10">
                     <div

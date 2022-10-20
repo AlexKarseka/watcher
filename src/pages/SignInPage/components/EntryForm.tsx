@@ -4,12 +4,14 @@ import {Link} from "react-router-dom";
 const EntryForm = () => {
     return (
         <div className="relative -top-[50px] mx-auto">
+
             <div className="flex flex-col items-center justify-center mb-4">
                 <div className="text-3xl pb-4 text-white">Logging into your account</div>
                 <div className="text-sm text-white">
                     Log in to access your subscription and favourites list
                 </div>
             </div>
+
             <div
                 className="flex flex-col justify-center border border-[#565c67] bg-[rgba(31,33,37,.8)] rounded-lg px-8 max-w-sm mx-auto h-96"
             >
@@ -35,6 +37,7 @@ const EntryForm = () => {
                         Log in
                     </button>
                 </form>
+
                 <div className="flex justify-center items-center text-sm text-white">
                     <div>Don't have an account?</div>
                     <Link className="ml-1.5 text-[#feba2b]" to="/signup">Sign up!</Link>

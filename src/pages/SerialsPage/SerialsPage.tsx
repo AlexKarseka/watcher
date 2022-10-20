@@ -17,7 +17,9 @@ const SerialsPage = () => {
     return (
         <PageBase>
             <HeaderPage nameCategory="serials" />
+
             <MenuSettings styleCard={(card) => {setListStyle(card)}} />
+
             <div className="pb-24">
                 {listStyle ?
                     <FirstCardVersion content={getSerials} />

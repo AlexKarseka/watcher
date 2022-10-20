@@ -22,27 +22,31 @@ export interface ITopMovies {
     first_air_date: string,
 }
 
-export interface IMovieDetails {
-    adult: boolean,
-    backdrop_path: string,
-    budget: number,
-    genre_ids: Array<number>,
-    homepage: string,
-    id: number,
-    imdb_id: string,
-    original_language: string,
-    original_title: string,
-    overview: string,
-    popularity: number,
-    poster_path: string,
-    release_date: number,
-    revenue: number,
-    runtime: number,
-    status: string,
-    tagline: string,
-    title: string,
+export interface ILogoNameList {
+    aspect_ratio: number,
+    file_path: string,
+    height: number,
+    iso_639_1: string,
     vote_average: number,
     vote_count: number,
+    width: number,
+}
+
+export interface ICountriesName {
+    iso_3166_1: string,
+    name: string,
+}
+
+export interface IGenresName {
+    id: number,
+    name: string,
+}
+
+export interface IProduction {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string,
 }
 
 export interface IForTestList {
@@ -54,21 +58,4 @@ export interface IForTestList {
     limits: string,
     genres: string,
     description: string,
-}
-
-export interface IForTestListMovie {
-    id: number,
-    year: number,
-    image: string,
-    nameFilm: string,
-    rating: number,
-    limits: string,
-    genres: string,
-    description: string,
-    type: string,
-    country: string,
-    studios: string,
-    budget: number,
-    fees: number,
-    duration: number,
 }
