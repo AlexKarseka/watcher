@@ -6,6 +6,7 @@ interface ButtonListProps {
 }
 
 const ButtonList = ({homepage, nameCategory}: ButtonListProps) => {
+
     return (
         <div className="flex gap-6">
             <a

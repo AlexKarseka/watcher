@@ -7,6 +7,7 @@ interface HeaderListProps {
 }
 
 const HeaderList = ({nameCategory, nameMovie}: HeaderListProps) => {
+
     return (
         <div className="relative z-20 flex text-sm text-[#565c67] capitalize">
             <Link className="mr-1 hover:text-[#868fa0]" to="/">Watcher</Link>

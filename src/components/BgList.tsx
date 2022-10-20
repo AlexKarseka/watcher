@@ -5,6 +5,7 @@ interface BgListProps {
 }
 
 const BgList = ({poster}: BgListProps) => {
+
     return (
         <img
             className="absolute -top-20 left-0 opacity-20 w-full"

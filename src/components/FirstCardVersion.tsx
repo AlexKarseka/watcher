@@ -5,7 +5,6 @@ import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 
 import Play from '../assets/Play.svg';
-import Empty from "../assets/Empty.png";
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>
@@ -47,6 +46,7 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                             src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                             alt="logo"
                         />
+
                         <div className="relative pt-3.5 px-2.5">
                             <div
                                 className="absolute bottom-32 text-white uppercase drop-shadow-[0_1px_2px_white]"

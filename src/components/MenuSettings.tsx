@@ -44,6 +44,7 @@ const MenuSettings = ({styleCard}: MenuSettingsProps) => {
                     })}
                 </div>
             </div>
+
             <div className="flex justify-between items-center">
                 <button
                     onClick={() => {
@@ -58,6 +59,7 @@ const MenuSettings = ({styleCard}: MenuSettingsProps) => {
                         <img className="rotate-180" src={ArrowDown} alt="ArrowDown"/>
                     }
                 </button>
+
                 <div className="flex items-center rounded bg-[rgba(86,92,103,.16)]">
                     <button
                         onClick={() => {
