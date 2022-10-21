@@ -1,11 +1,11 @@
 import React from "react";
-import {useQuery} from 'react-query';
+import {useQuery} from "react-query";
 import {Link} from "react-router-dom";
 import MovieService from "../../../services/MovieService";
 import {ITopMovies} from "../../../models";
 
-import ArrowLeft from '../assets/ArrowLeft.svg';
-import ArrowRight from '../assets/ArrowRight.svg';
+import ArrowLeft from "../assets/ArrowLeft.svg";
+import ArrowRight from "../assets/ArrowRight.svg";
 import Play from "../assets/Play.svg";
 
 const MainCarousel = () => {
@@ -29,6 +29,7 @@ const MainCarousel = () => {
             >
                 <img className="w-20 hover:drop-shadow-[0_4px_3px_white]" src={ArrowLeft} alt="arrow"/>
             </button>
+
             <div className="relative w-full">
                 <img
                     className="w-full h-[500px] rounded-2xl"

@@ -23,6 +23,7 @@ const FilmsRow = ({nameCategory, getMovies, id}: FilmsRowProps) => {
             <div className="text-xl text-white px-20 opacity-80 font-extralight">
                 {nameCategory}
             </div>
+
             {scroller === 0 ?
                 null
                 :
@@ -35,6 +36,7 @@ const FilmsRow = ({nameCategory, getMovies, id}: FilmsRowProps) => {
                     <img src={ArrowLeft} alt="ArrowLeft"/>
                 </button>
             }
+
             {scroller === -1180 ?
                 null
                 :

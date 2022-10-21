@@ -1,5 +1,5 @@
 import React from "react";
-import {useQuery} from 'react-query';
+import {useQuery} from "react-query";
 import MovieService from "../../services/MovieService";
 import {IGenresList} from "../../models";
 
@@ -25,13 +25,17 @@ const MainPage = () => {
     return (
         <PageBase>
             <MainCarousel />
+
             <div className="flex items-center justify-center my-6">
                 <img className="mr-10 w-2/6" src={LeftLine} alt="leftLine" />
                 <div className="uppercase text-base text-[#e7bd99]">most popular movies</div>
                 <img className="ml-10 w-2/6" src={RightLine} alt="rightLine" />
             </div>
+
             <TopFilms />
+
             <img className="mt-8 mb-10" src={Line} alt="Line" />
+
             <div className="pb-24">
                 {genres.map((genres) => {
                     return (

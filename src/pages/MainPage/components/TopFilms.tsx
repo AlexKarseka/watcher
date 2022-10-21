@@ -1,11 +1,11 @@
 import React from "react";
-import {useQuery} from 'react-query';
+import {useQuery} from "react-query";
 import MovieService from "../../../services/MovieService";
 import {Link} from "react-router-dom";
 import {ITopMovies} from "../../../models";
 
-import ArrowLeft from '../assets/left.svg';
-import ArrowRight from '../assets/right.svg';
+import ArrowLeft from "../assets/left.svg";
+import ArrowRight from "../assets/right.svg";
 
 const TopFilms = () => {
     const [scroller, setScroller] = React.useState<number>(0);
@@ -32,6 +32,7 @@ const TopFilms = () => {
                     <img src={ArrowLeft} alt="ArrowLeft"/>
                 </button>
             }
+
             {scroller === -1180 ?
                 null
                 :
