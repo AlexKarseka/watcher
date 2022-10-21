@@ -5,6 +5,7 @@ import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 
 import Play from '../assets/Play.svg';
+import NoSuchGenre from "./NoSuchGenre";
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>
@@ -33,7 +34,7 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
         });
     };
 
-    return (
+    return content.length > 0 ?
         <div className="grid grid-cols-3 gap-6 px-14">
             {content.map((movie) => {
                 return movie.backdrop_path ?
@@ -95,7 +96,8 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
                     null
             })}
         </div>
-    );
+        :
+        <NoSuchGenre/>
 };
 
 export default FirstCardVersion;

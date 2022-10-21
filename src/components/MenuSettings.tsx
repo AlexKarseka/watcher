@@ -9,9 +9,10 @@ import {IGenresList} from "../models";
 
 interface MenuSettingsProps {
     styleCard: (card: boolean) => void,
+    genreType: (type: number) => void,
 }
 
-const MenuSettings = ({styleCard}: MenuSettingsProps) => {
+const MenuSettings = ({styleCard, genreType}: MenuSettingsProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
@@ -28,6 +29,16 @@ const MenuSettings = ({styleCard}: MenuSettingsProps) => {
                 className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-48 py-6 px-14 z-50 bg-[#434852]`}
             >
                 <div className="grid grid-cols-4 gap-4 text-white text-sm">
+                    <button
+                        className="text-left"
+                        onClick={() => {
+                            setGenresName('All Genres');
+                            genreType(0);
+                            setGenresList(true);
+                        }}
+                    >
+                        All Genres
+                    </button>
                     {genres.map((genres) => {
                         return (
                             <button
@@ -35,6 +46,7 @@ const MenuSettings = ({styleCard}: MenuSettingsProps) => {
                                 key={genres.id}
                                 onClick={() => {
                                     setGenresName(genres.name);
+                                    genreType(genres.id);
                                     setGenresList(true);
                                 }}
                             >

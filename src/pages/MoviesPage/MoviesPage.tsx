@@ -9,22 +9,30 @@ import useCreateMovies from "../../hooks/useCreateMovies";
 
 const MoviesPage = () => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
+    const [genresName, setGenresName] = React.useState<number>(0);
 
     const getMovies = useCreateMovies();
 
     if (!getMovies) return null
 
+    const genreChoice = getMovies
+        .map(genre => genre.genre_ids[0] === genresName ? {...genre} : genre)
+        .filter(genre => genre.genre_ids[0] === genresName)
+
     return (
         <PageBase>
             <HeaderPage nameCategory='movies' />
 
-            <MenuSettings styleCard={(card) => {setListStyle(card)}} />
+            <MenuSettings
+                styleCard={(card) => {setListStyle(card)}}
+                genreType={(type) => {setGenresName(type)}}
+            />
 
             <div className="pb-24">
                 {listStyle ?
-                    <FirstCardVersion content={getMovies} />
+                    <FirstCardVersion content={genresName === 0 ? getMovies : genreChoice} />
                     :
-                    <SecondCardVersion content={getMovies} year />
+                    <SecondCardVersion content={genresName === 0 ? getMovies : genreChoice} year />
                 }
             </div>
         </PageBase>

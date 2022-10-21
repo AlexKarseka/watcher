@@ -35,7 +35,12 @@ const MainPage = () => {
             <div className="pb-24">
                 {genres.map((genres) => {
                     return (
-                        <FilmsRow key={genres.id} id={genres.id} getMovies={getMovies} nameCategory={genres.name} />
+                        <FilmsRow
+                            key={genres.id}
+                            id={genres.id}
+                            getMovies={getMovies}
+                            nameCategory={genres.name}
+                        />
                     )
                 })}
             </div>

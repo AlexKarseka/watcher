@@ -20,12 +20,12 @@ const SerialsList = () => {
 
     const {data: serialDetails} = useQuery('serial', () =>
         MovieService.getDetails(id, 'tv'), {
-        refetchInterval: 500,
+        refetchInterval: 100,
     });
 
     const {data} = useQuery('recommendationsSerial', () =>
         MovieService.getRecommendations(id, 'tv'), {
-        refetchInterval: 500,
+        refetchInterval: 100,
     });
 
     if (!serialDetails || !data) return null;

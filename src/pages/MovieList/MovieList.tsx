@@ -19,12 +19,12 @@ const MovieList = () => {
 
     const {data: movieDetails} = useQuery('movie', () =>
         MovieService.getDetails(id, 'movie'), {
-        refetchInterval: 500,
+        refetchInterval: 100,
     });
 
     const {data} = useQuery('recommendations', () =>
         MovieService.getRecommendations(id, 'movie'), {
-        refetchInterval: 500,
+        refetchInterval: 100,
     });
 
     if (!movieDetails || !data) return null;

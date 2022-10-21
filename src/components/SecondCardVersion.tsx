@@ -1,6 +1,7 @@
 import React from "react";
 import {ITopMovies} from "../models";
 import {Link} from "react-router-dom";
+import NoSuchGenre from "./NoSuchGenre";
 
 interface SecondCardVersionProps {
     content: Array<ITopMovies>,
@@ -9,7 +10,7 @@ interface SecondCardVersionProps {
 
 const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
 
-    return (
+    return content.length > 0 ?
         <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
             {content.map((movie) => {
                 return movie.backdrop_path ?
@@ -21,12 +22,14 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                                 alt="logo"
                             />
-                            <div className="absolute top-1.5 left-1.5 text-xs rounded-sm bg-[#8c8e95] opacity-80 px-1 text-white">
+                            <div
+                                className="absolute top-1.5 left-1.5 text-xs rounded-sm bg-[#8c8e95] opacity-80 px-1 text-white">
                                 {movie.adult ? '12+' : '18+'}
                             </div>
                         </div>
 
-                        <div className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">
+                        <div
+                            className="text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">
                             {movie.title ? movie.title : movie.name}
                         </div>
                         {year ?
@@ -41,7 +44,8 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                     null
             })}
         </div>
-    );
+        :
+        <NoSuchGenre/>
 };
 
 export default SecondCardVersion;
