@@ -8,10 +8,9 @@ import Play from '../assets/Play.svg';
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>
-    type: string,
 }
 
-const FirstCardVersion = ({content, type}: FirstCardVersionProps) => {
+const FirstCardVersion = ({content}: FirstCardVersionProps) => {
     const {data} = useQuery('genres', () => MovieService.getGenres());
 
     if (!data) return null;
@@ -78,7 +77,7 @@ const FirstCardVersion = ({content, type}: FirstCardVersionProps) => {
                             <div className="flex gap-2">
                                 <Link
                                     className="w-2/4 flex items-center justify-center bg-amber-400 rounded mt-2 h-8 hover:bg-amber-500"
-                                    to={`/list/${type}/${movie.id}`}
+                                    to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}
                                 >
                                     <img className="h-3.5" src={Play} alt="Play"/>
                                     <div className="ml-2 text-xs">Watch</div>

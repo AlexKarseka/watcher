@@ -22,9 +22,9 @@ const MoviesPage = () => {
 
             <div className="pb-24">
                 {listStyle ?
-                    <FirstCardVersion content={getMovies} type='movies' />
+                    <FirstCardVersion content={getMovies} />
                     :
-                    <SecondCardVersion content={getMovies} year type='movies' />
+                    <SecondCardVersion content={getMovies} year />
                 }
             </div>
         </PageBase>

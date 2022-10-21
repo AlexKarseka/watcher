@@ -6,7 +6,6 @@ interface SeasonsListProps {
 }
 
 const SeasonsList = ({seasons}: SeasonsListProps) => {
-    console.log(seasons)
 
     return (
         <div className="pb-16">

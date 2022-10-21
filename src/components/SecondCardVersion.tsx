@@ -5,16 +5,15 @@ import {Link} from "react-router-dom";
 interface SecondCardVersionProps {
     content: Array<ITopMovies>,
     year: boolean,
-    type: string
 }
 
-const SecondCardVersion = ({content, year, type}: SecondCardVersionProps) => {
+const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
 
     return (
         <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
             {content.map((movie) => {
                 return movie.backdrop_path ?
-                    <Link to={`/list/${type}/${movie.id}`} key={movie.id}>
+                    <Link to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`} key={movie.id}>
                         <div
                             className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
                             <img
