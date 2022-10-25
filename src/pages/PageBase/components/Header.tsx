@@ -9,17 +9,17 @@ const Header = () => {
 
             <ul className="flex items-center justify-center">
                 <li
-                    className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 hover:opacity-100"
+                    className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 drop-shadow-[0_4px_3px_black] hover:opacity-100"
                 >
                     <Link to="/">Watcher</Link>
                 </li>
-                <li className="mr-5 text-white text-base opacity-80 hover:opacity-100">
+                <li className="mr-5 text-white text-base opacity-80 drop-shadow-[0_4px_3px_black] hover:opacity-100">
                     <Link to="/movies">Movies</Link>
                 </li>
-                <li className="mr-5 text-white text-base opacity-80 hover:opacity-100">
+                <li className="mr-5 text-white text-base opacity-80 drop-shadow-[0_4px_3px_black] hover:opacity-100">
                     <Link to="/serials">Serials</Link>
                 </li>
-                <li className="text-white text-base opacity-80 hover:opacity-100">
+                <li className="text-white text-base opacity-80 drop-shadow-[0_4px_3px_black] hover:opacity-100">
                     <Link to="/search">Search</Link>
                 </li>
             </ul>
