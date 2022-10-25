@@ -15,14 +15,14 @@ const BudgetList = ({budget}: BudgetListProps) => {
             <div className="flex items-center mb-1.5 text-sm">
                 <div className="w-32 text-[#565c67]">Budget:</div>
                 <div className="text-white">
-                    $ {budget.budget <= 0 ? 'No acute data' : budget.budget}
+                    $ {budget.budget <= 0 ? 'No acute data' : new Intl.NumberFormat('en-EN').format(budget.budget)}
                 </div>
             </div>
 
             <div className="flex items-center mb-1.5 text-sm">
                 <div className="w-32 text-[#565c67]">Revenue:</div>
                 <div className="text-white">
-                    $ {budget.revenue <= 0 ? 'No acute data' : budget.revenue}
+                    $ {budget.revenue <= 0 ? 'No acute data' : new Intl.NumberFormat('en-EN').format(budget.revenue)}
                 </div>
             </div>
 
