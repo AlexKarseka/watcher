@@ -24,7 +24,7 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
 
                             <div
                                 className="absolute bottom-2 left-3.5 text-white drop-shadow-[0_2px_2px_black]">
-                                {series.episode_count} ser
+                                {series.episode_count} eps
                             </div>
                         </div>
                 })}

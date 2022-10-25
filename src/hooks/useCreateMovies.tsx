@@ -5,34 +5,34 @@ import {ITopMovies} from "../models";
 
 const useCreateMovies = () => {
     const {data: page1} = useQuery('topRatedMovies', () =>
-        MovieService.getTopMovies('popular', "1")
+        MovieService.getTop('popular', 'movie',"1")
     );
     const {data: page2} = useQuery('topRatedMovies2', () =>
-        MovieService.getTopMovies('popular', "2")
+        MovieService.getTop('popular', 'movie',"2")
     );
     const {data: page3} = useQuery('topRatedMovies3', () =>
-        MovieService.getTopMovies('popular', "3")
+        MovieService.getTop('popular', 'movie',"3")
     );
     const {data: page4} = useQuery('topRatedMovies4', () =>
-        MovieService.getTopMovies('popular', "4")
+        MovieService.getTop('popular', 'movie',"4")
     );
     const {data: page5} = useQuery('topRatedMovies5', () =>
-        MovieService.getTopMovies('popular', "5")
+        MovieService.getTop('popular', 'movie',"5")
     );
     const {data: page6} = useQuery('topRatedMovies6', () =>
-        MovieService.getTopMovies('popular', "6")
+        MovieService.getTop('popular', 'movie',"6")
     );
     const {data: page7} = useQuery('topRatedMovies7', () =>
-        MovieService.getTopMovies('popular', "7")
+        MovieService.getTop('popular', 'movie',"7")
     );
     const {data: page8} = useQuery('topRatedMovies8', () =>
-        MovieService.getTopMovies('popular', "8")
+        MovieService.getTop('popular', 'movie',"8")
     );
     const {data: page9} = useQuery('topRatedMovies9', () =>
-        MovieService.getTopMovies('popular', "9")
+        MovieService.getTop('popular', 'movie',"9")
     );
     const {data: page10} = useQuery('topRatedMovies10', () =>
-        MovieService.getTopMovies('popular', "10")
+        MovieService.getTop('popular', 'movie',"10")
     );
 
     if (!page1 || !page2 || !page3 || !page4 || !page5 || !page6 || !page7 || !page8 || !page9 || !page10)

@@ -11,7 +11,7 @@ const TopFilms = () => {
     const [scroller, setScroller] = React.useState<number>(0);
 
     const {data} = useQuery('topMovies', () =>
-        MovieService.getTopMovies("popular", "1")
+        MovieService.getTop("popular", 'movie', "1")
     );
 
     if (!data) return null
