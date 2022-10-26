@@ -9,7 +9,7 @@ const useCreateCarousel = () => {
     const {data: carousel} = useQuery('carouselMovies', () =>
             MovieService.getTop('popular', 'tv', '1'), {
             onSuccess: ({results}) => {
-                setCarouselMovies(results.slice(0, 7));
+                setCarouselMovies(results.slice(0, 5));
             }
         }
     )

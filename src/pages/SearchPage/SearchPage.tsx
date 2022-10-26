@@ -4,12 +4,12 @@ import PageBase from "../PageBase/PageBase";
 import Header from "./components/Header";
 import DefaultContent from "./components/DefaultContent";
 import SearchContent from "./components/SearchContent";
-import useCreateAll from "../../hooks/useCreateAll";
+import useCreateMovies from "../../hooks/useCreateMovies";
 
 const SearchPage = () => {
     const [searchValue, setSearchValue] = React.useState<string>('');
 
-    const defaultList = useCreateAll();
+    const defaultList = useCreateMovies();
 
     if (!defaultList) return null;
 

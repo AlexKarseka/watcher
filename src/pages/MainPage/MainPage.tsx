@@ -1,30 +1,38 @@
 import React from "react";
-import {useQuery} from "react-query";
-import MovieService from "../../services/MovieService";
-import {IGenresList, ITopMovies} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import MainCarousel from "./components/MainCarousel";
 import TopFilms from "./components/TopFilms";
 import FilmsRow from "./components/FilmsRow";
-import useCreateAll from "../../hooks/useCreateAll";
+import useCreateCarousel from "../../hooks/useCreateCarousel";
+import useGetMainPageContent from "../../hooks/useGetMainPageContent";
 
 import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
-import useCreateCarousel from "../../hooks/useCreateCarousel";
+
 
 const MainPage = () => {
-    const {data} = useQuery('genres', () => MovieService.getGenres());
-
     const carouselMovies = useCreateCarousel();
 
-    // const getMovies = useCreateAll();
-    const getMovies: any = [];
+    const {
+        nowPlaying,
+        upcoming,
+        popular,
+        onTheAir,
+        airingToday,
+        popularTV
+    } = useGetMainPageContent()
 
-    if (!data || !carouselMovies) return null;
-
-    const genres: Array<IGenresList> = data.genres;
+    if (
+        !carouselMovies ||
+        !nowPlaying ||
+        !upcoming ||
+        !popular ||
+        !onTheAir ||
+        !airingToday ||
+        !popularTV
+    ) return null;
 
     return (
         <PageBase>
@@ -41,16 +49,18 @@ const MainPage = () => {
             <img className="mt-8 mb-10" src={Line} alt="Line"/>
 
             <div className="pb-24">
-                {genres.map((genres) => {
-                    return (
-                        <FilmsRow
-                            key={genres.id}
-                            id={genres.id}
-                            getMovies={getMovies}
-                            nameCategory={genres.name}
-                        />
-                    )
-                })}
+                <FilmsRow getMovies={nowPlaying} nameCategory="Watching movies now" />
+                <FilmsRow getMovies={upcoming} nameCategory="New movies" />
+                <FilmsRow getMovies={popular} nameCategory="Best movies of the month" />
+                <div>
+                     тут строка с надписью
+                </div>
+                <FilmsRow getMovies={onTheAir} nameCategory="Watching serials now" />
+                <FilmsRow getMovies={airingToday} nameCategory="New serials" />
+                <FilmsRow getMovies={popularTV} nameCategory="Best serials of the month" />
+                <div>
+                    А тут про актеров
+                </div>
             </div>
         </PageBase>
     )

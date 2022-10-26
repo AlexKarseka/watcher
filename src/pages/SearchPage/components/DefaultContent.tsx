@@ -21,7 +21,7 @@ const DefaultContent = ({popular}: DefaultContentProps) => {
                         <Link
                             className="leading-7 hover:opacity-80"
                             key={movie.id}
-                            to={`/list/${movie.id}`}
+                            to={`/list/movies/${movie.id}`}
                         >
                             {movie.title ? movie.title : movie.name}
                         </Link>
