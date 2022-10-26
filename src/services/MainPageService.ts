@@ -24,7 +24,19 @@ const getSerialsInfo = async (type: string) => {
     }
 };
 
+const getBestActor = async () => {
+    const type = 'person/popular';
+    try {
+        const result = await axios.get(`${defaultPath}/${type}?api_key=${API_KEY}&language=${language}&page=1`);
+        return result.data.results;
+    } catch (err) {
+        console.error(`Failed to fetch ${type}`, err);
+        throw err;
+    }
+};
+
 export default {
     getMoviesInfo,
-    getSerialsInfo
+    getSerialsInfo,
+    getBestActor
 };

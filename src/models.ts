@@ -20,6 +20,18 @@ export interface ITopMovies {
     vote_count: number,
     name: string,
     first_air_date: string,
+    profile_path: string,
+}
+
+export interface ITopActors {
+    adult: boolean,
+    gender: Array<number>,
+    id: number,
+    known_for: Array<any>,
+    known_for_department: string,
+    name: string,
+    popularity: number,
+    profile_path: string,
 }
 
 export interface ILogoNameList {

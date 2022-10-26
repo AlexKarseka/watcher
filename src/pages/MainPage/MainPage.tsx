@@ -10,6 +10,7 @@ import useGetMainPageContent from "../../hooks/useGetMainPageContent";
 import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
+import TopActor from "./components/TopActor";
 
 
 const MainPage = () => {
@@ -52,15 +53,23 @@ const MainPage = () => {
                 <FilmsRow getMovies={nowPlaying} nameCategory="Watching movies now" />
                 <FilmsRow getMovies={upcoming} nameCategory="New movies" />
                 <FilmsRow getMovies={popular} nameCategory="Best movies of the month" />
-                <div>
-                     тут строка с надписью
+
+                <div className="mt-8 mb-10 px-14">
+                    <div className="flex items-center justify-between py-3.5 border-t border-b border-[#565c67]">
+                        <div className="text-sm text-white">
+                            Watch the best films and TV series online - Watcher
+                        </div>
+                        <div className="text-xs text-[#565c67]">
+                            New movies and TV series in HD quality at Watcher online cinema. Watch the best TV series and films
+                        </div>
+                    </div>
                 </div>
+
                 <FilmsRow getMovies={onTheAir} nameCategory="Watching serials now" />
                 <FilmsRow getMovies={airingToday} nameCategory="New serials" />
                 <FilmsRow getMovies={popularTV} nameCategory="Best serials of the month" />
-                <div>
-                    А тут про актеров
-                </div>
+
+                <TopActor />
             </div>
         </PageBase>
     )

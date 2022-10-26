@@ -19,8 +19,6 @@ const SerialsPage = () => {
         .map(genre => genre.genre_ids[0] === genresName ? {...genre} : genre)
         .filter(genre => genre.genre_ids[0] === genresName)
 
-    console.log(genreChoice)
-
     return (
         <PageBase>
             <HeaderPage nameCategory="serials" />
