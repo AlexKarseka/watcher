@@ -18,7 +18,7 @@ const getGenres = async () => {
     try {
         const url = 'genre/movie/list';
         const result = await axios.get(`${ defaultPath }/${url}?api_key=${API_KEY}&language=${language}`);
-        return result.data;
+        return result.data.genres;
     } catch (err) {
         console.error(`Failed to fetch genres`, err);
         throw err;
@@ -39,7 +39,7 @@ const getDetails = async (movie_id: string | undefined | number, type: string) =
 const getRecommendations = async (movie_id: string | undefined, type: string) => {
     try {
         const result = await axios.get(`${defaultPath}/${type}/${movie_id}/recommendations?api_key=${API_KEY}&language=${language}`);
-        return result.data;
+        return result.data.results;
     } catch (err) {
         console.error(`Failed to fetch recommendations for id ${movie_id}`, err);
         throw err;

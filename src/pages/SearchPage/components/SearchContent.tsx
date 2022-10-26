@@ -22,7 +22,7 @@ const SearchContent = ({found}: SearchContentProps) => {
 
     if (!movies || !serials) return null;
 
-    const searchData = [...movies.results, ...serials.results];
+    const searchData = [...movies, ...serials];
 
     return (
         <div className="pb-32">

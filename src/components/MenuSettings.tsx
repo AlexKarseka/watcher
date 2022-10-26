@@ -21,7 +21,7 @@ const MenuSettings = ({styleCard, genreType}: MenuSettingsProps) => {
 
     if (!data) return null
 
-    const genres: Array<IGenresList> = data.genres
+    const genres: Array<IGenresList> = data
 
     return (
         <div className="relative pt-6 pb-10 px-14">

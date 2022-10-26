@@ -16,7 +16,7 @@ const FirstCardVersion = ({content}: FirstCardVersionProps) => {
 
     if (!data) return null;
 
-    const genres: Array<IGenresList> = data.genres;
+    const genres: Array<IGenresList> = data;
 
     const elementsPerPage = 3;
 
