@@ -34,6 +34,20 @@ export interface ITopActors {
     profile_path: string,
 }
 
+export interface IActorDescription {
+    aspect_ratio: number,
+    file_path: string,
+    height: number,
+    id: string,
+    image_type: string,
+    iso_639_1: string,
+    media: Array<ITopMovies>,
+    media_type: string,
+    vote_average: number,
+    vote_count: number,
+    width: number
+}
+
 export interface ILogoNameList {
     aspect_ratio: number,
     file_path: string,

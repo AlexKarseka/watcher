@@ -11,6 +11,7 @@ import FavouritePage from "./pages/FavouritePage/FavouritePage";
 import MovieList from "./pages/MovieList/MovieList";
 import SerialsList from "./pages/SerialsList/SerialsList";
 import ScrollToTop from "./pages/ScrollToTop/ScrollToTop";
+import PersonList from "./pages/PersonList/PersonList";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/favourite" element={ <FavouritePage /> } />
               <Route path="/list/movies/:id" element={ <MovieList /> } />
               <Route path="/list/serials/:id" element={ <SerialsList /> } />
+              <Route path="/list/person/:id" element={ <PersonList /> } />
           </Routes>
       </div>
   );

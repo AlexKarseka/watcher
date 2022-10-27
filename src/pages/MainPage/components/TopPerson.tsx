@@ -7,7 +7,7 @@ import {ITopActors} from "../../../models";
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
 
-const TopActor = () => {
+const TopPerson = () => {
     const [scroller, setScroller] = React.useState<number>(0);
 
     const {data} = useQuery('bestActor', () =>
@@ -56,7 +56,7 @@ const TopActor = () => {
                             <Link
                                 className="relative mr-4"
                                 key={actor.id}
-                                to={`/list/actor/${actor.id}`}
+                                to={`/list/person/${actor.id}`}
                             >
                                 <img
                                     className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105"
@@ -78,4 +78,4 @@ const TopActor = () => {
     );
 };
 
-export default TopActor;
+export default TopPerson;

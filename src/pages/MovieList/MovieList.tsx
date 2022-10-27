@@ -56,7 +56,7 @@ const MovieList = () => {
             {recommendations.length === 0 ?
                 null
                 :
-                <div className="pb-24">
+                <div className="pb-16">
                     <div className="px-14 mb-2.5 text-white text-xl">You may be interested</div>
                     <SecondCardVersion content={recommendations.slice(0, 8)} year={false}/>
                 </div>

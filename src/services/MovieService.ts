@@ -46,10 +46,21 @@ const getRecommendations = async (movie_id: string | undefined, type: string) =>
     }
 };
 
+const getTaggedImages = async (movie_id: string | undefined) => {
+    try {
+        const result = await axios.get(`${defaultPath}/person/${movie_id}/tagged_images?api_key=${API_KEY}&language=${language}&page=1`);
+        return result.data;
+    } catch (err) {
+        console.error(`Failed to fetch recommendations for id ${movie_id}`, err);
+        throw err;
+    }
+};
+
 export default {
     getTop,
     getGenres,
     getDetails,
     getRecommendations,
+    getTaggedImages,
 };
 

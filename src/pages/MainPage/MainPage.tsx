@@ -10,7 +10,7 @@ import useGetMainPageContent from "../../hooks/useGetMainPageContent";
 import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
-import TopActor from "./components/TopActor";
+import TopPerson from "./components/TopPerson";
 
 
 const MainPage = () => {
@@ -69,7 +69,7 @@ const MainPage = () => {
                 <FilmsRow getMovies={airingToday} nameCategory="New serials" />
                 <FilmsRow getMovies={popularTV} nameCategory="Best serials of the month" />
 
-                <TopActor />
+                <TopPerson />
             </div>
         </PageBase>
     )
