@@ -16,24 +16,9 @@ import TopPerson from "./components/TopPerson";
 const MainPage = () => {
     const carouselMovies = useCreateCarousel();
 
-    const {
-        nowPlaying,
-        upcoming,
-        popular,
-        onTheAir,
-        airingToday,
-        popularTV
-    } = useGetMainPageContent()
+    const {nowPlaying, upcoming, popular, onTheAir, airingToday, popularTV} = useGetMainPageContent()
 
-    if (
-        !carouselMovies ||
-        !nowPlaying ||
-        !upcoming ||
-        !popular ||
-        !onTheAir ||
-        !airingToday ||
-        !popularTV
-    ) return null;
+    if (!carouselMovies || !nowPlaying || !upcoming || !popular || !onTheAir || !airingToday || !popularTV) return null;
 
     return (
         <PageBase>

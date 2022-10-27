@@ -4,12 +4,12 @@ import {useParams} from "react-router-dom";
 
 import HeaderList from "../../components/HeaderList";
 import SecondCardVersion from "../../components/SecondCardVersion";
-import useCreatePersonData from "../../hooks/useCreatePersonData";
+import useGetPersonDetails from "../../hooks/useGetPersonDetails";
 
 const PersonList = () => {
     const {id} = useParams();
 
-    const {personDetails, noRepeatArray} = useCreatePersonData(id);
+    const {personDetails, noRepeatArray} = useGetPersonDetails(id);
 
     if (!personDetails || !noRepeatArray) return null;
 
@@ -60,11 +60,15 @@ const PersonList = () => {
                     </div>
                 </div>
 
+                {noRepeatArray.length > 0 ?
+                    <div className="py-16">
+                        <div className="px-14 mb-2.5 text-white text-xl">Films with {personDetails.name}</div>
+                        <SecondCardVersion content={noRepeatArray} year={false}/>
+                    </div>
+                    :
+                    null
+                }
 
-                <div className="py-16">
-                    <div className="px-14 mb-2.5 text-white text-xl">Films with {personDetails.name}</div>
-                    <SecondCardVersion content={noRepeatArray} year={false}/>
-                </div>
             </div>
         </PageBase>
     );

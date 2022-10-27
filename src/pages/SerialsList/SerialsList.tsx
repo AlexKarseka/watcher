@@ -1,7 +1,5 @@
 import React from "react";
 import {useParams} from "react-router-dom";
-import {useQuery} from "react-query";
-import MovieService from "../../services/MovieService";
 import {ITopMovies} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
@@ -14,55 +12,48 @@ import FounderList from "../../components/FounderList";
 import CreatorsList from "./components/CreatorsList";
 import SecondCardVersion from "../../components/SecondCardVersion";
 import SeasonsList from "./components/SeasonsList";
+import useGetFilmsDetails from "../../hooks/useGetFilmsDetails";
 
 const SerialsList = () => {
     const {id} = useParams();
 
-    const {data: serialDetails} = useQuery('serial', () =>
-        MovieService.getDetails(id, 'tv'), {
-        refetchInterval: 100,
-    });
+    const {details, recommendations} = useGetFilmsDetails(id, 'tv', 'recommendationsSerial')
 
-    const {data} = useQuery('recommendationsSerial', () =>
-        MovieService.getRecommendations(id, 'tv'), {
-        refetchInterval: 100,
-    });
+    if (!details || !recommendations) return null;
 
-    if (!serialDetails || !data) return null;
-
-    const recommendations: Array<ITopMovies> = data;
+    const recommendationsSerial: Array<ITopMovies> = recommendations;
 
     return (
         <PageBase>
             <div className="relative px-14 pt-56 pb-16">
-                <BgList poster={serialDetails.poster_path}/>
+                <BgList poster={details.poster_path}/>
 
-                <HeaderList nameCategory='serials' nameMovie={serialDetails.name}/>
+                <HeaderList nameCategory='serials' nameMovie={details.name}/>
 
-                <LogoNameList logo={serialDetails.images.logos} nameMovie={serialDetails.name}/>
+                <LogoNameList logo={details.images.logos} nameMovie={details.name}/>
 
                 <div className="flex justify-between gap-10 relative z-20">
                     <div className="w-2/4">
-                        <ButtonList homepage={serialDetails.homepage} nameCategory='serials'/>
-                        <DescriptionList description={serialDetails} elementsGenres={3}/>
+                        <ButtonList homepage={details.homepage} nameCategory='serials'/>
+                        <DescriptionList description={details} elementsGenres={3}/>
                     </div>
 
                     <div className="w-2/4">
-                        <FounderList founder={serialDetails.networks}/>
-                        <CreatorsList creators={serialDetails}/>
+                        <FounderList founder={details.networks}/>
+                        <CreatorsList creators={details}/>
                     </div>
                 </div>
             </div>
 
-            <SeasonsList seasons={serialDetails.seasons}/>
+            <SeasonsList seasons={details.seasons}/>
 
-            {recommendations.length === 0
+            {recommendationsSerial.length === 0
                 ?
                 null
                 :
                 <div className="pb-16">
                     <div className="px-14 mb-2.5 text-white text-xl">You may be interested</div>
-                    <SecondCardVersion content={recommendations.slice(0, 8)} year={false}/>
+                    <SecondCardVersion content={recommendationsSerial.slice(0, 8)} year={false}/>
                 </div>
             }
 

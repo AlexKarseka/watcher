@@ -9,7 +9,7 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
 
     return (
         <div className="pb-16">
-            <div className="px-14 mb-2.5 text-white text-xl">Series</div>
+            <div className="px-14 mb-2.5 text-white text-xl">Seasons</div>
             <div className="grid grid-cols-5 gap-y-6 gap-x-4 px-14">
                 {seasons.map((series) => {
                     return series.name === 'Specials' ?

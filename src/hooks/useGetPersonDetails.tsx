@@ -3,7 +3,7 @@ import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 import {ITopMovies} from "../models";
 
-const useCreatePersonData = (id: string | undefined) => {
+const useGetPersonDetails = (id: string | undefined) => {
     const [taggedImages, setTaggedImages] = React.useState <Array<ITopMovies>>([])
 
     const {data: personDetails} = useQuery('person', () =>
@@ -34,4 +34,4 @@ const useCreatePersonData = (id: string | undefined) => {
     }
 }
 
-export default useCreatePersonData;
+export default useGetPersonDetails;
