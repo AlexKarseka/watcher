@@ -26,7 +26,7 @@ const MainPage = () => {
 
             <div className="flex items-center justify-center my-6">
                 <img className="mr-10 w-2/6" src={LeftLine} alt="leftLine"/>
-                <div className="uppercase text-base text-[#e7bd99]">most popular movies</div>
+                <div className="uppercase text-base text-[#e7bd99]">All Harry Potter episodes</div>
                 <img className="ml-10 w-2/6" src={RightLine} alt="rightLine"/>
             </div>
 

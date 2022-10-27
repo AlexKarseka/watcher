@@ -22,12 +22,10 @@ const MovieList = () => {
 
     const recommendationsMovie: Array<ITopMovies> = recommendations;
 
-    console.log(details)
-
     return (
         <PageBase>
             <div className="relative px-14 pt-56 pb-16">
-                <BgList poster={details.poster_path}/>
+                <BgList poster={details.poster_path} height='' />
 
                 <HeaderList nameCategory='movies' nameMovie={details.title}/>
 

@@ -1,6 +1,8 @@
 import React from "react";
 import {ISeasons} from "../../../models";
 
+import noLogo from "../assets/noImageAvailable.webp";
+
 interface SeasonsListProps {
     seasons: Array<ISeasons>,
 }
@@ -18,7 +20,7 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
                         <div key={series.id} className="relative h-[325px] rounded-2xl">
                             <img
                                 className="w-full h-[325px] rounded-2xl"
-                                src={`https://image.tmdb.org/t/p/w500${series.poster_path}`}
+                                src={!series.poster_path ? noLogo : `https://image.tmdb.org/t/p/w500${series.poster_path}`}
                                 alt="logo"
                             />
 
