@@ -7,7 +7,7 @@ const language = '';
 const getMoviesInfo = async (type: string) => {
     try {
         const result = await axios.get(`${defaultPath}/movie/${type}?api_key=${API_KEY}&language=${language}&page=1&region=${language}`);
-        return result.data.results;
+        return result.data;
     } catch (err) {
         console.error(`Failed to fetch ${type}`, err);
         throw err;
@@ -17,7 +17,7 @@ const getMoviesInfo = async (type: string) => {
 const getSerialsInfo = async (type: string) => {
     try {
         const result = await axios.get(`${defaultPath}/tv/${type}?api_key=${API_KEY}&language=${language}&page=1`);
-        return result.data.results;
+        return result.data;
     } catch (err) {
         console.error(`Failed to fetch ${type}`, err);
         throw err;

@@ -1,39 +1,81 @@
 import React from "react";
 import {useQuery} from "react-query";
 import MainPageService from "../services/MainPageService";
+import {ITopMovies} from "../models";
+import useClearDuplicates from "./useClearDuplicates";
 
 const useGetMainPageContent = () => {
-    const {data: nowPlaying} = useQuery('nowPlaying', () =>
-        MainPageService.getMoviesInfo('now_playing')
+    const [nowPlaying, setNowPlaying] = React.useState <Array<ITopMovies>>([]);
+    const [upcoming, setUpcoming] = React.useState <Array<ITopMovies>>([]);
+    const [popular, setPopular] = React.useState <Array<ITopMovies>>([]);
+    const [onTheAir, setOnTheAir] = React.useState <Array<ITopMovies>>([]);
+    const [airingToday, setAiringToday] = React.useState <Array<ITopMovies>>([]);
+    const [popularTV, setPopularTV] = React.useState <Array<ITopMovies>>([]);
+
+    const {} = useQuery('nowPlaying', () =>
+            MainPageService.getMoviesInfo('now_playing'), {
+            onSuccess: ({results}) => {
+                setNowPlaying(results)
+            }
+        }
     );
 
-    const {data: upcoming} = useQuery('upcoming', () =>
-        MainPageService.getMoviesInfo('upcoming')
+    const {} = useQuery('upcoming', () =>
+            MainPageService.getMoviesInfo('upcoming'), {
+            onSuccess: ({results}) => {
+                setUpcoming(results)
+            }
+        }
     );
 
-    const {data: popular} = useQuery('popular', () =>
-        MainPageService.getMoviesInfo('popular')
+    const {} = useQuery('popular', () =>
+            MainPageService.getMoviesInfo('popular'), {
+            onSuccess: ({results}) => {
+                setPopular(results)
+            }
+        }
     );
 
-    const {data: onTheAir} = useQuery('onTheAir', () =>
-        MainPageService.getSerialsInfo('on_the_air')
+    const {} = useQuery('onTheAir', () =>
+            MainPageService.getSerialsInfo('on_the_air'), {
+            onSuccess: ({results}) => {
+                setOnTheAir(results)
+            }
+        }
     );
 
-    const {data: airingToday} = useQuery('airingToday', () =>
-        MainPageService.getSerialsInfo('airing_today')
+    const {} = useQuery('airingToday', () =>
+            MainPageService.getSerialsInfo('airing_today'), {
+            onSuccess: ({results}) => {
+                setAiringToday(results)
+            }
+        }
     );
 
-    const {data: popularTV} = useQuery('popularTV', () =>
-        MainPageService.getSerialsInfo('popular')
+    const {} = useQuery('popularTV', () =>
+            MainPageService.getSerialsInfo('popular'), {
+            onSuccess: ({results}) => {
+                setPopularTV(results)
+            }
+        }
     );
+
+    const nowPlayingDup = useClearDuplicates(nowPlaying);
+    const upcomingDup = useClearDuplicates(upcoming);
+    const popularDup = useClearDuplicates(popular);
+    const onTheAirDup = useClearDuplicates(onTheAir);
+    const airingTodayDup = useClearDuplicates(airingToday);
+    const popularTVDup = useClearDuplicates(popularTV);
 
     return {
-        nowPlaying,
-        upcoming,
-        popular,
-        onTheAir,
-        airingToday,
-        popularTV
+        mainPageContent: {
+            nowPlaying: nowPlayingDup,
+            upcoming: upcomingDup,
+            popular: popularDup,
+            onTheAir: onTheAirDup,
+            airingToday: airingTodayDup,
+            popularTV: popularTVDup
+        }
     }
 };
 

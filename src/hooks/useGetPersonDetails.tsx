@@ -3,6 +3,8 @@ import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 import {ITopMovies} from "../models";
 
+import useClearDuplicates from "./useClearDuplicates";
+
 const useGetPersonDetails = (id: string | undefined) => {
     const [taggedImages, setTaggedImages] = React.useState <Array<ITopMovies>>([])
 
@@ -24,9 +26,7 @@ const useGetPersonDetails = (id: string | undefined) => {
         refetchInterval: 100,
     });
 
-    const noRepeatArray = taggedImages.filter((item, index) => {
-        return index === taggedImages.findIndex(item => item.id)
-    })
+    const noRepeatArray = useClearDuplicates(taggedImages);
 
     return {
         personDetails,

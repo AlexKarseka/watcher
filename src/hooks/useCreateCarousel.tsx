@@ -12,11 +12,11 @@ const useCreateCarousel = () => {
                 setCarouselMovies(results.slice(0, 5));
             }
         }
-    )
+    );
 
     if (!carousel) return null;
 
-    return carouselMovies
+    return carouselMovies;
 };
 
 export default useCreateCarousel;

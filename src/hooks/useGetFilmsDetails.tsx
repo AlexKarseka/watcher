@@ -1,7 +1,6 @@
 import React from "react";
 import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
-import {ITopMovies} from "../models";
 
 const useGetFilmsDetails = (id: string | undefined, type: string, typeRecom: string) => {
     const {data: details} = useQuery(type, () =>
@@ -17,7 +16,7 @@ const useGetFilmsDetails = (id: string | undefined, type: string, typeRecom: str
     return {
         details,
         recommendations
-    }
+    };
 };
 
 export default useGetFilmsDetails;

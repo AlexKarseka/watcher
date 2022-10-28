@@ -6,19 +6,18 @@ import TopFilms from "./components/TopFilms";
 import FilmsRow from "./components/FilmsRow";
 import useCreateCarousel from "../../hooks/useCreateCarousel";
 import useGetMainPageContent from "../../hooks/useGetMainPageContent";
+import TopPerson from "./components/TopPerson";
 
 import LeftLine from "./assets/Line-a.svg";
 import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
-import TopPerson from "./components/TopPerson";
-
 
 const MainPage = () => {
     const carouselMovies = useCreateCarousel();
 
-    const {nowPlaying, upcoming, popular, onTheAir, airingToday, popularTV} = useGetMainPageContent()
+    const {mainPageContent} = useGetMainPageContent()
 
-    if (!carouselMovies || !nowPlaying || !upcoming || !popular || !onTheAir || !airingToday || !popularTV) return null;
+    if (!carouselMovies) return null;
 
     return (
         <PageBase>
@@ -35,9 +34,9 @@ const MainPage = () => {
             <img className="mt-8 mb-10" src={Line} alt="Line"/>
 
             <div className="pb-24">
-                <FilmsRow getMovies={nowPlaying} nameCategory="Watching movies now" />
-                <FilmsRow getMovies={upcoming} nameCategory="New movies" />
-                <FilmsRow getMovies={popular} nameCategory="Best movies of the month" />
+                <FilmsRow getMovies={mainPageContent.nowPlaying} nameCategory="Watching movies now" />
+                <FilmsRow getMovies={mainPageContent.upcoming} nameCategory="New movies" />
+                <FilmsRow getMovies={mainPageContent.popular} nameCategory="Best movies of the month" />
 
                 <div className="mt-8 mb-10 px-14">
                     <div className="flex items-center justify-between py-3.5 border-t border-b border-[#565c67]">
@@ -50,9 +49,9 @@ const MainPage = () => {
                     </div>
                 </div>
 
-                <FilmsRow getMovies={onTheAir} nameCategory="Watching serials now" />
-                <FilmsRow getMovies={airingToday} nameCategory="New serials" />
-                <FilmsRow getMovies={popularTV} nameCategory="Best serials of the month" />
+                <FilmsRow getMovies={mainPageContent.onTheAir} nameCategory="Watching serials now" />
+                <FilmsRow getMovies={mainPageContent.airingToday} nameCategory="New serials" />
+                <FilmsRow getMovies={mainPageContent.popularTV} nameCategory="Best serials of the month" />
 
                 <TopPerson />
             </div>
