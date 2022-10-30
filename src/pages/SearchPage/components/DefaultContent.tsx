@@ -8,6 +8,8 @@ interface DefaultContentProps {
 
 const DefaultContent = ({popular}: DefaultContentProps) => {
 
+    console.log(popular)
+
     return (
         <div className="text-white px-14 pb-24">
 
@@ -21,7 +23,7 @@ const DefaultContent = ({popular}: DefaultContentProps) => {
                         <Link
                             className="leading-7 hover:opacity-80"
                             key={movie.id}
-                            to={`/list/movies/${movie.id}`}
+                            to={`/list/${movie.title ? 'movies' : 'serials'}/${movie.id}`}
                         >
                             {movie.title ? movie.title : movie.name}
                         </Link>

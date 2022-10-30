@@ -3,6 +3,8 @@ import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 import {ITopMovies} from "../models";
 
+import useClearDuplicates from "./useClearDuplicates";
+
 const useGetByGenre = (queryKey: string, type: string, genresName: string | number) => {
     const [byGenres, setByGenres] = React.useState<Array<ITopMovies>>([]);
 
@@ -15,7 +17,9 @@ const useGetByGenre = (queryKey: string, type: string, genresName: string | numb
         }
     );
 
-    return byGenres;
+    const byGenresDup = useClearDuplicates(byGenres);
+
+    return byGenresDup;
 }
 
 export default useGetByGenre;
