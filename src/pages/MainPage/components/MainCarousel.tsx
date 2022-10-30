@@ -1,7 +1,7 @@
 import React from "react";
 import {useQuery} from "react-query";
 import {Link} from "react-router-dom";
-import MovieService from "../../../services/MovieService";
+import DetailsService from "../../../services/DetailsService";
 import {ILogoNameList, ITopMovies} from "../../../models";
 
 import ArrowLeft from "../assets/left.svg";
@@ -16,7 +16,7 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
 
     const {data: details} = useQuery('details', () =>
-            MovieService.getDetails(!carouselMovies ? '' : carouselMovies[activeSlide].id, 'tv'),
+            DetailsService.getDetails(!carouselMovies ? '' : carouselMovies[activeSlide].id, 'tv'),
         {
             refetchInterval: 100,
         }

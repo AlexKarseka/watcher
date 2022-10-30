@@ -4,12 +4,12 @@ import PageBase from "../PageBase/PageBase";
 import Header from "./components/Header";
 import DefaultContent from "./components/DefaultContent";
 import SearchContent from "./components/SearchContent";
-import useCreateMovies from "../../hooks/useCreateMovies";
+import useGetAllGenres from "../../hooks/useGetAllGenres";
 
 const SearchPage = () => {
     const [searchValue, setSearchValue] = React.useState<string>('');
 
-    const defaultList = useCreateMovies();
+    const defaultList = useGetAllGenres('searchMovie', 'movie');
 
     if (!defaultList) return null;
 

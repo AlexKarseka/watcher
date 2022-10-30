@@ -5,19 +5,16 @@ import HeaderPage from "../../components/HeaderPage";
 import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
 import SecondCardVersion from "../../components/SecondCardVersion";
-import useCreateSerials from "../../hooks/useCreateSerials";
+import useGetAllGenres from "../../hooks/useGetAllGenres";
+import useGetByGenre from "../../hooks/useGetByGenre";
 
 const SerialsPage = () => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<number>(0);
 
-    const getSerials = useCreateSerials();
+    const allGenres = useGetAllGenres('topRatedSerials', 'tv');
 
-    if (!getSerials) return null;
-
-    const genreChoice = getSerials
-        .map(genre => genre.genre_ids[0] === genresName ? {...genre} : genre)
-        .filter(genre => genre.genre_ids[0] === genresName)
+    const byGenres = useGetByGenre('topByGenSerials', 'tv', genresName);
 
     return (
         <PageBase>
@@ -26,13 +23,17 @@ const SerialsPage = () => {
             <MenuSettings
                 styleCard={(card) => {setListStyle(card)}}
                 genreType={(type) => {setGenresName(type)}}
+                typeGenres='tv'
             />
 
             <div className="pb-24">
                 {listStyle ?
-                    <FirstCardVersion content={genresName === 0 ? getSerials : genreChoice} />
+                    <FirstCardVersion
+                        content={genresName === 0 ? allGenres.slice(0, 18) : byGenres.slice(0, 18)}
+                        typeGenres='tv'
+                    />
                     :
-                    <SecondCardVersion content={genresName === 0 ? getSerials : genreChoice} year />
+                    <SecondCardVersion content={genresName === 0 ? allGenres : byGenres} year />
                 }
             </div>
         </PageBase>

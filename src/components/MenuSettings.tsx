@@ -10,14 +10,15 @@ import {IGenresList} from "../models";
 interface MenuSettingsProps {
     styleCard: (card: boolean) => void,
     genreType: (type: number) => void,
+    typeGenres: string,
 }
 
-const MenuSettings = ({styleCard, genreType}: MenuSettingsProps) => {
+const MenuSettings = ({styleCard, genreType, typeGenres}: MenuSettingsProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
 
-    const {data} = useQuery('genres', () => MovieService.getGenres());
+    const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
     if (!data) return null
 

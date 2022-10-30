@@ -14,10 +14,9 @@ const getTop = async (grading: string, type: string, page: string) => {
     }
 };
 
-const getGenres = async () => {
+const getGenres = async (type: string) => {
     try {
-        const url = 'genre/movie/list';
-        const result = await axios.get(`${ defaultPath }/${url}?api_key=${API_KEY}&language=${language}`);
+        const result = await axios.get(`${ defaultPath }/genre/${type}/list?api_key=${API_KEY}&language=${language}`);
         return result.data.genres;
     } catch (err) {
         console.error(`Failed to fetch genres`, err);
@@ -25,42 +24,19 @@ const getGenres = async () => {
     }
 };
 
-const getDetails = async (movie_id: string | undefined | number, type: string) => {
+const getGenresList = async (type: string, genres: any) => {
     try {
-        const append = 'images'
-        const result = await axios.get(`${defaultPath}/${type}/${movie_id}?api_key=${API_KEY}&language=${language}&append_to_response=${append}`);
+        const result = await axios.get(`${defaultPath}/discover/${type}/?api_key=${API_KEY}&language=${language}&sort_by=popularity.desc&page=1&with_genres=${genres}`);
         return result.data;
     } catch (err) {
-        console.error(`Failed to fetch details for id ${movie_id}`, err);
+        console.error(`Failed to fetch discover for id ${type}`, err);
         throw err;
     }
-};
-
-const getRecommendations = async (movie_id: string | undefined, type: string) => {
-    try {
-        const result = await axios.get(`${defaultPath}/${type}/${movie_id}/recommendations?api_key=${API_KEY}&language=${language}`);
-        return result.data.results;
-    } catch (err) {
-        console.error(`Failed to fetch recommendations for id ${movie_id}`, err);
-        throw err;
-    }
-};
-
-const getTaggedImages = async (movie_id: string | undefined) => {
-    try {
-        const result = await axios.get(`${defaultPath}/person/${movie_id}/tagged_images?api_key=${API_KEY}&language=${language}&page=1`);
-        return result.data;
-    } catch (err) {
-        console.error(`Failed to fetch recommendations for id ${movie_id}`, err);
-        throw err;
-    }
-};
+}
 
 export default {
     getTop,
     getGenres,
-    getDetails,
-    getRecommendations,
-    getTaggedImages,
+    getGenresList
 };
 

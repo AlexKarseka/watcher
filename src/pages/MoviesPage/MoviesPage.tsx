@@ -5,34 +5,35 @@ import HeaderPage from "../../components/HeaderPage";
 import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
 import SecondCardVersion from "../../components/SecondCardVersion";
-import useCreateMovies from "../../hooks/useCreateMovies";
+import useGetAllGenres from "../../hooks/useGetAllGenres";
+import useGetByGenre from "../../hooks/useGetByGenre";
 
 const MoviesPage = () => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<number>(0);
 
-    const getMovies = useCreateMovies();
+    const allGenres = useGetAllGenres('topAllMovies', 'movie');
 
-    if (!getMovies) return null
-
-    const genreChoice = getMovies
-        .map(genre => genre.genre_ids[0] === genresName ? {...genre} : genre)
-        .filter(genre => genre.genre_ids[0] === genresName)
+    const byGenres = useGetByGenre('topByGenMovies', 'movie', genresName);
 
     return (
         <PageBase>
-            <HeaderPage nameCategory='movies' />
+            <HeaderPage nameCategory='movies'/>
 
             <MenuSettings
                 styleCard={(card) => {setListStyle(card)}}
                 genreType={(type) => {setGenresName(type)}}
+                typeGenres='movie'
             />
 
             <div className="pb-24">
                 {listStyle ?
-                    <FirstCardVersion content={genresName === 0 ? getMovies : genreChoice} />
+                    <FirstCardVersion
+                        content={genresName === 0 ? allGenres.slice(0, 18) : byGenres.slice(0, 18)}
+                        typeGenres='movie'
+                    />
                     :
-                    <SecondCardVersion content={genresName === 0 ? getMovies : genreChoice} year />
+                    <SecondCardVersion content={genresName === 0 ? allGenres : byGenres} year/>
                 }
             </div>
         </PageBase>

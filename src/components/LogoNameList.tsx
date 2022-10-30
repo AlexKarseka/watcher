@@ -17,7 +17,7 @@ const LogoNameList = ({logo, nameMovie}: LogoNameListProps) => {
             {logo.length !== 0 ?
                 <img
                     className="w-full my-4"
-                    src={`https://image.tmdb.org/t/p/w500${englishLogo[0].file_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${englishLogo.length <= 0 ? logo[0].file_path : englishLogo[0].file_path}`}
                     alt="bg"
                 /> : null}
 

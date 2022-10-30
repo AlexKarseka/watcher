@@ -26,17 +26,18 @@ const Header = () => {
 
             {authorisation ?
                 <div className="flex gap-3">
+                    <Link
+                        className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
+                        to="/favourite">
+                        Favourite
+                    </Link>
+
                     <button
                         className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#565c67] border border-[#565c67] text-white text-sm opacity-80 hover:opacity-100"
                         onClick={() => {setAuthorisation(false)}}
                     >
                         Exit
                     </button>
-                    <Link
-                        className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
-                        to="/favourite">
-                        Favourite
-                    </Link>
                 </div>
                 :
                 <div className="flex gap-3">
@@ -46,6 +47,7 @@ const Header = () => {
                     >
                         Log in
                     </Link>
+                    
                     <Link
                         className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
                         to="/signup">

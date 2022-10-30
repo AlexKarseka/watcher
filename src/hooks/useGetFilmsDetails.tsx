@@ -1,15 +1,15 @@
 import React from "react";
 import {useQuery} from "react-query";
-import MovieService from "../services/MovieService";
+import DetailsService from "../services/DetailsService";
 
 const useGetFilmsDetails = (id: string | undefined, type: string, typeRecom: string) => {
     const {data: details} = useQuery(type, () =>
-        MovieService.getDetails(id, type), {
+        DetailsService.getDetails(id, type), {
         refetchInterval: 100,
     });
 
     const {data: recommendations} = useQuery(typeRecom, () =>
-        MovieService.getRecommendations(id, type), {
+        DetailsService.getRecommendations(id, type), {
         refetchInterval: 100,
     });
 

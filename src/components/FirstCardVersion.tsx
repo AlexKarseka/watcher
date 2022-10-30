@@ -8,17 +8,18 @@ import Play from '../assets/Play.svg';
 import NoSuchGenre from "./NoSuchGenre";
 
 interface FirstCardVersionProps {
-    content: Array<ITopMovies>
+    content: Array<ITopMovies>,
+    typeGenres: string,
 }
 
-const FirstCardVersion = ({content}: FirstCardVersionProps) => {
-    const {data} = useQuery('genres', () => MovieService.getGenres());
+const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
+    const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
     if (!data) return null;
 
     const genres: Array<IGenresList> = data;
 
-    const elementsPerPage = 3;
+    const elementsPerPage = typeGenres === 'movie' ? 3 : 2;
 
     const genresRow = (tree: number) => {
         return genres.map((elem) => {
