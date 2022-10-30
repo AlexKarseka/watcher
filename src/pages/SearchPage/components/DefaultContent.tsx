@@ -8,8 +8,6 @@ interface DefaultContentProps {
 
 const DefaultContent = ({popular}: DefaultContentProps) => {
 
-    console.log(popular)
-
     return (
         <div className="text-white px-14 pb-24">
 
