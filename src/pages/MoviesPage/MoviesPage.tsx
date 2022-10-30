@@ -11,8 +11,9 @@ import useGetByGenre from "../../hooks/useGetByGenre";
 const MoviesPage = () => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<number>(0);
+    const [pagination, setPagination] = React.useState<number>(1);
 
-    const allGenres = useGetAllGenres('topAllMovies', 'movie');
+    const allGenres = useGetAllGenres('topAllMovies', 'movie', pagination);
 
     const byGenres = useGetByGenre('topByGenMovies', 'movie', genresName);
 
@@ -36,6 +37,14 @@ const MoviesPage = () => {
                     <SecondCardVersion content={genresName === 0 ? allGenres : byGenres} year/>
                 }
             </div>
+
+            <button
+                className='flex items-center w-40 bg-amber-50 mx-auto'
+                type='button'
+                onClick={() => setPagination(pagination + 1)}
+            >
+                Klick-klick
+            </button>
         </PageBase>
     );
 };

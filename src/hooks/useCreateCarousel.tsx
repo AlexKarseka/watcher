@@ -7,7 +7,7 @@ const useCreateCarousel = () => {
     const [carouselMovies, setCarouselMovies] = React.useState <Array<ITopMovies>>([]);
 
     const {data: carousel} = useQuery('carouselMovies', () =>
-            MovieService.getTop('popular', 'tv', '1'), {
+            MovieService.getTop('popular', 'tv', 1), {
             onSuccess: ({results}) => {
                 setCarouselMovies(results.slice(0, 5));
             }

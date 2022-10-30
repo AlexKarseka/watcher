@@ -5,14 +5,15 @@ import {ITopMovies} from "../models";
 
 import useClearDuplicates from "./useClearDuplicates";
 
-const useGetAllGenres = (queryKey: string, type: string) => {
+const useGetAllGenres = (queryKey: string, type: string, page: number) => {
     const [allGenres, setAllGenres] = React.useState<Array<ITopMovies>>([]);
 
     const {} = useQuery(queryKey, () =>
-            MovieService.getTop('popular', type, '1'), {
+            MovieService.getTop('popular', type, page), {
             onSuccess: ({results}) => {
                 setAllGenres(results);
-            }
+            },
+            refetchInterval: 100,
         }
     );
 

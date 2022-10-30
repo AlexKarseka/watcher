@@ -9,9 +9,9 @@ import useGetAllGenres from "../../hooks/useGetAllGenres";
 const SearchPage = () => {
     const [searchValue, setSearchValue] = React.useState<string>('');
 
-    const defaultListMovies = useGetAllGenres('searchMovie', 'movie');
+    const defaultListMovies = useGetAllGenres('searchMovie', 'movie', 1);
 
-    const defaultListSerials = useGetAllGenres('searchSerial', 'tv');
+    const defaultListSerials = useGetAllGenres('searchSerial', 'tv', 1);
 
     if (!defaultListMovies || !defaultListSerials) return null;
 
