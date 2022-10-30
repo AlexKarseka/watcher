@@ -6,31 +6,26 @@ import {ITopMovies} from "../models";
 import useClearDuplicates from "./useClearDuplicates";
 
 const useGetPersonDetails = (id: string | undefined) => {
-    const [taggedImages, setTaggedImages] = React.useState <Array<ITopMovies>>([])
+    const [personCast, setPersonCast] = React.useState <Array<ITopMovies>>([])
 
     const {data: personDetails} = useQuery('person', () =>
         DetailsService.getDetails(id, 'person'), {
         refetchInterval: 100,
     });
 
-    const {} = useQuery('taggedImages', () =>
-        DetailsService.getTaggedImages(id), {
-        onSuccess: ({results}) => {
-            const selectedArray: Array<ITopMovies> = [];
-
-            for (let i = 0; i < results.length; i++) {
-                selectedArray.push(results[i].media)
-                setTaggedImages(selectedArray)
-            }
+    const {} = useQuery('personCast', () =>
+        DetailsService.getPersonCast(id), {
+        onSuccess: ({cast}) => {
+            setPersonCast(cast);
         },
         refetchInterval: 100,
     });
 
-    const noRepeatArray = useClearDuplicates(taggedImages);
+    const personCastDup = useClearDuplicates(personCast);
 
     return {
         personDetails,
-        noRepeatArray
+        personCastDup
     }
 }
 

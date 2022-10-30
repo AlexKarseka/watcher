@@ -25,12 +25,12 @@ const getRecommendations = async (movie_id: string | undefined, type: string) =>
     }
 };
 
-const getTaggedImages = async (movie_id: string | undefined) => {
+const getPersonCast = async (person_id: string | undefined) => {
     try {
-        const result = await axios.get(`${defaultPath}/person/${movie_id}/tagged_images?api_key=${API_KEY}&language=${language}&page=1`);
+        const result = await axios.get(`${defaultPath}/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`);
         return result.data;
     } catch (err) {
-        console.error(`Failed to fetch recommendations for id ${movie_id}`, err);
+        console.error(`Failed to fetch person for id ${person_id}`, err);
         throw err;
     }
 };
@@ -38,5 +38,5 @@ const getTaggedImages = async (movie_id: string | undefined) => {
 export default {
     getDetails,
     getRecommendations,
-    getTaggedImages,
+    getPersonCast,
 }

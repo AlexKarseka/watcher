@@ -11,9 +11,9 @@ import PersonInfo from "./components/PersonInfo";
 const PersonList = () => {
     const {id} = useParams();
 
-    const {personDetails, noRepeatArray} = useGetPersonDetails(id);
+    const {personDetails, personCastDup} = useGetPersonDetails(id);
 
-    if (!personDetails || !noRepeatArray) return null;
+    if (!personDetails || !personCastDup) return null;
 
     return (
         <PageBase>
@@ -28,10 +28,10 @@ const PersonList = () => {
                     <PersonInfo info={personDetails} />
                 </div>
 
-                {noRepeatArray.length > 0 ?
+                {personCastDup.length > 0 ?
                     <div className="py-16">
                         <div className="px-14 mb-2.5 text-white text-xl">Films with {personDetails.name}</div>
-                        <SecondCardVersion content={noRepeatArray} year={false}/>
+                        <SecondCardVersion content={personCastDup.slice(0, 9)} year={false}/>
                     </div>
                     :
                     null
