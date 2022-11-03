@@ -5,15 +5,17 @@ import Extended from '../assets/Extended.svg';
 import Tiles from '../assets/Tiles.svg';
 import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
-import {IGenresList} from "../models";
+import {IGenresList, ITopMovies} from "../models";
 
 interface MenuSettingsProps {
     styleCard: (card: boolean) => void,
     genreType: (type: number) => void,
+    paginationCount: (count: number) => void,
+    cleaningData: (data: Array<ITopMovies>) => void,
     typeGenres: string,
 }
 
-const MenuSettings = ({styleCard, genreType, typeGenres}: MenuSettingsProps) => {
+const MenuSettings = ({styleCard, genreType, typeGenres, paginationCount, cleaningData}: MenuSettingsProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
@@ -36,6 +38,8 @@ const MenuSettings = ({styleCard, genreType, typeGenres}: MenuSettingsProps) => 
                             setGenresName('All Genres');
                             genreType(0);
                             setGenresList(true);
+                            paginationCount(1);
+                            cleaningData([])
                         }}
                     >
                         All Genres
@@ -49,6 +53,8 @@ const MenuSettings = ({styleCard, genreType, typeGenres}: MenuSettingsProps) => 
                                     setGenresName(genres.name);
                                     genreType(genres.id);
                                     setGenresList(true);
+                                    paginationCount(1);
+                                    cleaningData([])
                                 }}
                             >
                                 {genres.name}

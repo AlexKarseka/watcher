@@ -1,4 +1,5 @@
 import React from "react";
+import {ITopMovies} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";
@@ -7,44 +8,68 @@ import FirstCardVersion from "../../components/FirstCardVersion";
 import SecondCardVersion from "../../components/SecondCardVersion";
 import useGetAllGenres from "../../hooks/useGetAllGenres";
 import useGetByGenre from "../../hooks/useGetByGenre";
+import useClearDuplicates from "../../hooks/useClearDuplicates";
 
 const MoviesPage = () => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<number>(0);
     const [pagination, setPagination] = React.useState<number>(1);
+    const [pageDrive, setPageDrive] = React.useState<Array<ITopMovies>>([]);
 
     const allGenres = useGetAllGenres('topAllMovies', 'movie', pagination);
 
-    const byGenres = useGetByGenre('topByGenMovies', 'movie', genresName);
+    const byGenres = useGetByGenre('topByGenMovies', 'movie', genresName, pagination);
+
+    const addNewPage = () => {
+        if (genresName === 0) {
+            setPageDrive([...pageDrive, ...allGenres]);
+        } else {
+            setPageDrive([...pageDrive, ...byGenres]);
+        }
+    };
+
+    if (pageDrive.length <= 0) setTimeout(addNewPage, 500);
+
+    const allGenresDub = useClearDuplicates(pageDrive);
+    const byGenresDub = useClearDuplicates(pageDrive);
 
     return (
         <PageBase>
             <HeaderPage nameCategory='movies'/>
 
             <MenuSettings
-                styleCard={(card) => {setListStyle(card)}}
-                genreType={(type) => {setGenresName(type)}}
+                styleCard={(card) => setListStyle(card)}
+                genreType={(type) => setGenresName(type)}
+                paginationCount={(count) => setPagination(count)}
+                cleaningData={(data) => setPageDrive(data)}
                 typeGenres='movie'
             />
 
-            <div className="pb-24">
+            <div>
                 {listStyle ?
-                    <FirstCardVersion
-                        content={genresName === 0 ? allGenres.slice(0, 18) : byGenres.slice(0, 18)}
-                        typeGenres='movie'
-                    />
+                    <FirstCardVersion content={genresName === 0 ? allGenresDub : byGenresDub} typeGenres='movie'/>
                     :
-                    <SecondCardVersion content={genresName === 0 ? allGenres : byGenres} year/>
+                    <SecondCardVersion content={genresName === 0 ? allGenresDub : byGenresDub} year/>
                 }
             </div>
 
-            <button
-                className='flex items-center w-40 bg-amber-50 mx-auto'
-                type='button'
-                onClick={() => setPagination(pagination + 1)}
-            >
-                Klick-klick
-            </button>
+            <div className="pt-14 pb-24">
+                <button
+                    className='flex items-center justify-center mx-auto w-72 bg-gray-700 rounded h-10 text-white hover:bg-gray-800'
+                    type='button'
+                    onClick={() => {
+                        if (genresName === 0) {
+                            setPageDrive([...pageDrive, ...allGenres]);
+                        } else {
+                            setPageDrive([...pageDrive, ...byGenres]);
+                        }
+                        setPagination(pagination + 1);
+                    }}
+                >
+                    Load More
+                </button>
+            </div>
+
         </PageBase>
     );
 };
