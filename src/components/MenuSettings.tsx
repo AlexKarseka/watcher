@@ -38,8 +38,8 @@ const MenuSettings = ({styleCard, genreType, typeGenres, paginationCount, cleani
                             setGenresName('All Genres');
                             genreType(0);
                             setGenresList(true);
+                            cleaningData([]);
                             paginationCount(1);
-                            cleaningData([])
                         }}
                     >
                         All Genres
@@ -53,8 +53,8 @@ const MenuSettings = ({styleCard, genreType, typeGenres, paginationCount, cleani
                                     setGenresName(genres.name);
                                     genreType(genres.id);
                                     setGenresList(true);
-                                    paginationCount(1);
                                     cleaningData([])
+                                    paginationCount(1);
                                 }}
                             >
                                 {genres.name}

@@ -23,8 +23,10 @@ const SerialsPage = () => {
     const addNewPage = () => {
         if (genresName === 0) {
             setPageDrive([...pageDrive, ...allGenres]);
+            setPagination(pagination + 1)
         } else {
             setPageDrive([...pageDrive, ...byGenres]);
+            setPagination(pagination + 1)
         }
     };
 
@@ -45,7 +47,7 @@ const SerialsPage = () => {
                 typeGenres='tv'
             />
 
-            <div className="pb-24">
+            <div>
                 {listStyle ?
                     <FirstCardVersion content={genresName === 0 ? allGenresDub : byGenresDub} typeGenres='tv'/>
                     :
@@ -57,14 +59,7 @@ const SerialsPage = () => {
                 <button
                     className='flex items-center justify-center mx-auto w-72 bg-gray-700 rounded h-10 text-white hover:bg-gray-800'
                     type='button'
-                    onClick={() => {
-                        if (genresName === 0) {
-                            setPageDrive([...pageDrive, ...allGenres]);
-                        } else {
-                            setPageDrive([...pageDrive, ...byGenres]);
-                        }
-                        setPagination(pagination + 1);
-                    }}
+                    onClick={addNewPage}
                 >
                     Load More
                 </button>
