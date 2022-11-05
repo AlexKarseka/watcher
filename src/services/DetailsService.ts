@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const defaultPath = 'https://api.themoviedb.org/3';
-const API_KEY = 'e25253996293548e3c460ece1353df35';
+const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const language = '';
 
 const getDetails = async (movie_id: string | undefined | number, type: string) => {
