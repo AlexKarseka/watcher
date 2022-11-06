@@ -1,8 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import {useAppDispatch} from "../../../hooks/store/useReduxHooks";
+import useAuth from "../../../hooks/store/useAuth";
+import {removeUser} from "../../../store/slices/userSlice";
+
 const Header = () => {
-    const [authorisation, setAuthorisation] = React.useState<boolean>(true);
+    const dispatch = useAppDispatch();
+
+    const {isAuth, email} = useAuth();
 
     return (
         <div className="relative z-20 flex items-center justify-between w-full h-20 px-20">
@@ -24,7 +30,7 @@ const Header = () => {
                 </li>
             </ul>
 
-            {authorisation ?
+            {isAuth ?
                 <div className="flex gap-3">
                     <Link
                         className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#feba2b] border border-[#feba2b] text-[#111113] text-sm opacity-80 hover:opacity-100"
@@ -34,9 +40,9 @@ const Header = () => {
 
                     <button
                         className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#565c67] border border-[#565c67] text-white text-sm opacity-80 hover:opacity-100"
-                        onClick={() => {setAuthorisation(false)}}
+                        onClick={()=> dispatch(removeUser())}
                     >
-                        Exit
+                        Exit for {email}
                     </button>
                 </div>
                 :

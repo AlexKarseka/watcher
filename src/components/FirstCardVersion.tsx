@@ -6,6 +6,7 @@ import MovieService from "../services/MovieService";
 
 import Play from '../assets/Play.svg';
 import NoSuchGenre from "./NoSuchGenre";
+import useAuth from "../hooks/store/useAuth";
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>,
@@ -13,6 +14,8 @@ interface FirstCardVersionProps {
 }
 
 const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
+    const {isAuth} = useAuth();
+
     const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
     if (!data) return null;
@@ -78,18 +81,23 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                             </div>
                             <div className="flex gap-2">
                                 <Link
-                                    className="w-2/4 flex items-center justify-center bg-amber-400 rounded mt-2 h-8 hover:bg-amber-500"
+                                    className={`${isAuth ? 'w-2/4' : 'w-full'} flex items-center justify-center bg-amber-400 rounded mt-2 h-8 hover:bg-amber-500`}
                                     to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}
                                 >
                                     <img className="h-3.5" src={Play} alt="Play"/>
                                     <div className="ml-2 text-xs">Watch</div>
                                 </Link>
-                                <button
-                                    className="w-2/4 flex items-center justify-center bg-gray-700 rounded mt-2 h-8 hover:bg-gray-800"
-                                    type="button"
-                                >
-                                    <div className="ml-2 text-xs text-white">Add to favourites</div>
-                                </button>
+
+                                {isAuth ?
+                                    <button
+                                        className="w-2/4 flex items-center justify-center bg-gray-700 rounded mt-2 h-8 hover:bg-gray-800"
+                                        type="button"
+                                    >
+                                        <div className="ml-2 text-xs text-white">Add to favourites</div>
+                                    </button>
+                                    :
+                                    null
+                                }
                             </div>
                         </div>
                     </div>
