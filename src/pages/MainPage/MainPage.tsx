@@ -20,7 +20,7 @@ const MainPage = () => {
     if (!carouselMovies) return null;
 
     return (
-        <PageBase>
+        <PageBase footerBg>
             <MainCarousel carouselMovies={carouselMovies} />
 
             <div className="flex items-center justify-center my-6">
@@ -33,7 +33,7 @@ const MainPage = () => {
 
             <img className="mt-8 mb-10" src={Line} alt="Line"/>
 
-            <div className="pb-24">
+            <div className="pb-11">
                 <FilmsRow getMovies={mainPageContent.nowPlaying} nameCategory="Watching movies now" />
                 <FilmsRow getMovies={mainPageContent.upcoming} nameCategory="New movies" />
                 <FilmsRow getMovies={mainPageContent.popular} nameCategory="Best movies of the month" />

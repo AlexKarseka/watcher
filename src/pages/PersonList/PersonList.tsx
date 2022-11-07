@@ -16,7 +16,7 @@ const PersonList = () => {
     if (!personDetails || !personCastDup) return null;
 
     return (
-        <PageBase>
+        <PageBase footerBg={false}>
             <div className="relative pt-32 pb-16">
                 <div className="px-14">
                     <HeaderList nameCategory='movies' nameMovie={personDetails.name}/>

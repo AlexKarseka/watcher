@@ -9,7 +9,7 @@ interface DefaultContentProps {
 const DefaultContent = ({popular}: DefaultContentProps) => {
 
     return (
-        <div className="text-white px-14 pb-24">
+        <div className="text-white px-14 pb-11">
 
             <div className="text-xl mb-4">
                 Popular movies and series:

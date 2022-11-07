@@ -49,7 +49,7 @@ const TopPerson = () => {
                     Popular persons
                 </div>
                 <nav className="flex flex-nowrap p-2.5">
-                    {bestActor.slice(0, 9).map((actor) => {
+                    {bestActor.slice(0, 8).map((actor) => {
                         return actor.profile_path ?
                             <Link
                                 className="relative mr-4"

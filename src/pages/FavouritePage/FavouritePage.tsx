@@ -11,7 +11,7 @@ const FavouritePage = () => {
     const [favouriteList, setFavouriteList] = React.useState<Array<IForTestList>>([]);
 
     return (
-        <PageBase>
+        <PageBase footerBg>
             <div className="px-14 mb-10">
                 <div className="flex text-sm mb-2 text-[#565c67] capitalize">
                     <Link className="mr-1 hover:text-[#868fa0]" to="/"> Watcher </Link>

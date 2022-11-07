@@ -25,7 +25,7 @@ const SearchContent = ({found}: SearchContentProps) => {
     const searchData = [...movies, ...serials];
 
     return (
-        <div className="pb-32">
+        <div className="pb-11">
             <div className="text-xl text-white mb-4 px-14">
                 Search results:
             </div>

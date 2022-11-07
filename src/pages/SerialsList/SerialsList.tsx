@@ -24,7 +24,7 @@ const SerialsList = () => {
     const recommendationsSerial: Array<ITopMovies> = recommendations;
 
     return (
-        <PageBase>
+        <PageBase footerBg={false}>
             <div className="relative px-14 pt-56 pb-16">
                 <BgList poster={details.poster_path} height='h-[2400px]'/>
 

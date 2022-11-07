@@ -4,10 +4,11 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 interface PageBaseProps {
-    children: React.ReactNode
+    children: React.ReactNode,
+    footerBg: boolean
 }
 
-const PageBase = ({children}: PageBaseProps) => {
+const PageBase = ({children, footerBg}: PageBaseProps) => {
 
     return (
         <div className="overflow-hidden">
@@ -17,7 +18,7 @@ const PageBase = ({children}: PageBaseProps) => {
                 {children}
             </div>
 
-            <Footer/>
+            <Footer footerBg={footerBg}/>
         </div>
     )
 }

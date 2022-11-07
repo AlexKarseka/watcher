@@ -18,7 +18,7 @@ const SearchPage = () => {
     const defaultList = [...defaultListMovies, ...defaultListSerials];
 
     return(
-        <PageBase>
+        <PageBase footerBg>
             <div className="pt-6">
 
                 <Header />

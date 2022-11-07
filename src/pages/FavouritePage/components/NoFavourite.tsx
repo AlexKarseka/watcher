@@ -4,7 +4,7 @@ import Empty from "../assets/Empty.png";
 
 const NoFavourite = () => {
     return (
-        <div className="flex items-center px-14 pb-16">
+        <div className="flex items-center px-14">
             <div className="max-w-sm text-white">
                 <div className="text-2xl leading-9">Your favourites list is empty</div>
                 <div className="text-sm mt-3 leading-5">

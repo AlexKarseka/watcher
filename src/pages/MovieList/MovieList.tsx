@@ -23,7 +23,7 @@ const MovieList = () => {
     const recommendationsMovie: Array<ITopMovies> = recommendations;
 
     return (
-        <PageBase>
+        <PageBase footerBg={false}>
             <div className="relative px-14 pt-56 pb-16">
                 <BgList poster={details.poster_path} height='' />
 
@@ -47,7 +47,7 @@ const MovieList = () => {
             {recommendationsMovie.length === 0 ?
                 null
                 :
-                <div className="pb-16">
+                <div>
                     <div className="px-14 mb-2.5 text-white text-xl">You may be interested</div>
                     <SecondCardVersion content={recommendationsMovie.slice(0, 8)} year={false}/>
                 </div>

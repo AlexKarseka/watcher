@@ -1,6 +1,13 @@
 import React from "react";
 
 const Footer = () => {
+    const inputRef = React.useRef(null);
+
+    const copyToClipboard = () => {
+        // @ts-ignore
+        inputRef.current.select();
+        document.execCommand('copy');
+    };
 
     return (
         <div className="flex justify-between items-center h-20 px-14 bg-[#111113]">
@@ -12,8 +19,22 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="border border-[#565c67] rounded text-sm text-white py-2 px-4 cursor-pointer">
-                alexkarseko@gmail.com
+            <div className="flex items-center">
+                <input
+                    className="w-[190px] text-white opacity-80 outline-none bg-inherit"
+                    type="text"
+                    ref={inputRef}
+                    value="alexkarseko@gmail.com"
+                    readOnly
+                />
+                <button
+                    type="button"
+                    onClick={copyToClipboard}
+                >
+                    <div className="border border-gray-500 px-1 rounded text-white opacity-80 hover:opacity-100">
+                        Copy
+                    </div>
+                </button>
             </div>
         </div>
     );

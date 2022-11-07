@@ -36,7 +36,7 @@ const SerialsPage = () => {
     const byGenresDub = useClearDuplicates(pageDrive);
 
     return (
-        <PageBase>
+        <PageBase footerBg>
             <HeaderPage nameCategory="serials" />
 
             <MenuSettings
@@ -55,7 +55,7 @@ const SerialsPage = () => {
                 }
             </div>
 
-            <div className="pt-14 pb-24">
+            <div className="pt-14 pb-11">
                 <button
                     className='flex items-center justify-center mx-auto w-72 bg-gray-700 rounded h-10 text-white hover:bg-gray-800'
                     type='button'
