@@ -106,7 +106,11 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
             })}
         </div>
         :
-        <NoSuchGenre/>
+        <div className="flex items-center justify-center px-14">
+            <div className="text-white py-36">
+                Wait for the download...
+            </div>
+        </div>
 };
 
 export default FirstCardVersion;
