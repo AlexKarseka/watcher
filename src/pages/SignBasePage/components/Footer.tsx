@@ -10,7 +10,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="flex justify-between items-center h-20 px-14 bg-[#111113]">
+        <div className="relative bottom-0 left-0 flex justify-between items-center h-20 px-14 bg-[#111113]">
 
             <div className="flex items-center text-[#565c67] text-xs">
                 <div className="border border-[#565c67] rounded p-0.5 mr-4">18+</div>
@@ -31,7 +31,7 @@ const Footer = () => {
                     type="button"
                     onClick={copyToClipboard}
                 >
-                    <div className="border border-gray-500 px-1 rounded text-white opacity-80 hover:opacity-100">
+                    <div className="text-sm border border-gray-500 px-1 rounded text-white opacity-80 hover:opacity-100">
                         Copy
                     </div>
                 </button>
