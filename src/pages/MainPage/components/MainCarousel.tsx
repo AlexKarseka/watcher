@@ -17,7 +17,7 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
 
     const {data: details} = useQuery('details', () =>
-            DetailsService.getDetails(!carouselMovies ? '' : carouselMovies[activeSlide].id, 'tv'),
+            DetailsService.getDetails(!carouselMovies ? 0 : carouselMovies[activeSlide].id, 'tv'),
         {
             refetchInterval: 100,
         }
@@ -45,7 +45,7 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
 
             <div className="relative w-full">
                 <img
-                    className="w-full h-[500px] rounded-b-2xl"
+                    className="w-full h-[580px] rounded-b-2xl"
                     src={`https://image.tmdb.org/t/p/original${details.backdrop_path}`}
                     alt="logo"
                 />
@@ -61,7 +61,11 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
                         </div>
                         :
                         <div>
-                            <img src={`https://image.tmdb.org/t/p/w500${englishLogo[0].file_path}`} alt="logo" />
+                            <img
+                                className="max-h-60"
+                                src={`https://image.tmdb.org/t/p/w500${englishLogo[0].file_path}`}
+                                alt="logo"
+                            />
                         </div>
                     }
 

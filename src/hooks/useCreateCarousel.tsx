@@ -10,7 +10,8 @@ const useCreateCarousel = () => {
             MovieService.getTop('popular', 'tv', 1), {
             onSuccess: ({results}) => {
                 setCarouselMovies(results.slice(0, 5));
-            }
+            },
+            refetchInterval: 100,
         }
     );
 
