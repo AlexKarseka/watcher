@@ -1,14 +1,20 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {IForTestList} from "../../models";
+import {onSnapshot, collection} from "@firebase/firestore";
+import db from "../../firebase";
 
 import PageBase from "../PageBase/PageBase";
 import SecondCardVersion from "../../components/SecondCardVersion";
 import NoFavourite from "./components/NoFavourite";
 
-
 const FavouritePage = () => {
-    const [favouriteList, setFavouriteList] = React.useState<Array<IForTestList>>([]);
+    const [favourite, setFavourite] = React.useState<Array<any>>([]);
+
+    React.useEffect(() => {
+         onSnapshot(collection(db, "favourite"), (snapshot) => {
+             setFavourite(snapshot.docs.map(doc => doc.data()))
+        });
+    }, [])
 
     return (
         <PageBase footerBg>
@@ -20,7 +26,7 @@ const FavouritePage = () => {
                 <div className="text-2xl text-white opacity-80 capitalize">Your Favourite List</div>
             </div>
 
-            {favouriteList.length <= 0 ? <NoFavourite /> : <SecondCardVersion content={favouriteList} year={false}/>}
+            {favourite.length <= 0 ? <NoFavourite /> : <SecondCardVersion content={favourite} year={false}/>}
 
         </PageBase>
     );
