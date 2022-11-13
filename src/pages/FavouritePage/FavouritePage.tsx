@@ -12,7 +12,7 @@ const FavouritePage = () => {
 
     React.useEffect(() => {
          onSnapshot(collection(db, "favourite"), (snapshot) => {
-             setFavourite(snapshot.docs.map(doc => doc.data()))
+             setFavourite(snapshot.docs.map((doc) => ({...doc.data(), user_id: doc.id})))
         });
     }, [])
 

@@ -7,10 +7,11 @@ interface FavouriteButtonProps {
     id_movie: number,
     name: string,
     backdrop_path: string,
-    genreSeparator: string
+    genreSeparator: string,
+    location: string,
 }
 
-const AddFavouriteButton = ({id_movie, name, backdrop_path, genreSeparator}: FavouriteButtonProps) => {
+const AddFavouriteButton = ({id_movie, name, backdrop_path, genreSeparator, location}: FavouriteButtonProps) => {
     const {id} = useAuth();
     const collectionRef = collection(db, "favourite");
     let payload = {};
@@ -33,14 +34,14 @@ const AddFavouriteButton = ({id_movie, name, backdrop_path, genreSeparator}: Fav
 
     return (
         <button
-            className="w-2/4 flex items-center justify-center bg-gray-700 rounded mt-2 h-8 hover:bg-gray-800"
+            className={`${location} w-2/4 flex items-center justify-center bg-gray-700 hover:bg-gray-800`}
             type="button"
             onClick={async () => {
                 console.log(payload)
                 await addDoc(collectionRef, payload);
             }}
         >
-            <div className="ml-2 text-xs text-white">Add to favourites</div>
+            <div className="ml-2 text-white">Add to favourites</div>
         </button>
     );
 };

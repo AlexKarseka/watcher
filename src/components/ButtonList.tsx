@@ -4,7 +4,7 @@ import {collection, onSnapshot} from "@firebase/firestore";
 import db from "../firebase";
 
 import AddFavouriteButton from "./AddFavouriteButton";
-import DelFavouriteButton from "./DelFavouriteButton";
+import GoFavouriteButton from "./GoFavouriteButton";
 
 interface ButtonListProps {
     homepage: string,
@@ -42,9 +42,10 @@ const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: But
                         backdrop_path={backdrop_path}
                         name={name}
                         genreSeparator={nameCategory}
+                        location="mb-8 h-10 rounded-lg text-sm"
                     />
                     :
-                    <DelFavouriteButton />
+                    <GoFavouriteButton location="mb-8 h-10 rounded-lg text-sm" />
                 :
                 null
             }

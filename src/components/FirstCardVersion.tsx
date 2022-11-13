@@ -8,7 +8,7 @@ import db from "../firebase";
 
 import useAuth from "../hooks/store/useAuth";
 import AddFavouriteButton from "./AddFavouriteButton";
-import DelFavouriteButton from "./DelFavouriteButton";
+import GoFavouriteButton from "./GoFavouriteButton";
 
 import Play from '../assets/Play.svg';
 
@@ -107,9 +107,10 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                                             backdrop_path={movie.backdrop_path}
                                             name={movie.title ? movie.title : movie.name}
                                             genreSeparator={movie.name ? 'serials' : 'movies'}
+                                            location="mt-2 h-8 rounded text-xs"
                                         />
                                         :
-                                        <DelFavouriteButton />
+                                        <GoFavouriteButton location="mt-2 h-8 rounded text-xs" />
                                     :
                                     null
                                 }

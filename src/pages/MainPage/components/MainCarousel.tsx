@@ -8,7 +8,7 @@ import db from "../../../firebase";
 
 import useAuth from "../../../hooks/store/useAuth";
 import AddFavouriteButton from "../../../components/AddFavouriteButton";
-import DelFavouriteButton from "../../../components/DelFavouriteButton";
+import GoFavouriteButton from "../../../components/GoFavouriteButton";
 
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
@@ -104,9 +104,10 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
                                     backdrop_path={details.backdrop_path}
                                     name={details.name}
                                     genreSeparator='serials'
+                                    location="h-10 rounded-lg text-sm"
                                 />
                                 :
-                                <DelFavouriteButton/>
+                                <GoFavouriteButton location="h-10 rounded-lg text-sm" />
                             :
                             null
                         }
