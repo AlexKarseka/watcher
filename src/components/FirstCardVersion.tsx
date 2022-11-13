@@ -3,11 +3,14 @@ import {Link} from 'react-router-dom';
 import {IGenresList, ITopMovies} from "../models";
 import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
+import {collection, onSnapshot} from "@firebase/firestore";
+import db from "../firebase";
 
 import useAuth from "../hooks/store/useAuth";
+import AddFavouriteButton from "./AddFavouriteButton";
+import DelFavouriteButton from "./DelFavouriteButton";
 
 import Play from '../assets/Play.svg';
-import FavouriteButton from "./FavouriteButton";
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>,
@@ -15,7 +18,14 @@ interface FirstCardVersionProps {
 }
 
 const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
+    const [favourite, setFavourite] = React.useState<Array<any>>([]);
     const {isAuth} = useAuth();
+
+    React.useEffect(() => {
+        onSnapshot(collection(db, "favourite"), (snapshot) => {
+            setFavourite(snapshot.docs.map(doc => doc.data()))
+        });
+    }, [])
 
     const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
@@ -90,12 +100,16 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                                 </Link>
 
                                 {isAuth ?
-                                    <FavouriteButton
-                                        id_movie={movie.id}
-                                        backdrop_path={movie.backdrop_path}
-                                        name={movie.title ? movie.title : movie.name}
-                                        genreSeparator={movie.name ? 'serials' : 'movies'}
-                                    />
+                                    favourite.map(id => id.id === movie.id ? {...id, id: id.id} : id)
+                                        .filter(id => id.id === movie.id).length <= 0 ?
+                                        <AddFavouriteButton
+                                            id_movie={movie.id}
+                                            backdrop_path={movie.backdrop_path}
+                                            name={movie.title ? movie.title : movie.name}
+                                            genreSeparator={movie.name ? 'serials' : 'movies'}
+                                        />
+                                        :
+                                        <DelFavouriteButton />
                                     :
                                     null
                                 }

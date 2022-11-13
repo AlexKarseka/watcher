@@ -10,7 +10,7 @@ interface FavouriteButtonProps {
     genreSeparator: string
 }
 
-const FavouriteButton = ({id_movie, name, backdrop_path, genreSeparator}: FavouriteButtonProps) => {
+const AddFavouriteButton = ({id_movie, name, backdrop_path, genreSeparator}: FavouriteButtonProps) => {
     const {id} = useAuth();
     const collectionRef = collection(db, "favourite");
     let payload = {};
@@ -45,4 +45,4 @@ const FavouriteButton = ({id_movie, name, backdrop_path, genreSeparator}: Favour
     );
 };
 
-export default FavouriteButton;
+export default AddFavouriteButton;

@@ -3,9 +3,12 @@ import {useQuery} from "react-query";
 import {Link} from "react-router-dom";
 import DetailsService from "../../../services/DetailsService";
 import {ILogoNameList, ITopMovies} from "../../../models";
+import {collection, onSnapshot} from "@firebase/firestore";
+import db from "../../../firebase";
 
 import useAuth from "../../../hooks/store/useAuth";
-import FavouriteButton from "../../../components/FavouriteButton";
+import AddFavouriteButton from "../../../components/AddFavouriteButton";
+import DelFavouriteButton from "../../../components/DelFavouriteButton";
 
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
@@ -17,6 +20,8 @@ interface MainCarouselProps {
 
 const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
+    const [favourite, setFavourite] = React.useState<Array<any>>([]);
+    const {isAuth} = useAuth();
 
     const {data: details} = useQuery('details', () =>
             DetailsService.getDetails(!carouselMovies ? 0 : carouselMovies[activeSlide].id, 'tv'),
@@ -25,7 +30,11 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
         }
     );
 
-    const {isAuth} = useAuth();
+    React.useEffect(() => {
+        onSnapshot(collection(db, "favourite"), (snapshot) => {
+            setFavourite(snapshot.docs.map(doc => doc.data()))
+        });
+    }, [])
 
     if (!details) return null;
 
@@ -88,12 +97,16 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
                         </Link>
 
                         {isAuth ?
-                            <FavouriteButton
-                                id_movie={details.id}
-                                backdrop_path={details.backdrop_path}
-                                name={details.name}
-                                genreSeparator='serials'
-                            />
+                            favourite.map(id => id.id === details.id ? {...id, id: id.id} : id)
+                                .filter(id => id.id === details.id).length <= 0 ?
+                                <AddFavouriteButton
+                                    id_movie={details.id}
+                                    backdrop_path={details.backdrop_path}
+                                    name={details.name}
+                                    genreSeparator='serials'
+                                />
+                                :
+                                <DelFavouriteButton/>
                             :
                             null
                         }
