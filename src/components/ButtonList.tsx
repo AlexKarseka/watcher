@@ -1,12 +1,17 @@
 import React from "react";
 import useAuth from "../hooks/store/useAuth";
 
+import FavouriteButton from "./FavouriteButton";
+
 interface ButtonListProps {
     homepage: string,
     nameCategory: string,
+    id_movie: number,
+    backdrop_path: string,
+    name: string,
 }
 
-const ButtonList = ({homepage, nameCategory}: ButtonListProps) => {
+const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: ButtonListProps) => {
     const {isAuth} = useAuth();
 
     return (
@@ -19,11 +24,12 @@ const ButtonList = ({homepage, nameCategory}: ButtonListProps) => {
             </a>
 
             {isAuth ?
-                <button
-                    className="w-2/4 flex items-center justify-center bg-gray-700 rounded-lg mb-8 h-10 hover:bg-gray-800"
-                >
-                    <div className="ml-2 text-sm text-white">Add to favourites</div>
-                </button>
+                <FavouriteButton
+                    id_movie={id_movie}
+                    backdrop_path={backdrop_path}
+                    name={name}
+                    genreSeparator={nameCategory}
+                />
                 :
                 null
             }

@@ -4,10 +4,12 @@ import {Link} from "react-router-dom";
 import DetailsService from "../../../services/DetailsService";
 import {ILogoNameList, ITopMovies} from "../../../models";
 
+import useAuth from "../../../hooks/store/useAuth";
+import FavouriteButton from "../../../components/FavouriteButton";
+
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
 import Play from "../assets/Play.svg";
-import useAuth from "../../../hooks/store/useAuth";
 
 interface MainCarouselProps {
     carouselMovies: Array<ITopMovies>,
@@ -86,11 +88,12 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
                         </Link>
 
                         {isAuth ?
-                            <button
-                                className="w-2/4 flex items-center justify-center bg-gray-700 rounded-lg h-10 hover:bg-gray-800"
-                            >
-                                <div className="ml-2 text-sm text-white">Add to favourites</div>
-                            </button>
+                            <FavouriteButton
+                                id_movie={details.id}
+                                backdrop_path={details.backdrop_path}
+                                name={details.name}
+                                genreSeparator='serials'
+                            />
                             :
                             null
                         }

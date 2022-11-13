@@ -33,7 +33,13 @@ const MovieList = () => {
 
                 <div className="flex justify-between gap-10 relative z-20">
                     <div className="w-2/4">
-                        <ButtonList homepage={details.homepage} nameCategory='movie'/>
+                        <ButtonList
+                            homepage={details.homepage}
+                            id_movie={details.id}
+                            name={details.title}
+                            backdrop_path={details.backdrop_path}
+                            nameCategory='movies'
+                        />
                         <DescriptionList description={details} elementsGenres={4}/>
                     </div>
 

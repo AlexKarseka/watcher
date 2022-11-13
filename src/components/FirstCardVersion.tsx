@@ -4,9 +4,10 @@ import {IGenresList, ITopMovies} from "../models";
 import {useQuery} from "react-query";
 import MovieService from "../services/MovieService";
 
-import Play from '../assets/Play.svg';
-import NoSuchGenre from "./NoSuchGenre";
 import useAuth from "../hooks/store/useAuth";
+
+import Play from '../assets/Play.svg';
+import FavouriteButton from "./FavouriteButton";
 
 interface FirstCardVersionProps {
     content: Array<ITopMovies>,
@@ -89,12 +90,12 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                                 </Link>
 
                                 {isAuth ?
-                                    <button
-                                        className="w-2/4 flex items-center justify-center bg-gray-700 rounded mt-2 h-8 hover:bg-gray-800"
-                                        type="button"
-                                    >
-                                        <div className="ml-2 text-xs text-white">Add to favourites</div>
-                                    </button>
+                                    <FavouriteButton
+                                        id_movie={movie.id}
+                                        backdrop_path={movie.backdrop_path}
+                                        name={movie.title ? movie.title : movie.name}
+                                        genreSeparator={movie.name ? 'serials' : 'movies'}
+                                    />
                                     :
                                     null
                                 }
