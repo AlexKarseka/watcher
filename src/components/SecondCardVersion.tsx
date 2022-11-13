@@ -18,13 +18,13 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
             {content.map((movie) => {
                 return movie.backdrop_path ?
                     <div className="relative"  key={movie.id}>
-                        {movie.user_id ?
+                        {movie.list_id ?
                             <button
                                 className="absolute z-50 bottom-10 right-1.5 text-xs rounded-sm bg-red-600 px-1 text-white w-2/5"
                                 type="button"
                                 onClick={
                                     async () => {
-                                        const docRef = doc(db, "favourite", movie.user_id);
+                                        const docRef = doc(db, "favourite", movie.list_id);
                                         await deleteDoc(docRef);
                                     }
                                 }

@@ -21,7 +21,7 @@ export interface ITopMovies {
     name: string,
     first_air_date: string,
     profile_path: string,
-    user_id: string,
+    list_id: string,
 }
 
 export interface ITopActors {

@@ -21,7 +21,7 @@ interface MainCarouselProps {
 const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
     const [favourite, setFavourite] = React.useState<Array<any>>([]);
-    const {isAuth} = useAuth();
+    const {isAuth, id} = useAuth();
 
     const {data: details} = useQuery('details', () =>
             DetailsService.getDetails(!carouselMovies ? 0 : carouselMovies[activeSlide].id, 'tv'),
@@ -35,6 +35,10 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
             setFavourite(snapshot.docs.map(doc => doc.data()))
         });
     }, [])
+
+    const userFilter = favourite
+        .map(user => user.user_id === id ? {...user, logo: user.file_path} : user)
+        .filter(user => user.user_id === id)
 
     if (!details) return null;
 
@@ -97,7 +101,7 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
                         </Link>
 
                         {isAuth ?
-                            favourite.map(id => id.id === details.id ? {...id, id: id.id} : id)
+                            userFilter.map(id => id.id === details.id ? {...id, id: id.id} : id)
                                 .filter(id => id.id === details.id).length <= 0 ?
                                 <AddFavouriteButton
                                     id_movie={details.id}

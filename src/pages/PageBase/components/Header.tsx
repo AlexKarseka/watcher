@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import {useAppDispatch} from "../../../hooks/store/useReduxHooks";
 import useAuth from "../../../hooks/store/useAuth";
@@ -7,6 +7,7 @@ import {removeUser} from "../../../store/slices/userSlice";
 
 const Header = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const {isAuth, email} = useAuth();
 
@@ -40,7 +41,10 @@ const Header = () => {
 
                     <button
                         className="inline-flex items-center justify-center rounded-lg px-3 h-8 bg-[#565c67] border border-[#565c67] text-white text-sm opacity-80 hover:opacity-100"
-                        onClick={()=> dispatch(removeUser())}
+                        onClick={() => {
+                            dispatch(removeUser());
+                            navigate('/');
+                        }}
                     >
                         Exit for {email}
                     </button>

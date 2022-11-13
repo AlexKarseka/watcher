@@ -19,13 +19,17 @@ interface FirstCardVersionProps {
 
 const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
     const [favourite, setFavourite] = React.useState<Array<any>>([]);
-    const {isAuth} = useAuth();
+    const {isAuth, id} = useAuth();
 
     React.useEffect(() => {
         onSnapshot(collection(db, "favourite"), (snapshot) => {
             setFavourite(snapshot.docs.map(doc => doc.data()))
         });
     }, [])
+
+    const userFilter = favourite
+        .map(user => user.user_id === id ? {...user, logo: user.file_path} : user)
+        .filter(user => user.user_id === id)
 
     const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
@@ -100,7 +104,7 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                                 </Link>
 
                                 {isAuth ?
-                                    favourite.map(id => id.id === movie.id ? {...id, id: id.id} : id)
+                                    userFilter.map(id => id.id === movie.id ? {...id, id: id.id} : id)
                                         .filter(id => id.id === movie.id).length <= 0 ?
                                         <AddFavouriteButton
                                             id_movie={movie.id}

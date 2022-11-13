@@ -15,7 +15,7 @@ interface ButtonListProps {
 }
 
 const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: ButtonListProps) => {
-    const {isAuth} = useAuth();
+    const {isAuth, id} = useAuth();
 
     const [favourite, setFavourite] = React.useState<Array<any>>([]);
 
@@ -24,6 +24,10 @@ const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: But
             setFavourite(snapshot.docs.map(doc => doc.data()))
         });
     }, [])
+
+    const userFilter = favourite
+        .map(user => user.user_id === id ? {...user, logo: user.file_path} : user)
+        .filter(user => user.user_id === id)
 
     return (
         <div className="flex gap-6">
@@ -35,7 +39,7 @@ const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: But
             </a>
 
             {isAuth ?
-                favourite.map(id => id.id === id_movie ? {...id, id: id.id} : id)
+                userFilter.map(id => id.id === id_movie ? {...id, id: id.id} : id)
                     .filter(id => id.id === id_movie).length <= 0 ?
                     <AddFavouriteButton
                         id_movie={id_movie}
