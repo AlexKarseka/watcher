@@ -1,5 +1,5 @@
 import React from "react";
-import {useQuery} from "react-query";
+import { useQuery } from "react-query";
 import DetailsService from "../services/DetailsService";
 
 const useGetFilmsDetails = (id: string | undefined, type: string, typeRecom: string) => {

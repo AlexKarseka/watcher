@@ -1,6 +1,6 @@
 import React from "react";
-import {ITopMovies} from "../models";
-import {useQuery} from "react-query";
+import { ITopMovies } from "../models";
+import { useQuery } from "react-query";
 import MovieService from "../services/MovieService";
 
 const useCreateCarousel = () => {

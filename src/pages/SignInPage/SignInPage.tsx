@@ -1,11 +1,11 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useAppDispatch } from "../../hooks/store/useReduxHooks";
+import { setUser } from "../../store/slices/userSlice";
 
 import SignBasePage from "../SignBasePage/SignBasePage";
 import EntryForm from "./components/EntryForm";
-import {useAppDispatch} from "../../hooks/store/useReduxHooks";
-import {setUser} from "../../store/slices/userSlice";
 
 const SignInPage = () => {
     const dispatch = useAppDispatch();

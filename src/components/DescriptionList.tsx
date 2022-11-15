@@ -1,5 +1,5 @@
 import React from "react";
-import {ICountriesName, IGenresName} from "../models";
+import { ICountriesName, IGenresName } from "../models";
 
 interface DescriptionListProps {
     description: {

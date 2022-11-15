@@ -1,5 +1,5 @@
 import React from "react";
-import {IDirectors} from "../../../models";
+import { IDirectors } from "../../../models";
 
 interface CreatorsListProps {
     creators: {

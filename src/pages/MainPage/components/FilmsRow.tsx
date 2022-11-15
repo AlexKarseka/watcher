@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {ITopMovies} from "../../../models";
+import { Link } from "react-router-dom";
+import { ITopMovies } from "../../../models";
 
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";

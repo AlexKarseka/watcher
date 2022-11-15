@@ -1,5 +1,5 @@
 import React from "react";
-import {ITopMovies} from "../../models";
+import { ITopMovies } from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";

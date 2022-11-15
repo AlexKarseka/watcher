@@ -1,8 +1,8 @@
 import React from "react";
-import {ITopMovies} from "../models";
-import {Link} from "react-router-dom";
+import { ITopMovies } from "../models";
+import { Link } from "react-router-dom";
 import db from "../firebase";
-import {deleteDoc, doc} from "@firebase/firestore";
+import { deleteDoc, doc } from "@firebase/firestore";
 
 import NoSuchGenre from "./NoSuchGenre";
 

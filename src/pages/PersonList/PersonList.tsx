@@ -1,7 +1,7 @@
 import React from "react";
-import PageBase from "../PageBase/PageBase";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
+import PageBase from "../PageBase/PageBase";
 import HeaderList from "../../components/HeaderList";
 import SecondCardVersion from "../../components/SecondCardVersion";
 import useGetPersonDetails from "../../hooks/useGetPersonDetails";

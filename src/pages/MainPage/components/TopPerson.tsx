@@ -1,8 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {useQuery} from "react-query";
+import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
 import MainPageService from "../../../services/MainPageService";
-import {ITopActors} from "../../../models";
+import { ITopActors } from "../../../models";
 
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";

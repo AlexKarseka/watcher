@@ -1,6 +1,6 @@
 import React from "react";
 import useAuth from "../hooks/store/useAuth";
-import {collection, onSnapshot} from "@firebase/firestore";
+import { collection, onSnapshot } from "@firebase/firestore";
 import db from "../firebase";
 
 import AddFavouriteButton from "./AddFavouriteButton";

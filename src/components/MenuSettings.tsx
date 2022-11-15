@@ -1,11 +1,11 @@
 import React from 'react';
+import { useQuery } from "react-query";
+import MovieService from "../services/MovieService";
+import { IGenresList, ITopMovies } from "../models";
 
 import ArrowDown from '../assets/ArrowDown.svg';
 import Extended from '../assets/Extended.svg';
 import Tiles from '../assets/Tiles.svg';
-import {useQuery} from "react-query";
-import MovieService from "../services/MovieService";
-import {IGenresList, ITopMovies} from "../models";
 
 interface MenuSettingsProps {
     styleCard: (card: boolean) => void,

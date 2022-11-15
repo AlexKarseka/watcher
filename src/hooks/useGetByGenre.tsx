@@ -1,7 +1,7 @@
 import React from "react";
-import {useQuery} from "react-query";
+import { useQuery } from "react-query";
 import MovieService from "../services/MovieService";
-import {ITopMovies} from "../models";
+import { ITopMovies } from "../models";
 
 import useClearDuplicates from "./useClearDuplicates";
 

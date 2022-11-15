@@ -1,9 +1,9 @@
 import React from "react";
-import {useQuery} from "react-query";
-import {Link} from "react-router-dom";
+import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import DetailsService from "../../../services/DetailsService";
-import {ILogoNameList, ITopMovies} from "../../../models";
-import {collection, onSnapshot} from "@firebase/firestore";
+import { ILogoNameList, ITopMovies } from "../../../models";
+import { collection, onSnapshot } from "@firebase/firestore";
 import db from "../../../firebase";
 
 import useAuth from "../../../hooks/store/useAuth";

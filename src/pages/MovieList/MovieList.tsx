@@ -1,6 +1,6 @@
 import React from "react";
-import {useParams} from "react-router-dom";
-import {ITopMovies} from "../../models";
+import { useParams } from "react-router-dom";
+import { ITopMovies } from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import SecondCardVersion from "../../components/SecondCardVersion";

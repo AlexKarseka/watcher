@@ -1,8 +1,8 @@
 import React from "react";
+import { useQuery } from "react-query";
+import SearchService from "../../../services/SearchService";
 
 import SecondCardVersion from "../../../components/SecondCardVersion";
-import {useQuery} from "react-query";
-import SearchService from "../../../services/SearchService";
 
 interface SearchContentProps {
     found: string

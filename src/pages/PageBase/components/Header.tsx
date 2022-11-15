@@ -1,9 +1,8 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
-
-import {useAppDispatch} from "../../../hooks/store/useReduxHooks";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks/store/useReduxHooks";
 import useAuth from "../../../hooks/store/useAuth";
-import {removeUser} from "../../../store/slices/userSlice";
+import { removeUser } from "../../../store/slices/userSlice";
 
 const Header = () => {
     const dispatch = useAppDispatch();
@@ -13,7 +12,6 @@ const Header = () => {
 
     return (
         <div className="relative z-20 flex items-center justify-between w-full h-20 px-20">
-
             <ul className="flex items-center justify-center">
                 <li
                     className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 drop-shadow-[0_4px_3px_black] hover:opacity-100"

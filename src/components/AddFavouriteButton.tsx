@@ -1,5 +1,5 @@
 import React from "react";
-import {addDoc, collection} from "@firebase/firestore";
+import { addDoc, collection } from "@firebase/firestore";
 import db from "../firebase";
 import useAuth from "../hooks/store/useAuth";
 

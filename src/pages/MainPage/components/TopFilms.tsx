@@ -1,9 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import useMainMovies from "../../../hooks/useMainMovies";
 
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
-import useMainMovies from "../../../hooks/useMainMovies";
 
 const TopFilms = () => {
     const [scroller, setScroller] = React.useState<number>(0);

@@ -1,5 +1,5 @@
 import React from "react";
-import {IProduction} from "../models";
+import { IProduction } from "../models";
 
 interface FounderListProps {
     founder: Array<IProduction>,

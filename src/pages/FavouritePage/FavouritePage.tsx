@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {onSnapshot, collection} from "@firebase/firestore";
+import { Link } from "react-router-dom";
+import { onSnapshot, collection } from "@firebase/firestore";
 import db from "../../firebase";
 
 import PageBase from "../PageBase/PageBase";

@@ -1,5 +1,5 @@
 import React from "react";
-import {ISeasons} from "../../../models";
+import { ISeasons } from "../../../models";
 
 import noLogo from "../assets/noImageAvailable.webp";
 

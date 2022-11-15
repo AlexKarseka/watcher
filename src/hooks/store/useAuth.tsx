@@ -1,5 +1,5 @@
 import React from "react";
-import {useAppSelector} from "./useReduxHooks";
+import { useAppSelector } from "./useReduxHooks";
 
 const useAuth = () => {
     const {email, token, id} = useAppSelector(state => state.user);

@@ -1,5 +1,5 @@
 import React from "react";
-import {ILogoNameList} from "../models";
+import { ILogoNameList } from "../models";
 
 interface LogoNameListProps {
     logo: Array<ILogoNameList>,
