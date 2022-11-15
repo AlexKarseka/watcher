@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient();
 
 root.render(
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <React.StrictMode>
             <QueryClientProvider client={queryClient}>
                 <Provider store={store}>

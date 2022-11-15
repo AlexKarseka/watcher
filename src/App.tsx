@@ -14,7 +14,6 @@ import ScrollToTop from "./pages/ScrollToTop/ScrollToTop";
 import PersonList from "./pages/PersonList/PersonList";
 
 function App() {
-
   return (
       <div>
           <ScrollToTop />
