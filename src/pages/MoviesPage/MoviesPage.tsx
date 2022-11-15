@@ -15,9 +15,7 @@ const MoviesPage = () => {
     const [genresName, setGenresName] = React.useState<number>(0);
     const [pagination, setPagination] = React.useState<number>(1);
     const [pageDrive, setPageDrive] = React.useState<Array<ITopMovies>>([]);
-
     const allGenres = useGetAllGenres('topAllMovies', 'movie', pagination);
-
     const byGenres = useGetByGenre('topByGenMovies', 'movie', genresName, pagination);
 
     const addNewPage = () => {

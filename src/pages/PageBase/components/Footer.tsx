@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import useCopyText from "../../../hooks/useCopyText";
+
 import GitLogo from "../assets/gitHub.png";
 import API from "../assets/API.svg";
 import Firebase from "../assets/Firebase.png";
@@ -11,13 +13,7 @@ interface FooterProps {
 }
 
 const Footer = ({footerBg}: FooterProps) => {
-    const inputRef = React.useRef(null);
-
-    const copyToClipboard = () => {
-        // @ts-ignore
-        inputRef.current.select();
-        document.execCommand('copy');
-    };
+    const {inputRef, copyToClipboard} = useCopyText();
 
     return (
         <div className="relative z-20 flex items-center justify-between pt-32 pb-6 px-14">

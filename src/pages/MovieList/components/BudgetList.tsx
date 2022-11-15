@@ -9,7 +9,6 @@ interface BudgetListProps {
 }
 
 const BudgetList = ({budget}: BudgetListProps) => {
-
     return (
         <div>
             <div className="flex items-center mb-1.5 text-sm">

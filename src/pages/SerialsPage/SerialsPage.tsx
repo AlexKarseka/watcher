@@ -15,9 +15,7 @@ const SerialsPage = () => {
     const [genresName, setGenresName] = React.useState<number>(0);
     const [pagination, setPagination] = React.useState<number>(1);
     const [pageDrive, setPageDrive] = React.useState<Array<ITopMovies>>([]);
-
     const allGenres = useGetAllGenres('topRatedSerials', 'tv', pagination);
-
     const byGenres = useGetByGenre('topByGenSerials', 'tv', genresName, pagination);
 
     const addNewPage = () => {

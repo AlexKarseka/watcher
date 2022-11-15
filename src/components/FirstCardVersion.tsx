@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import { IGenresList, ITopMovies } from "../models";
 import { useQuery } from "react-query";
 import MovieService from "../services/MovieService";
-import { collection, onSnapshot } from "@firebase/firestore";
-import db from "../firebase";
 
-import useAuth from "../hooks/store/useAuth";
 import AddFavouriteButton from "./AddFavouriteButton";
 import GoFavouriteButton from "./GoFavouriteButton";
+import useFavouriteData from "../hooks/useFavouriteData";
 
 import Play from '../assets/Play.svg';
 
@@ -18,20 +16,8 @@ interface FirstCardVersionProps {
 }
 
 const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
-    const [favourite, setFavourite] = React.useState<Array<any>>([]);
-    const {isAuth, id} = useAuth();
-
-    React.useEffect(() => {
-        onSnapshot(collection(db, "favourite"), (snapshot) => {
-            setFavourite(snapshot.docs.map(doc => doc.data()))
-        });
-    }, [])
-
-    const userFilter = favourite
-        .map(user => user.user_id === id ? {...user, logo: user.file_path} : user)
-        .filter(user => user.user_id === id)
-
     const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
+    const {isAuth, userFilter} = useFavouriteData();
 
     if (!data) return null;
 

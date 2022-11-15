@@ -9,7 +9,6 @@ interface PageBaseProps {
 }
 
 const PageBase = ({children, footerBg}: PageBaseProps) => {
-
     return (
         <div className="overflow-hidden">
             <Header/>

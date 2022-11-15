@@ -16,7 +16,6 @@ import useGetFilmsDetails from "../../hooks/useGetFilmsDetails";
 
 const SerialsList = () => {
     const {id} = useParams();
-
     const {details, recommendations} = useGetFilmsDetails(id, 'tv', 'recommendationsSerial')
 
     if (!details || !recommendations) return null;

@@ -3,12 +3,10 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import DetailsService from "../../../services/DetailsService";
 import { ILogoNameList, ITopMovies } from "../../../models";
-import { collection, onSnapshot } from "@firebase/firestore";
-import db from "../../../firebase";
 
-import useAuth from "../../../hooks/store/useAuth";
 import AddFavouriteButton from "../../../components/AddFavouriteButton";
 import GoFavouriteButton from "../../../components/GoFavouriteButton";
+import useFavouriteData from "../../../hooks/useFavouriteData";
 
 import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
@@ -20,8 +18,7 @@ interface MainCarouselProps {
 
 const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
-    const [favourite, setFavourite] = React.useState<Array<any>>([]);
-    const {isAuth, id} = useAuth();
+    const {isAuth, userFilter} = useFavouriteData();
 
     const {data: details} = useQuery('details', () =>
             DetailsService.getDetails(!carouselMovies ? 0 : carouselMovies[activeSlide].id, 'tv'),
@@ -29,16 +26,6 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
             refetchInterval: 100,
         }
     );
-
-    React.useEffect(() => {
-        onSnapshot(collection(db, "favourite"), (snapshot) => {
-            setFavourite(snapshot.docs.map(doc => doc.data()))
-        });
-    }, [])
-
-    const userFilter = favourite
-        .map(user => user.user_id === id ? {...user, logo: user.file_path} : user)
-        .filter(user => user.user_id === id)
 
     if (!details) return null;
 

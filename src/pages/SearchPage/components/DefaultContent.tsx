@@ -1,13 +1,12 @@
 import React from "react";
-import {ITopMovies} from "../../../models";
-import {Link} from "react-router-dom";
+import { ITopMovies } from "../../../models";
+import { Link } from "react-router-dom";
 
 interface DefaultContentProps {
     popular: Array<ITopMovies>,
 }
 
 const DefaultContent = ({popular}: DefaultContentProps) => {
-
     return (
         <div className="text-white px-14 pb-11">
             <div className="text-xl mb-4">

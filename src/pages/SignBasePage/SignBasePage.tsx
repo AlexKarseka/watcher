@@ -9,7 +9,6 @@ interface SignBasePageProps {
 }
 
 const SignBasePage = ({children}: SignBasePageProps) => {
-
     return (
         <div className={css.sign_base_page}>
             <Header />

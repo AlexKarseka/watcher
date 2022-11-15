@@ -8,7 +8,6 @@ interface SeasonsListProps {
 }
 
 const SeasonsList = ({seasons}: SeasonsListProps) => {
-
     return (
         <div className="pb-16">
             <div className="px-14 mb-2.5 text-white text-xl">Seasons</div>

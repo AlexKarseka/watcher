@@ -6,7 +6,6 @@ interface FounderListProps {
 }
 
 const FounderList = ({founder}: FounderListProps) => {
-
     return founder.length !== 0 ?
         <div className="relative flex items-start">
 

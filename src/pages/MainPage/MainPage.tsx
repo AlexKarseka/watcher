@@ -14,7 +14,6 @@ import Line from "./assets/Line.svg";
 
 const MainPage = () => {
     const carouselMovies = useCreateCarousel();
-
     const {mainPageContent} = useGetMainPageContent()
 
     if (!carouselMovies) return null;

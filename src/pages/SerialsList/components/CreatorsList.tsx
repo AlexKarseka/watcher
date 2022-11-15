@@ -11,7 +11,6 @@ interface CreatorsListProps {
 }
 
 const CreatorsList = ({creators}: CreatorsListProps) => {
-
     return (
         <div>
             <div className="flex items-center mb-1.5 text-sm">

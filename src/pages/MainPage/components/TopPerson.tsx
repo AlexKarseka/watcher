@@ -9,7 +9,6 @@ import ArrowRight from "../assets/right.svg";
 
 const TopPerson = () => {
     const [scroller, setScroller] = React.useState<number>(0);
-
     const {data} = useQuery('bestActor', () => MainPageService.getBestActor());
 
     if (!data) return null;

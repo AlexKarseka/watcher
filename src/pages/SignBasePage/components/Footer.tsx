@@ -1,17 +1,12 @@
 import React from "react";
 
-const Footer = () => {
-    const inputRef = React.useRef(null);
+import useCopyText from "../../../hooks/useCopyText";
 
-    const copyToClipboard = () => {
-        // @ts-ignore
-        inputRef.current.select();
-        document.execCommand('copy');
-    };
+const Footer = () => {
+    const {inputRef, copyToClipboard} = useCopyText();
 
     return (
         <div className="relative bottom-0 left-0 flex justify-between items-center h-20 px-14 bg-[#111113]">
-
             <div className="flex items-center text-[#565c67] text-xs">
                 <div className="border border-[#565c67] rounded p-0.5 mr-4">18+</div>
                 <div className="max-w-sm leading-4">

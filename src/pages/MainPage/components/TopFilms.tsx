@@ -8,7 +8,6 @@ import ArrowRight from "../assets/right.svg";
 
 const TopFilms = () => {
     const [scroller, setScroller] = React.useState<number>(0);
-
     const wrenchSet = useMainMovies();
 
     if (!wrenchSet) return null;

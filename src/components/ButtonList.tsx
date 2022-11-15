@@ -1,10 +1,8 @@
 import React from "react";
-import useAuth from "../hooks/store/useAuth";
-import { collection, onSnapshot } from "@firebase/firestore";
-import db from "../firebase";
 
 import AddFavouriteButton from "./AddFavouriteButton";
 import GoFavouriteButton from "./GoFavouriteButton";
+import useFavouriteData from "../hooks/useFavouriteData";
 
 interface ButtonListProps {
     homepage: string,
@@ -15,19 +13,7 @@ interface ButtonListProps {
 }
 
 const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: ButtonListProps) => {
-    const {isAuth, id} = useAuth();
-
-    const [favourite, setFavourite] = React.useState<Array<any>>([]);
-
-    React.useEffect(() => {
-        onSnapshot(collection(db, "favourite"), (snapshot) => {
-            setFavourite(snapshot.docs.map(doc => doc.data()))
-        });
-    }, [])
-
-    const userFilter = favourite
-        .map(user => user.user_id === id ? {...user, logo: user.file_path} : user)
-        .filter(user => user.user_id === id)
+    const {isAuth, userFilter} = useFavouriteData();
 
     return (
         <div className="flex gap-6">

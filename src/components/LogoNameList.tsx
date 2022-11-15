@@ -7,7 +7,6 @@ interface LogoNameListProps {
 }
 
 const LogoNameList = ({logo, nameMovie}: LogoNameListProps) => {
-
     const englishLogo = logo
         .map(logo => logo.iso_639_1 === "en" ? {...logo, logo: logo.file_path} : logo)
         .filter(logo => logo.iso_639_1 === "en")

@@ -10,7 +10,6 @@ interface EntryFormProps {
 const EntryForm = ({handleClick}: EntryFormProps) => {
     const [email, setEmail] = React.useState<string>('');
     const [pass, setPass] = React.useState<string>('');
-
     const {emailValid, passValid} = useValidationForm(email, pass);
 
     return (

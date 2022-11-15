@@ -10,7 +10,6 @@ import PersonInfo from "./components/PersonInfo";
 
 const PersonList = () => {
     const {id} = useParams();
-
     const {personDetails, personCastDup} = useGetPersonDetails(id);
 
     if (!personDetails || !personCastDup) return null;

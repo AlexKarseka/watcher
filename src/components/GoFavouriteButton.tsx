@@ -6,7 +6,6 @@ interface GoFavouriteButtonProps {
 }
 
 const GoFavouriteButton = ({location}: GoFavouriteButtonProps) => {
-
     return (
         <Link
             to="/favourite"

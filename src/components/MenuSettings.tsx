@@ -19,7 +19,6 @@ const MenuSettings = ({styleCard, genreType, typeGenres, paginationCount, cleani
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
-
     const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
     if (!data) return null

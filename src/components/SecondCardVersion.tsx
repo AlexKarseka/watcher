@@ -12,7 +12,6 @@ interface SecondCardVersionProps {
 }
 
 const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
-
     return content.length > 0 ?
         <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
             {content.map((movie) => {

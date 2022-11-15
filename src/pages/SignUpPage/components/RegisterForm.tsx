@@ -10,7 +10,6 @@ interface RegisterFormProps {
 const RegisterForm = ({handleClick}: RegisterFormProps) => {
     const [email, setEmail] = React.useState<string>('');
     const [pass, setPass] = React.useState<string>('');
-
     const {emailValid, passValid} = useValidationForm(email, pass);
 
     return (
