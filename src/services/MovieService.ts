@@ -26,7 +26,7 @@ const getGenres = async (type: string) => {
 
 const getGenresList = async (type: string, genres: any, page: number) => {
     try {
-        const result = await axios.get(`${defaultPath}/discover/${type}/?api_key=${API_KEY}&language=${language}&sort_by=popularity.desc&page=${page}&with_genres=${genres}`);
+        const result = await axios.get(`${defaultPath}/${type}/popular?api_key=${API_KEY}&language=${language}&page=${page}&with_genres=${genres}`);
         return result.data;
     } catch (err) {
         console.error(`Failed to fetch discover for id ${type}`, err);
