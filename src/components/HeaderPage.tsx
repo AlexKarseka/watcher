@@ -18,7 +18,7 @@ const HeaderPage = ({nameCategory}: HeaderPageProps) => {
             </div>
 
             <div className="mt-2 text-[#565c67] text-xs">
-                The best {nameCategory} in HD quality. Watch new {nameCategory} online Watcher
+                The best {nameCategory.toLowerCase()} in HD quality. Watch new {nameCategory.toLowerCase()} online Watcher
             </div>
         </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import MovieService from "../services/MovieService";
 import { IGenresList, ITopMovies } from "../models";
@@ -7,15 +8,16 @@ import ArrowDown from '../assets/ArrowDown.svg';
 import Extended from '../assets/Extended.svg';
 import Tiles from '../assets/Tiles.svg';
 
+
 interface MenuSettingsProps {
     styleCard: (card: boolean) => void,
-    genreType: (type: number) => void,
     paginationCount: (count: number) => void,
     cleaningData: (data: Array<ITopMovies>) => void,
     typeGenres: string,
+    typeLink: string
 }
 
-const MenuSettings = ({styleCard, genreType, typeGenres, paginationCount, cleaningData}: MenuSettingsProps) => {
+const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typeLink}: MenuSettingsProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
     const [genresName, setGenresName] = React.useState<string>('All Genres');
@@ -31,33 +33,33 @@ const MenuSettings = ({styleCard, genreType, typeGenres, paginationCount, cleani
                 className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-48 py-6 px-14 z-50 bg-[#434852]`}
             >
                 <div className="grid grid-cols-4 gap-4 text-white text-sm">
-                    <button
+                    <Link
+                        to={`/${typeLink}`}
                         className="text-left"
                         onClick={() => {
                             setGenresName('All Genres');
-                            genreType(0);
                             setGenresList(true);
                             cleaningData([]);
                             paginationCount(1);
                         }}
                     >
                         All Genres
-                    </button>
+                    </Link>
                     {genres.map((genres) => {
                         return (
-                            <button
+                            <Link
+                                to={`/${typeLink}/${genres.name.toLowerCase()}`}
                                 className="text-left"
                                 key={genres.id}
                                 onClick={() => {
                                     setGenresName(genres.name);
-                                    genreType(genres.id);
                                     setGenresList(true);
                                     cleaningData([])
                                     paginationCount(1);
                                 }}
                             >
                                 {genres.name}
-                            </button>
+                            </Link>
                         )
                     })}
                 </div>

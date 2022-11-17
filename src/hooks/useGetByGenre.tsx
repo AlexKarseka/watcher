@@ -8,7 +8,7 @@ import useClearDuplicates from "./useClearDuplicates";
 const useGetByGenre = (queryKey: string, type: string, genresName: string | number, page: number) => {
     const [byGenres, setByGenres] = React.useState<Array<ITopMovies>>([]);
 
-    const {} = useQuery('topByGenMovies', () =>
+    const {} = useQuery(queryKey, () =>
             MovieService.getGenresList(type, genresName, page), {
             onSuccess: ({results}) => {
                 setByGenres(results);

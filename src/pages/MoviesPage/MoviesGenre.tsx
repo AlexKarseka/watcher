@@ -1,18 +1,23 @@
 import React from "react";
-import { ITopMovies } from "../../models";
+import {ITopMovies} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";
 import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
 import SecondCardVersion from "../../components/SecondCardVersion";
-import useGetAllGenres from "../../hooks/useGetAllGenres";
+import useGetByGenre from "../../hooks/useGetByGenre";
 
-const SerialsPage = () => {
+interface MoviesGenreProps {
+    genre: string,
+    genreId: number,
+}
+
+const MoviesGenre = ({genre, genreId}: MoviesGenreProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [pagination, setPagination] = React.useState<number>(1);
     const [pageDrive, setPageDrive] = React.useState<Array<ITopMovies>>([]);
-    const genresList = useGetAllGenres('topRatedSerials', 'tv', pagination);
+    const genresList = useGetByGenre('topByGenMovies', 'movie', genreId, pagination);
 
     const addNewPage = () => {
         setPageDrive([...pageDrive, ...genresList]);
@@ -23,21 +28,21 @@ const SerialsPage = () => {
 
     return (
         <PageBase footerBg>
-            <HeaderPage nameCategory="serials" />
+            <HeaderPage nameCategory={`${genre} movies`}/>
 
             <MenuSettings
-                styleCard={(card) => {setListStyle(card)}}
-                paginationCount={(count) => {setPagination(count)}}
+                styleCard={(card) => setListStyle(card)}
+                paginationCount={(count) => setPagination(count)}
                 cleaningData={(data) => setPageDrive(data)}
-                typeGenres='tv'
-                typeLink='serials'
+                typeGenres='movie'
+                typeLink='movies'
             />
 
             <div>
                 {listStyle ?
-                    <FirstCardVersion content={pageDrive} typeGenres='tv'/>
+                    <FirstCardVersion content={pageDrive} typeGenres='movie'/>
                     :
-                    <SecondCardVersion content={pageDrive} year />
+                    <SecondCardVersion content={pageDrive} year/>
                 }
             </div>
 
@@ -54,4 +59,4 @@ const SerialsPage = () => {
     );
 };
 
-export default SerialsPage;
+export default MoviesGenre;

@@ -1,5 +1,5 @@
 import React from "react";
-import { ITopMovies } from "../../models";
+import {ITopMovies} from "../../models";
 
 import PageBase from "../PageBase/PageBase";
 import HeaderPage from "../../components/HeaderPage";
@@ -7,31 +7,19 @@ import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
 import SecondCardVersion from "../../components/SecondCardVersion";
 import useGetAllGenres from "../../hooks/useGetAllGenres";
-import useGetByGenre from "../../hooks/useGetByGenre";
-import useClearDuplicates from "../../hooks/useClearDuplicates";
 
 const MoviesPage = () => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
-    const [genresName, setGenresName] = React.useState<number>(0);
     const [pagination, setPagination] = React.useState<number>(1);
     const [pageDrive, setPageDrive] = React.useState<Array<ITopMovies>>([]);
-    const allGenres = useGetAllGenres('topAllMovies', 'movie', pagination);
-    const byGenres = useGetByGenre('topByGenMovies', 'movie', genresName, pagination);
+    const genresList = useGetAllGenres('topAllMovies', 'movie', pagination);
 
     const addNewPage = () => {
-        if (genresName === 0) {
-            setPageDrive([...pageDrive, ...allGenres]);
-            setPagination(pagination + 1)
-        } else {
-            setPageDrive([...pageDrive, ...byGenres]);
-            setPagination(pagination + 1)
-        }
+        setPageDrive([...pageDrive, ...genresList]);
+        setPagination(pagination + 1)
     };
 
-    if (pageDrive.length <= 0) setTimeout(addNewPage, 500);
-
-    const allGenresDub = useClearDuplicates(pageDrive);
-    const byGenresDub = useClearDuplicates(pageDrive);
+    if (pageDrive.length <= 0) setTimeout(addNewPage, 1000);
 
     return (
         <PageBase footerBg>
@@ -39,17 +27,17 @@ const MoviesPage = () => {
 
             <MenuSettings
                 styleCard={(card) => setListStyle(card)}
-                genreType={(type) => setGenresName(type)}
                 paginationCount={(count) => setPagination(count)}
                 cleaningData={(data) => setPageDrive(data)}
                 typeGenres='movie'
+                typeLink='movies'
             />
 
             <div>
                 {listStyle ?
-                    <FirstCardVersion content={genresName === 0 ? allGenresDub : byGenresDub} typeGenres='movie'/>
+                    <FirstCardVersion content={pageDrive} typeGenres='movie'/>
                     :
-                    <SecondCardVersion content={genresName === 0 ? allGenresDub : byGenresDub} year/>
+                    <SecondCardVersion content={pageDrive} year/>
                 }
             </div>
 

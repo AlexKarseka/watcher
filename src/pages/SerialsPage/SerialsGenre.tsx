@@ -2,17 +2,22 @@ import React from "react";
 import { ITopMovies } from "../../models";
 
 import PageBase from "../PageBase/PageBase";
+import useGetByGenre from "../../hooks/useGetByGenre";
 import HeaderPage from "../../components/HeaderPage";
 import MenuSettings from "../../components/MenuSettings";
 import FirstCardVersion from "../../components/FirstCardVersion";
 import SecondCardVersion from "../../components/SecondCardVersion";
-import useGetAllGenres from "../../hooks/useGetAllGenres";
 
-const SerialsPage = () => {
+interface SerialsGenreProps {
+    genre: string,
+    genreId: number,
+}
+
+const SerialsGenre = ({genre, genreId}: SerialsGenreProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [pagination, setPagination] = React.useState<number>(1);
     const [pageDrive, setPageDrive] = React.useState<Array<ITopMovies>>([]);
-    const genresList = useGetAllGenres('topRatedSerials', 'tv', pagination);
+    const genresList = useGetByGenre('topByGenSerials', 'tv', genreId, pagination);
 
     const addNewPage = () => {
         setPageDrive([...pageDrive, ...genresList]);
@@ -23,11 +28,11 @@ const SerialsPage = () => {
 
     return (
         <PageBase footerBg>
-            <HeaderPage nameCategory="serials" />
+            <HeaderPage nameCategory={`${genre} serials`}/>
 
             <MenuSettings
-                styleCard={(card) => {setListStyle(card)}}
-                paginationCount={(count) => {setPagination(count)}}
+                styleCard={(card) => setListStyle(card)}
+                paginationCount={(count) => setPagination(count)}
                 cleaningData={(data) => setPageDrive(data)}
                 typeGenres='tv'
                 typeLink='serials'
@@ -37,7 +42,7 @@ const SerialsPage = () => {
                 {listStyle ?
                     <FirstCardVersion content={pageDrive} typeGenres='tv'/>
                     :
-                    <SecondCardVersion content={pageDrive} year />
+                    <SecondCardVersion content={pageDrive} year/>
                 }
             </div>
 
@@ -54,4 +59,4 @@ const SerialsPage = () => {
     );
 };
 
-export default SerialsPage;
+export default SerialsGenre;

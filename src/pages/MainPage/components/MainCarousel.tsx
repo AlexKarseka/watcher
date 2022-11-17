@@ -58,7 +58,7 @@ const MainCarousel = ({carouselMovies}: MainCarouselProps) => {
                         premiere
                     </div>
                     {englishLogo.length === 0 ?
-                        <div className="text-amber-200 text-9xl uppercase">
+                        <div className="text-amber-200 text-5xl uppercase">
                             {details.name}
                         </div>
                         :
