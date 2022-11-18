@@ -31,6 +31,7 @@ const MoviesPage = () => {
                 cleaningData={(data) => setPageDrive(data)}
                 typeGenres='movie'
                 typeLink='movies'
+                buttonName='All Genres'
             />
 
             <div>

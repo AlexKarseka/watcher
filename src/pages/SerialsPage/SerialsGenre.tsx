@@ -36,6 +36,7 @@ const SerialsGenre = ({genre, genreId}: SerialsGenreProps) => {
                 cleaningData={(data) => setPageDrive(data)}
                 typeGenres='tv'
                 typeLink='serials'
+                buttonName={genre}
             />
 
             <div>

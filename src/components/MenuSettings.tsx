@@ -14,13 +14,13 @@ interface MenuSettingsProps {
     paginationCount: (count: number) => void,
     cleaningData: (data: Array<ITopMovies>) => void,
     typeGenres: string,
-    typeLink: string
+    typeLink: string,
+    buttonName: string
 }
 
-const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typeLink}: MenuSettingsProps) => {
+const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typeLink, buttonName}: MenuSettingsProps) => {
     const [listStyle, setListStyle] = React.useState<boolean>(true);
     const [genresList, setGenresList] = React.useState<boolean>(true);
-    const [genresName, setGenresName] = React.useState<string>('All Genres');
     const {data} = useQuery(`genres${typeGenres}`, () => MovieService.getGenres(typeGenres));
 
     if (!data) return null
@@ -37,10 +37,9 @@ const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typ
                         to={`/${typeLink}`}
                         className="text-left"
                         onClick={() => {
-                            setGenresName('All Genres');
-                            setGenresList(true);
-                            cleaningData([]);
                             paginationCount(1);
+                            cleaningData([]);
+                            setGenresList(true);
                         }}
                     >
                         All Genres
@@ -52,10 +51,9 @@ const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typ
                                 className="text-left"
                                 key={genres.id}
                                 onClick={() => {
-                                    setGenresName(genres.name);
-                                    setGenresList(true);
-                                    cleaningData([])
                                     paginationCount(1);
+                                    cleaningData([])
+                                    setGenresList(true);
                                 }}
                             >
                                 {genres.name}
@@ -72,7 +70,7 @@ const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typ
                     }}
                     className="flex justify-between items-center text-sm w-72 h-8 px-2.5 rounded bg-[rgba(86,92,103,.16)] hover:opacity-80"
                 >
-                    <div className="text-white opacity-80">{genresName}</div>
+                    <div className="text-white opacity-80">{buttonName}</div>
                     {genresList ?
                         <img src={ArrowDown} alt="ArrowDown"/>
                         :
