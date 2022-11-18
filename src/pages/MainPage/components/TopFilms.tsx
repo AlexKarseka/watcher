@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import cn from "classnames";
+import css from "./style.module.css";
 
 import useMainMovies from "../../../hooks/useMainMovies";
 
@@ -7,58 +9,95 @@ import ArrowLeft from "../assets/left.svg";
 import ArrowRight from "../assets/right.svg";
 
 const TopFilms = () => {
-    const [scroller, setScroller] = React.useState<number>(0);
     const wrenchSet = useMainMovies();
+
+    const [canScrollLeft, setCanScrollLeft] = React.useState<boolean>(false);
+    const [canScrollRight, setCanScrollRight] = React.useState<boolean>(false);
+
+    const containerRef = React.useRef<HTMLUListElement>(null);
+    const debounce = require('lodash.debounce');
+
+    const checkForScrollPosition = () => {
+        const {current} = containerRef;
+        if (current) {
+            const {scrollLeft, scrollWidth, clientWidth} = current;
+            setCanScrollLeft(scrollLeft > 0);
+            setCanScrollRight(scrollLeft !== scrollWidth - clientWidth);
+        }
+    };
+
+    const debounceCheckForScrollPosition = debounce(checkForScrollPosition, 200);
+
+    const scrollContainerBy = (distance: number) =>
+        containerRef.current?.scrollBy({left: distance, behavior: "smooth"});
+
+    React.useEffect(() => {
+        const {current} = containerRef;
+        checkForScrollPosition();
+        current?.addEventListener("scroll", debounceCheckForScrollPosition);
+
+        return () => {
+            current?.removeEventListener("scroll", debounceCheckForScrollPosition);
+            debounceCheckForScrollPosition.cancel();
+        };
+    }, []);
 
     if (!wrenchSet) return null;
 
     return (
         <div className="relative">
-            {scroller === 0 ?
-                null
-                :
-                <button
-                    className="flex justify-center items-center absolute top-0 left-0 z-10 h-[365px] mt-3 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]"
-                    onClick={() => {
-                        setScroller(scroller + 295)
-                    }}
-                >
-                    <img src={ArrowLeft} alt="ArrowLeft"/>
-                </button>
-            }
+            <button
+                type="button"
+                disabled={!canScrollLeft}
+                onClick={() => scrollContainerBy(-297)}
+                className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                    "hidden": !canScrollLeft
+                })}
+            >
+                <img src={ArrowLeft} alt="ArrowLeft"/>
+            </button>
 
-            {scroller === -1180 ?
-                null
-                :
-                <button
-                    className="flex justify-center items-center absolute top-0 right-0 z-10 h-[365px] mt-3 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]"
-                    onClick={() => {
-                        setScroller(scroller - 295)
-                    }}
-                >
-                    <img className="" src={ArrowRight} alt="ArrowRight"/>
-                </button>
-            }
+            <button
+                type="button"
+                disabled={!canScrollRight}
+                onClick={() => scrollContainerBy(297)}
+                className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                    "hidden": !canScrollRight
+                })}
+            >
+                <img src={ArrowRight} alt="ArrowRight"/>
+            </button>
 
-            <div className={`px-14 w-[2480px] ml-[${scroller}px]`}>
-                <nav className="flex flex-nowrap p-2.5">
-                    {wrenchSet.slice(0, 8).map((movie) => {
-                        return (
-                            <Link
-                                className="mr-4"
-                                key={movie.id}
-                                to={`/list/movies/${movie.id}`}
-                            >
+            {canScrollLeft ? (
+                <div className="absolute top-0 left-0 w-8 h-full overflow-hidden z-0">
+                    <div className="absolute z-50 top-1/2 left-[-25px] w-6 h-4/5 rounded-3xl duration-300 transition"/>
+                </div>
+            ) : null}
+
+            {canScrollRight ? (
+                <div className="absolute top-0 right-0 w-8 h-full overflow-hidden z-0">
+                    <div className="absolute z-50 top-1/2 right-[-25px] w-6 h-4/5 rounded-3xl duration-300 transition"/>
+                </div>
+            ) : null}
+
+            <ul className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
+                {wrenchSet.slice(0, 8).map((movie) => {
+                    return (
+                        <li
+                            key={movie.id}
+                            className="flex items-center justify-center shrink-0 cursor-pointer will-change-transform duration-300 transition hover:scale-105"
+                        >
+                            <Link to={`/list/movies/${movie.id}`} className="mr-4">
                                 <img
-                                    className="w-80 h-[365px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105"
+                                    className="w-[277px] h-[390px] rounded-2xl"
                                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                     alt="logo"
                                 />
                             </Link>
-                        )
-                    })}
-                </nav>
-            </div>
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     );
 };

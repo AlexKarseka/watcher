@@ -9,7 +9,7 @@ const useGetAllGenres = (queryKey: string, type: string, page: number) => {
     const [allGenres, setAllGenres] = React.useState<Array<ITopMovies>>([]);
 
     const {} = useQuery(queryKey, () =>
-            MovieService.getTop('popular', type, page), {
+            MovieService.getTop('top_rated', type, page), {
             onSuccess: ({results}) => {
                 setAllGenres(results);
             },
