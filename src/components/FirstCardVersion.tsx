@@ -98,17 +98,12 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                                             name={movie.title ? movie.title : movie.name}
                                             genreSeparator={movie.name ? 'serials' : 'movies'}
                                             location="mt-2 h-8 rounded text-xs"
-                                        />
-                                        :
-                                        <GoFavouriteButton location="mt-2 h-8 rounded text-xs" />
-                                    :
-                                    null
+                                        /> : <GoFavouriteButton location="mt-2 h-8 rounded text-xs" />
+                                    : null
                                 }
                             </div>
                         </div>
-                    </div>
-                    :
-                    null
+                    </div> : null
             })}
         </div>
         :

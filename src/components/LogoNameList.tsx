@@ -18,7 +18,8 @@ const LogoNameList = ({logo, nameMovie}: LogoNameListProps) => {
                     className="w-full my-4"
                     src={`https://image.tmdb.org/t/p/w500${englishLogo.length <= 0 ? logo[0].file_path : englishLogo[0].file_path}`}
                     alt="bg"
-                /> : null}
+                /> : null
+            }
 
             <div className="text-white opacity-80 mb-6">{nameMovie}</div>
         </div>

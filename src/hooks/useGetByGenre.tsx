@@ -17,9 +17,7 @@ const useGetByGenre = (queryKey: string, type: string, genresName: string | numb
         }
     );
 
-    const byGenresDup = useClearDuplicates(byGenres);
-
-    return byGenresDup;
+    return useClearDuplicates(byGenres);
 }
 
 export default useGetByGenre;

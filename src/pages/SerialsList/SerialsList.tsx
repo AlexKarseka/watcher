@@ -10,9 +10,9 @@ import ButtonList from "../../components/ButtonList";
 import DescriptionList from "../../components/DescriptionList";
 import FounderList from "../../components/FounderList";
 import CreatorsList from "./components/CreatorsList";
-import SecondCardVersion from "../../components/SecondCardVersion";
 import SeasonsList from "./components/SeasonsList";
 import useGetFilmsDetails from "../../hooks/useGetFilmsDetails";
+import RecommendationsCard from "../../components/RecommendationsCard";
 
 const SerialsList = () => {
     const {id} = useParams();
@@ -25,7 +25,7 @@ const SerialsList = () => {
     return (
         <PageBase footerBg={false}>
             <div className="relative px-14 pt-56 pb-16">
-                <BgList poster={details.poster_path} height='h-[2400px]'/>
+                <BgList poster={details.poster_path}/>
 
                 <HeaderList nameCategory='serials' nameMovie={details.name}/>
 
@@ -52,16 +52,7 @@ const SerialsList = () => {
 
             <SeasonsList seasons={details.seasons}/>
 
-            {recommendationsSerial.length === 0
-                ?
-                null
-                :
-                <div className="pb-16">
-                    <div className="px-14 mb-2.5 text-white text-xl">You may be interested</div>
-                    <SecondCardVersion content={recommendationsSerial.slice(0, 8)} year={false}/>
-                </div>
-            }
-
+            {recommendationsSerial.length === 0 ? null :  <RecommendationsCard content={recommendationsSerial} />}
         </PageBase>
     );
 };

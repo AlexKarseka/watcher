@@ -35,9 +35,7 @@ const DescriptionList = ({description, elementsGenres}: DescriptionListProps) =>
                 {description.release_date ?
                     <div className="text-lg text-[#565c67]">
                         {description.release_date.slice(0, 4)}
-                    </div>
-                    :
-                    null
+                    </div> : null
                 }
 
                 <div className="text-lg text-[#565c67]">

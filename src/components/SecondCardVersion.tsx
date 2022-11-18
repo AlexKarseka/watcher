@@ -29,9 +29,7 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                                 }
                             >
                                 Delete from favourites
-                            </button>
-                            :
-                            null
+                            </button> : null
                         }
                         <Link to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}>
                             <div
@@ -54,18 +52,12 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                             {year ?
                                 <div className="text-sm text-[#565c67]">
                                     {movie.release_date ? movie.release_date.slice(0, 4) : movie.first_air_date.slice(0, 4)}
-                                </div>
-                                :
-                                ""
+                                </div> : ""
                             }
                         </Link>
-                    </div>
-                    :
-                    null
+                    </div> : null
             })}
-        </div>
-        :
-        <NoSuchGenre/>
+        </div> : <NoSuchGenre/>
 };
 
 export default SecondCardVersion;

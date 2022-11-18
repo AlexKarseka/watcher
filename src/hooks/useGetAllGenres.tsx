@@ -17,9 +17,7 @@ const useGetAllGenres = (queryKey: string, type: string, page: number) => {
         }
     );
 
-    const allGenresDup = useClearDuplicates(allGenres);
-
-    return allGenresDup;
+    return useClearDuplicates(allGenres);
 }
 
 export default useGetAllGenres;

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { ITopMovies } from "../../models";
 
 import PageBase from "../PageBase/PageBase";
-import SecondCardVersion from "../../components/SecondCardVersion";
 import HeaderList from "../../components/HeaderList";
 import LogoNameList from "../../components/LogoNameList";
 import ButtonList from "../../components/ButtonList";
@@ -12,6 +11,7 @@ import FounderList from "../../components/FounderList";
 import BgList from "../../components/BgList";
 import BudgetList from "./components/BudgetList";
 import useGetFilmsDetails from "../../hooks/useGetFilmsDetails";
+import RecommendationsCard from "../../components/RecommendationsCard";
 
 const MovieList = () => {
     const {id} = useParams();
@@ -24,7 +24,7 @@ const MovieList = () => {
     return (
         <PageBase footerBg={false}>
             <div className="relative px-14 pt-56 pb-16">
-                <BgList poster={details.poster_path} height='' />
+                <BgList poster={details.poster_path} />
 
                 <HeaderList nameCategory='movies' nameMovie={details.title}/>
 
@@ -49,15 +49,7 @@ const MovieList = () => {
                 </div>
             </div>
 
-            {recommendationsMovie.length === 0 ?
-                null
-                :
-                <div>
-                    <div className="px-14 mb-2.5 text-white text-xl">You may be interested</div>
-                    <SecondCardVersion content={recommendationsMovie.slice(0, 8)} year={false}/>
-                </div>
-            }
-
+            {recommendationsMovie.length === 0 ? null : <RecommendationsCard content={recommendationsMovie} />}
         </PageBase>
     );
 };

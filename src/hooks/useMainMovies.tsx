@@ -1,7 +1,5 @@
-import React from "react";
-
 const useMainMovies = () => {
-    const wrenchSet = [
+    return [
         {
             id: '671',
             poster_path: '/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg',
@@ -35,8 +33,6 @@ const useMainMovies = () => {
             poster_path: '/c54HpQmuwXjHq2C9wmoACjxoom3.jpg',
         }
     ];
-
-    return wrenchSet;
 };
 
 export default useMainMovies;

@@ -1,27 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ITopMovies } from "../../../models";
+import {Link} from "react-router-dom";
+import {ITopMovies} from "../models";
 import cn from "classnames";
-import css from "./style.module.css";
+import css from "../pages/MainPage/components/style.module.css";
 
-import useScrollLine from "../../../hooks/useScrollLine";
+import useScrollLine from "../hooks/useScrollLine";
 
-import ArrowLeft from "../../../assets/left.svg";
-import ArrowRight from "../../../assets/right.svg";
-import noImageAvailable from "../../../assets/noImageAvailable.webp";
+import ArrowLeft from "../assets/left.svg";
+import ArrowRight from "../assets/right.svg";
+import NoImageAvailable from "../assets/noImageAvailable.webp";
 
-interface FilmsRowProps {
-    nameCategory: string,
-    getMovies: Array<ITopMovies>,
+interface RecommendationsCardProps {
+    content: Array<ITopMovies>,
 }
 
-const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
+const RecommendationsCard = ({content}: RecommendationsCardProps) => {
     const {canScrollLeft, canScrollRight, containerRef, scrollContainerBy} = useScrollLine();
 
-    return getMovies.length > 0 ?
-        <div className="relative mb-8">
-            <div className="text-xl text-white px-20 opacity-80 font-extralight">
-                {nameCategory}
+    return content.length > 0 ?
+        <div className="relative">
+            <div className="px-14 mb-2.5 text-white text-xl">
+                You may be interested
             </div>
 
             <button
@@ -37,9 +36,10 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
 
             <button
                 type="button"
+                disabled={!canScrollRight}
                 onClick={() => scrollContainerBy(297)}
                 className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "": !canScrollRight
+                    "hidden": !canScrollRight
                 })}
             >
                 <img src={ArrowRight} alt="ArrowRight"/>
@@ -58,22 +58,31 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
             }
 
             <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
-                {getMovies.map((movie) => {
+                {content.map((movie) => {
                     return (
                         <li
                             key={movie.id}
                             className="flex items-center justify-center shrink-0"
                         >
                             <Link
-                                to={`/list/${movie.title ? 'movies' : 'serials'}/${movie.id}`}
+                                to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}
                                 className="mr-4"
                             >
-                                <img
-                                    className="w-[277px] h-[201px] rounded-2xl cursor-pointer will-change-transform duration-300 transition hover:scale-105"
-                                    src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : noImageAvailable}
-                                    alt="logo"
-                                />
-                                <div className="max-w-[250px] overflow-hidden whitespace-nowrap overflow-ellipsis mt-3.5 text-base text-white opacity-80">
+                                <div
+                                    className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
+                                    <img
+                                        className="w-[283px] h-52 rounded"
+                                        src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : NoImageAvailable}
+                                        alt="logo"
+                                    />
+                                    <div
+                                        className="absolute top-1.5 left-1.5 text-xs rounded-sm bg-[#8c8e95] opacity-80 px-1 text-white">
+                                        {movie.adult ? '12+' : '18+'}
+                                    </div>
+                                </div>
+
+                                <div
+                                    className="max-w-[250px] overflow-hidden whitespace-nowrap overflow-ellipsis text-sm text-white opacity-80 mt-3.5 overflow-hidden whitespace-nowrap overflow-ellipsis">
                                     {movie.title ? movie.title : movie.name}
                                 </div>
                             </Link>
@@ -84,4 +93,4 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
         </div> : null;
 };
 
-export default FilmsRow;
+export default RecommendationsCard;

@@ -8,8 +8,8 @@ import AddFavouriteButton from "../../../components/AddFavouriteButton";
 import GoFavouriteButton from "../../../components/GoFavouriteButton";
 import useFavouriteData from "../../../hooks/useFavouriteData";
 
-import ArrowLeft from "../assets/left.svg";
-import ArrowRight from "../assets/right.svg";
+import ArrowLeft from "../../../assets/left.svg";
+import ArrowRight from "../../../assets/right.svg";
 import Play from "../assets/Play.svg";
 
 interface MainCarouselProps {

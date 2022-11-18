@@ -31,9 +31,7 @@ const PersonList = () => {
                     <div className="py-16">
                         <div className="px-14 mb-2.5 text-white text-xl">Films with {personDetails.name}</div>
                         <SecondCardVersion content={personCastDup.slice(0, 9)} year={false}/>
-                    </div>
-                    :
-                    null
+                    </div> : null
                 }
             </div>
         </PageBase>

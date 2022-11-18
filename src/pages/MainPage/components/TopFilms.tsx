@@ -1,46 +1,17 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import cn from "classnames";
 import css from "./style.module.css";
 
 import useMainMovies from "../../../hooks/useMainMovies";
+import useScrollLine from "../../../hooks/useScrollLine";
 
-import ArrowLeft from "../assets/left.svg";
-import ArrowRight from "../assets/right.svg";
+import ArrowLeft from "../../../assets/left.svg";
+import ArrowRight from "../../../assets/right.svg";
 
 const TopFilms = () => {
     const wrenchSet = useMainMovies();
-
-    const [canScrollLeft, setCanScrollLeft] = React.useState<boolean>(false);
-    const [canScrollRight, setCanScrollRight] = React.useState<boolean>(false);
-
-    const containerRef = React.useRef<HTMLUListElement>(null);
-    const debounce = require('lodash.debounce');
-
-    const checkForScrollPosition = () => {
-        const {current} = containerRef;
-        if (current) {
-            const {scrollLeft, scrollWidth, clientWidth} = current;
-            setCanScrollLeft(scrollLeft > 0);
-            setCanScrollRight(scrollLeft !== scrollWidth - clientWidth);
-        }
-    };
-
-    const debounceCheckForScrollPosition = debounce(checkForScrollPosition, 200);
-
-    const scrollContainerBy = (distance: number) =>
-        containerRef.current?.scrollBy({left: distance, behavior: "smooth"});
-
-    React.useEffect(() => {
-        const {current} = containerRef;
-        checkForScrollPosition();
-        current?.addEventListener("scroll", debounceCheckForScrollPosition);
-
-        return () => {
-            current?.removeEventListener("scroll", debounceCheckForScrollPosition);
-            debounceCheckForScrollPosition.cancel();
-        };
-    }, []);
+    const {canScrollLeft, canScrollRight, containerRef, scrollContainerBy} = useScrollLine();
 
     if (!wrenchSet) return null;
 
@@ -68,20 +39,20 @@ const TopFilms = () => {
                 <img src={ArrowRight} alt="ArrowRight"/>
             </button>
 
-            {canScrollLeft ? (
+            {canScrollLeft ?
                 <div className="absolute top-0 left-0 w-8 h-full overflow-hidden z-0">
                     <div className="absolute z-50 top-1/2 left-[-25px] w-6 h-4/5 rounded-3xl duration-300 transition"/>
-                </div>
-            ) : null}
+                </div> : null
+            }
 
-            {canScrollRight ? (
+            {canScrollRight ?
                 <div className="absolute top-0 right-0 w-8 h-full overflow-hidden z-0">
                     <div className="absolute z-50 top-1/2 right-[-25px] w-6 h-4/5 rounded-3xl duration-300 transition"/>
-                </div>
-            ) : null}
+                </div> : null
+            }
 
-            <ul className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
-                {wrenchSet.slice(0, 8).map((movie) => {
+            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
+                {wrenchSet.map((movie) => {
                     return (
                         <li
                             key={movie.id}
@@ -97,7 +68,7 @@ const TopFilms = () => {
                         </li>
                     )
                 })}
-            </ul>
+            </nav>
         </div>
     );
 };
