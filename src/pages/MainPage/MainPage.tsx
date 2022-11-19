@@ -4,7 +4,6 @@ import PageBase from "../PageBase/PageBase";
 import MainCarousel from "./components/MainCarousel";
 import TopFilms from "./components/TopFilms";
 import FilmsRow from "./components/FilmsRow";
-import useCreateCarousel from "../../hooks/useCreateCarousel";
 import useGetMainPageContent from "../../hooks/useGetMainPageContent";
 import TopPerson from "./components/TopPerson";
 
@@ -13,14 +12,11 @@ import RightLine from "./assets/Line-b.svg";
 import Line from "./assets/Line.svg";
 
 const MainPage = () => {
-    const carouselMovies = useCreateCarousel();
     const {mainPageContent} = useGetMainPageContent()
-
-    if (!carouselMovies) return null;
 
     return (
         <PageBase footerBg>
-            <MainCarousel carouselMovies={carouselMovies} />
+            <MainCarousel />
 
             <div className="flex items-center justify-center my-6">
                 <img className="mr-10 w-2/6" src={LeftLine} alt="leftLine"/>
