@@ -36,7 +36,8 @@ const useScrollLine = () => {
         canScrollLeft,
         canScrollRight,
         containerRef,
-        scrollContainerBy
+        scrollContainerBy,
+        setCanScrollRight
     }
 };
 

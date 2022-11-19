@@ -65,6 +65,7 @@ const RecommendationsCard = ({content}: RecommendationsCardProps) => {
                             className="flex items-center justify-center shrink-0"
                         >
                             <Link
+                                onClick={() => scrollContainerBy(-10000)}
                                 to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}
                                 className="mr-4"
                             >

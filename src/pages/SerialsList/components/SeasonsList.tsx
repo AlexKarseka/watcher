@@ -1,5 +1,5 @@
 import React from "react";
-import { ISeasons } from "../../../models";
+import {ISeasons} from "../../../models";
 import cn from "classnames";
 import css from "../../MainPage/components/style.module.css";
 
@@ -21,27 +21,29 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
         <div className="relative pb-16">
             <div className="px-14 mb-2.5 text-white text-xl">Seasons</div>
 
-            <button
-                type="button"
-                disabled={!canScrollLeft}
-                onClick={() => scrollContainerBy(-297)}
-                className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "hidden": !canScrollLeft
-                })}
-            >
-                <img src={ArrowLeft} alt="ArrowLeft"/>
-            </button>
+            {seasons.length <= 4 ? '' :
+                <div>
+                    <button
+                        type="button"
+                        disabled={!canScrollLeft}
+                        onClick={() => scrollContainerBy(-297)}
+                        className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                            "hidden": !canScrollLeft
+                        })}
+                    >
+                        <img src={ArrowLeft} alt="ArrowLeft"/>
+                    </button>
 
-            <button
-                type="button"
-                disabled={!canScrollRight}
-                onClick={() => scrollContainerBy(297)}
-                className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "hidden": !canScrollRight
-                })}
-            >
-                <img src={ArrowRight} alt="ArrowRight"/>
-            </button>
+                    <button
+                        type="button"
+                        onClick={() => scrollContainerBy(297)}
+                        className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                            "": !canScrollRight
+                        })}
+                    >
+                        <img src={ArrowRight} alt="ArrowRight"/>
+                    </button>
+                </div>}
 
             {canScrollLeft ?
                 <div className="absolute top-0 left-0 w-8 h-full overflow-hidden z-0">
@@ -57,7 +59,7 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
 
             <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
                 {seasons.map((series) => {
-                    return series.name === 'Specials' ? null :
+                    return (
                         <li
                             key={series.id}
                             className="relative flex items-center justify-center shrink-0 mr-4"
@@ -68,11 +70,15 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
                                 alt="logo"
                             />
 
-                            <div
-                                className="absolute bottom-2 left-3.5 text-white drop-shadow-[0_2px_2px_black]">
+                            <div className="absolute bottom-2 left-3.5 text-white drop-shadow-[0_2px_2px_black]">
                                 {series.episode_count} eps
                             </div>
+
+                            <div className="absolute top-2 left-3.5 text-white drop-shadow-[0_2px_2px_black]">
+                                {series.name === 'Specials' ? 'Specials season' : ''}
+                            </div>
                         </li>
+                    )
                 })}
             </nav>
         </div> : null;

@@ -37,7 +37,6 @@ const AddFavouriteButton = ({id_movie, name, backdrop_path, genreSeparator, loca
             className={`${location} w-2/4 flex items-center justify-center bg-gray-700 hover:bg-gray-800`}
             type="button"
             onClick={async () => {
-                console.log(payload)
                 await addDoc(collectionRef, payload);
             }}
         >

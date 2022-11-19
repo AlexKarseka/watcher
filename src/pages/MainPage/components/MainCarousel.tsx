@@ -13,7 +13,6 @@ import Play from "../assets/Play.svg";
 const MainCarousel = () => {
     const {isAuth, userFilter} = useFavouriteData();
     const [activeSlide, setActiveSlide] = React.useState<number>(0);
-    console.log(activeSlide)
 
     const carouselList = useMainCarousel();
 
@@ -71,7 +70,7 @@ const MainCarousel = () => {
                                     id_movie={carouselList[activeSlide].id}
                                     backdrop_path={carouselList[activeSlide].backdrop_path}
                                     name={carouselList[activeSlide].title}
-                                    genreSeparator='serials'
+                                    genreSeparator='movies'
                                     location="h-10 rounded-lg text-sm"
                                 />
                                 :
