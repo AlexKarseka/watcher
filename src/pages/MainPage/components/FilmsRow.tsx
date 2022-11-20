@@ -20,7 +20,7 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
 
     return getMovies.length > 0 ?
         <div className="relative mb-8">
-            <div className="text-xl text-white px-20 opacity-80 font-extralight">
+            <div className="text-xl text-white px-10 sm:px-20 opacity-80 font-extralight">
                 {nameCategory}
             </div>
 
@@ -28,8 +28,8 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
                 type="button"
                 disabled={!canScrollLeft}
                 onClick={() => scrollContainerBy(-297)}
-                className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "hidden": !canScrollLeft
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                    "sm:hidden": !canScrollLeft
                 })}
             >
                 <img src={ArrowLeft} alt="ArrowLeft"/>
@@ -38,7 +38,7 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
             <button
                 type="button"
                 onClick={() => scrollContainerBy(297)}
-                className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
                     "": !canScrollRight
                 })}
             >
@@ -57,7 +57,7 @@ const FilmsRow = ({nameCategory, getMovies}: FilmsRowProps) => {
                 </div> : null
             }
 
-            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
+            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-4 sm:pl-14 py-3`} ref={containerRef}>
                 {getMovies.map((movie) => {
                     return (
                         <li

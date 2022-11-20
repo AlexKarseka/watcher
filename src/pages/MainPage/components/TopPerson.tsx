@@ -30,8 +30,8 @@ const TopPerson = () => {
                 type="button"
                 disabled={!canScrollLeft}
                 onClick={() => scrollContainerBy(-297)}
-                className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "hidden": !canScrollLeft
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                    "sm:hidden": !canScrollLeft
                 })}
             >
                 <img src={ArrowLeft} alt="ArrowLeft"/>
@@ -40,7 +40,7 @@ const TopPerson = () => {
             <button
                 type="button"
                 onClick={() => scrollContainerBy(297)}
-                className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
                     "": !canScrollRight
                 })}
             >
@@ -59,7 +59,7 @@ const TopPerson = () => {
                 </div> : null
             }
 
-            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
+            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-4 sm:pl-14 py-3`} ref={containerRef}>
                 {bestActor.map((actor) => {
                     return (
                         <li
