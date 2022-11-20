@@ -1,7 +1,7 @@
 import React from "react";
 
 import PageBase from "../PageBase/PageBase";
-import MainCarousel from "./components/MainCarousel";
+import MainCarousel from "./components/MainCarousel/MainCarousel";
 import TopFilms from "./components/TopFilms";
 import FilmsRow from "./components/FilmsRow";
 import useGetMainPageContent from "../../hooks/useGetMainPageContent";
