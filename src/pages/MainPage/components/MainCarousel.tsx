@@ -20,6 +20,7 @@ const MainCarousel = () => {
     return (
         <div className="flex items-center -mt-20">
             <button
+                className={`${windowWidth < 550 ? 'absolute left-0 top-2 h-full z-50' : ''}`}
                 onClick={() => {
                     setActiveSlide(activeSlide <= 0 ? carouselList.length - 1 : activeSlide - 1)
                 }}
@@ -37,7 +38,7 @@ const MainCarousel = () => {
                     src={`https://image.tmdb.org/t/p/original${windowWidth < 550 ? carouselList[activeSlide].poster_path : carouselList[activeSlide].backdrop_path}`}
                     alt="logo"
                 />
-                <div className="w-3/4 md:w-2/5 absolute bottom-10 left-10">
+                <div className="w-3/4 md:w-2/5 absolute bottom-5 sm:bottom-10 left-5 sm:left-10">
                     <div
                         className="hidden sm:flex items-center justify-center whitespace-nowrap text-[8px] md:text-[10px] lg:text-xs xl:text-sm text-black uppercase bg-amber-400 h-5 px-1.5 rounded w-1/5 mb-3">
                         new year
@@ -89,6 +90,7 @@ const MainCarousel = () => {
             </div>
 
             <button
+                className={`${windowWidth < 550 ? 'absolute right-0 top-0 h-full z-50' : ''}`}
                 onClick={() => {
                     setActiveSlide(activeSlide >= carouselList.length - 1 ? 0 : activeSlide + 1)
                 }}
