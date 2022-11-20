@@ -2,6 +2,7 @@ import React from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HeaderMobi from "./components/HeaderMobi";
 
 interface PageBaseProps {
     children: React.ReactNode,
@@ -9,9 +10,11 @@ interface PageBaseProps {
 }
 
 const PageBase = ({children, footerBg}: PageBaseProps) => {
+    const windowWidth: number = document.documentElement.clientWidth;
+
     return (
         <div className="overflow-hidden">
-            <Header/>
+            {windowWidth < 550 ? <HeaderMobi /> : <Header/>}
 
             <div className="h-full">
                 {children}

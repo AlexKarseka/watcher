@@ -18,7 +18,7 @@ const MainCarousel = () => {
     const windowWidth: number = document.documentElement.clientWidth;
 
     return (
-        <div className="flex items-center -mt-20">
+        <div className="flex items-center sm:-mt-20">
             <button
                 className={`${windowWidth < 550 ? 'absolute left-0 top-2 h-full z-50' : ''}`}
                 onClick={() => {

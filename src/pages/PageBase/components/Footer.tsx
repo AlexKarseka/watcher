@@ -16,9 +16,9 @@ const Footer = ({footerBg}: FooterProps) => {
     const {inputRef, copyToClipboard} = useCopyText();
 
     return (
-        <div className="relative z-20 flex items-center justify-between pt-32 pb-6 px-14">
+        <div className="relative z-20 flex flex-col sm:flex-row items-center justify-between pt-8 sm:pt-32 pb-6 px-4 sm:px-14">
             {footerBg ?
-                <div className="absolute bottom-0 left-0 w-full h-full">
+                <div className="hidden sm:block absolute bottom-0 left-0 w-full h-full">
                     <img src={FooterBg} alt="footer"/>
                 </div>
                 :
@@ -26,7 +26,7 @@ const Footer = ({footerBg}: FooterProps) => {
             }
 
             <div
-                className="relative z-20 uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 hover:opacity-100"
+                className="relative z-20 uppercase sm:mr-8 mb-6 sm:mb-0 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 sm:hover:opacity-100"
             >
                 <Link to="/">Watcher</Link>
             </div>
@@ -44,35 +44,35 @@ const Footer = ({footerBg}: FooterProps) => {
                     </li>
                 </ul>
 
-                <ul className="flex items-center justify-center pt-8">
-                    <li className="hover:scale-110 mr-5">
+                <ul className="flex items-center justify-center pt-6 sm:pt-8">
+                    <li className="sm:hover:scale-110 mr-5">
                         <a href="https://github.com/AlexKarseka/watcher">
                             <img src={GitLogo} alt="gitLogo" height={30} width={80}/>
                         </a>
                     </li>
-                    <li className="hover:scale-110 mr-5">
+                    <li className="sm:hover:scale-110 mr-5">
                         <a href="https://developers.themoviedb.org/3/getting-started/introduction">
                             <img src={API} alt="APILogo" height={30} width={80}/>
                         </a>
                     </li>
-                    <li className="hover:scale-110">
+                    <li className="sm:hover:scale-110">
                         <a href="https://console.firebase.google.com/">
                             <img src={Firebase} alt="Firebase" height={30} width={80}/>
                         </a>
                     </li>
                 </ul>
 
-                <div className="mt-6 text-white text-xs opacity-80">
+                <div className="mt-6 text-white text-[10px] sm:text-xs opacity-80">
                     © 2022 Watcher, All rights reserved. Watcher® and all related service marks are the property of Alex
                     Karseka.
                 </div>
             </div>
 
-            <div className="relative z-20 w-[200px] flex flex-col gap-2.5 text-sm">
-                <div className="text-white opacity-80">
+            <div className="relative z-20 w-full sm:w-[200px] flex sm:flex-col gap-2.5 text-sm">
+                <div className="hidden sm:block text-white opacity-80">
                     Support
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center mx-auto sm:mx-0 mt-6 sm:mt-6">
                     <input
                         className="w-[165px] text-white opacity-80 outline-none bg-inherit"
                         type="text"
