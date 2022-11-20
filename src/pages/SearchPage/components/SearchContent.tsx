@@ -26,7 +26,7 @@ const SearchContent = ({found}: SearchContentProps) => {
 
     return (
         <div className="pb-11">
-            <div className="text-xl text-white mb-4 px-14">
+            <div className="text-xl text-white mb-4 px-4 sm:px-14">
                 Search results:
             </div>
             <SecondCardVersion content={searchData} year={false}/>

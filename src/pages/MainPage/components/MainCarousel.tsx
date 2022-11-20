@@ -20,7 +20,7 @@ const MainCarousel = () => {
     return (
         <div className="flex items-center sm:-mt-20">
             <button
-                className={`${windowWidth < 550 ? 'absolute left-0 top-2 h-full z-50' : ''}`}
+                className={`${windowWidth < 550 ? 'absolute left-0 top-[56px] h-full z-50' : ''}`}
                 onClick={() => {
                     setActiveSlide(activeSlide <= 0 ? carouselList.length - 1 : activeSlide - 1)
                 }}
@@ -90,7 +90,7 @@ const MainCarousel = () => {
             </div>
 
             <button
-                className={`${windowWidth < 550 ? 'absolute right-0 top-0 h-full z-50' : ''}`}
+                className={`${windowWidth < 550 ? 'absolute right-0 top-[56px] h-full z-50' : ''}`}
                 onClick={() => {
                     setActiveSlide(activeSlide >= carouselList.length - 1 ? 0 : activeSlide + 1)
                 }}
