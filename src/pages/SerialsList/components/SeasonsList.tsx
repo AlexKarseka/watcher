@@ -18,8 +18,8 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
     const {canScrollLeft, canScrollRight, containerRef, scrollContainerBy} = useScrollLine();
 
     return seasons.length > 0 ?
-        <div className="relative pb-16">
-            <div className="px-14 mb-2.5 text-white text-xl">Seasons</div>
+        <div className="relative pb-4 sm:pb-16">
+            <div className="px-4 sm:px-14 mb-2.5 text-white text-xl">Seasons</div>
 
             {seasons.length <= 4 ? '' :
                 <div>
@@ -27,8 +27,8 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
                         type="button"
                         disabled={!canScrollLeft}
                         onClick={() => scrollContainerBy(-297)}
-                        className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                            "hidden": !canScrollLeft
+                        className={cn("hidden sm:flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                            "sm:hidden": !canScrollLeft
                         })}
                     >
                         <img src={ArrowLeft} alt="ArrowLeft"/>
@@ -37,7 +37,7 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
                     <button
                         type="button"
                         onClick={() => scrollContainerBy(297)}
-                        className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                        className={cn("hidden sm:flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-16 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
                             "": !canScrollRight
                         })}
                     >
@@ -57,7 +57,7 @@ const SeasonsList = ({seasons}: SeasonsListProps) => {
                 </div> : null
             }
 
-            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
+            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-4 sm:pl-14 py-3`} ref={containerRef}>
                 {seasons.map((series) => {
                     return (
                         <li

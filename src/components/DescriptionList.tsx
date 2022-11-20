@@ -16,14 +16,14 @@ interface DescriptionListProps {
 const DescriptionList = ({description, elementsGenres}: DescriptionListProps) => {
     return (
         <div>
-            <div className="flex items-center gap-5 mb-6">
+            <div className="flex sm:flex-wrap items-center gap-2 sm:gap-5 mb-2 sm:mb-6">
                 <div
-                    className={`${description.vote_average <= 7 ? "text-red-600" : "text-green-500"} border border-[#565c67] rounded px-3 py-1`}
+                    className={`${description.vote_average <= 7 ? "text-red-600" : "text-green-500"} border border-[#565c67] rounded px-1.5 sm:px-3 py-0 sm:py-1`}
                 >
                     {description.vote_average.toFixed(1)}
                 </div>
 
-                <div className="text-lg text-[#565c67]">
+                <div className="text-xs sm:text-lg text-[#565c67]">
                     {description.production_countries.length !== 0 ?
                         description.production_countries[0].iso_3166_1
                         :
@@ -33,20 +33,20 @@ const DescriptionList = ({description, elementsGenres}: DescriptionListProps) =>
 
 
                 {description.release_date ?
-                    <div className="text-lg text-[#565c67]">
+                    <div className="text-xs sm:text-lg text-[#565c67]">
                         {description.release_date.slice(0, 4)}
                     </div> : null
                 }
 
-                <div className="text-lg text-[#565c67]">
+                <div className="text-xs sm:text-lg text-[#565c67]">
                     {description.adult ? '12+' : '18+'}
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex gap-1 sm:gap-5">
                     {description.genres.slice(0, elementsGenres).map((elem: any) => {
                         return (
                             <div
-                                className="text-lg text-[#565c67] whitespace-nowrap"
+                                className="text-xs sm:text-lg text-[#565c67] whitespace-nowrap"
                                 key={elem.id}
                             >
                                 {elem.name}
@@ -56,7 +56,7 @@ const DescriptionList = ({description, elementsGenres}: DescriptionListProps) =>
                 </div>
             </div>
 
-            <div className="text-white text-sm leading-4">{description.overview}</div>
+            <div className="text-white text-xs sm:text-sm leading-4">{description.overview}</div>
         </div>
     );
 };

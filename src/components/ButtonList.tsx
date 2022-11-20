@@ -16,12 +16,12 @@ const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: But
     const {isAuth, userFilter} = useFavouriteData();
 
     return (
-        <div className="flex gap-6">
+        <div className="flex gap-3 sm:gap-6">
             <a
                 href={homepage}
-                className="w-2/4 flex items-center justify-center bg-amber-400 rounded-lg mb-8 h-10 hover:bg-amber-500"
+                className="w-2/4 flex items-center justify-center bg-amber-400 rounded-lg mb-2 sm:mb-8 h-10 hover:bg-amber-500"
             >
-                <div className="ml-2 text-sm text-black">Go to the {nameCategory} homepage</div>
+                <div className="ml-2 text-sm sm:text-xs md:text-sm text-black">Go to the {nameCategory} homepage</div>
             </a>
 
             {isAuth ?
@@ -32,10 +32,10 @@ const ButtonList = ({homepage, nameCategory, id_movie, backdrop_path, name}: But
                         backdrop_path={backdrop_path}
                         name={name}
                         genreSeparator={nameCategory}
-                        location="mb-8 h-10 rounded-lg text-sm"
+                        location="mb-2 sm:mb-8 h-10 rounded-lg text-sm sm:text-xs md:text-sm"
                     />
                     :
-                    <GoFavouriteButton location="mb-8 h-10 rounded-lg text-sm" />
+                    <GoFavouriteButton location="mb-2 sm:mb-8 h-10 rounded-lg text-sm sm:text-xs md:text-sm" />
                 :
                 null
             }

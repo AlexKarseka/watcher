@@ -12,7 +12,7 @@ const LogoNameList = ({logo, nameMovie}: LogoNameListProps) => {
         .filter(logo => logo.iso_639_1 === "en")
 
     return (
-        <div className="relative z-20 w-2/4">
+        <div className="relative z-20 w-3/4 sm:w-2/4">
             {logo.length !== 0 ?
                 <img
                     className="w-full my-4"
@@ -21,7 +21,7 @@ const LogoNameList = ({logo, nameMovie}: LogoNameListProps) => {
                 /> : null
             }
 
-            <div className="text-white opacity-80 mb-6">{nameMovie}</div>
+            <div className="text-xs sm:text-base text-white opacity-80 mb-2 sm:mb-6">{nameMovie}</div>
         </div>
     );
 };

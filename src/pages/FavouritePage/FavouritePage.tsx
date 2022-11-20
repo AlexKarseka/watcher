@@ -11,7 +11,7 @@ const FavouritePage = () => {
 
     return (
         <PageBase footerBg>
-            <div className="px-14 mb-10">
+            <div className="px-4 sm:px-14 mb-10">
                 <div className="flex text-sm mb-2 text-[#565c67] capitalize">
                     <Link className="mr-1 hover:text-[#868fa0]" to="/"> Watcher </Link>
                     <div>/ Favourite</div>

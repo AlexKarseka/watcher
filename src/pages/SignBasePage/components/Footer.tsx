@@ -14,7 +14,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center mt-3 sm:mt-0">
                 <input
                     className="w-[190px] text-white opacity-80 outline-none bg-inherit"
                     type="text"

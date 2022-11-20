@@ -24,15 +24,15 @@ const SerialsList = () => {
 
     return (
         <PageBase footerBg={false}>
-            <div className="relative px-14 pt-56 pb-16">
+            <div className="relative px-4 sm:px-14 sm:pt-56 pb-4 sm:pb-16">
                 <BgList poster={details.poster_path}/>
 
                 <HeaderList nameCategory='serials' nameMovie={details.name}/>
 
                 <LogoNameList logo={details.images.logos} nameMovie={details.name}/>
 
-                <div className="flex justify-between gap-10 relative z-20">
-                    <div className="w-2/4">
+                <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-10 relative z-20">
+                    <div className="w-full sm:w-2/4">
                         <ButtonList
                             homepage={details.homepage}
                             id_movie={details.id}
@@ -43,7 +43,7 @@ const SerialsList = () => {
                         <DescriptionList description={details} elementsGenres={3}/>
                     </div>
 
-                    <div className="w-2/4">
+                    <div className="w-full sm:w-2/4">
                         <FounderList founder={details.networks}/>
                         <CreatorsList creators={details}/>
                     </div>

@@ -19,7 +19,7 @@ const RecommendationsCard = ({content}: RecommendationsCardProps) => {
 
     return content.length > 0 ?
         <div className="relative">
-            <div className="px-14 mb-2.5 text-white text-xl">
+            <div className="px-4 sm:px-14 mb-2.5 text-white text-xl">
                 You may be interested
             </div>
 
@@ -27,8 +27,8 @@ const RecommendationsCard = ({content}: RecommendationsCardProps) => {
                 type="button"
                 disabled={!canScrollLeft}
                 onClick={() => scrollContainerBy(-297)}
-                className={cn("flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "hidden": !canScrollLeft
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                    "sm:hidden": !canScrollLeft
                 })}
             >
                 <img src={ArrowLeft} alt="ArrowLeft"/>
@@ -38,8 +38,8 @@ const RecommendationsCard = ({content}: RecommendationsCardProps) => {
                 type="button"
                 disabled={!canScrollRight}
                 onClick={() => scrollContainerBy(297)}
-                className={cn("flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
-                    "hidden": !canScrollRight
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                    "sm:hidden": !canScrollRight
                 })}
             >
                 <img src={ArrowRight} alt="ArrowRight"/>
@@ -57,7 +57,7 @@ const RecommendationsCard = ({content}: RecommendationsCardProps) => {
                 </div> : null
             }
 
-            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-14 py-3`} ref={containerRef}>
+            <nav className={`${css.scrollContainer} flex overflow-x-auto pl-4 sm:pl-14 py-3`} ref={containerRef}>
                 {content.map((movie) => {
                     return (
                         <li

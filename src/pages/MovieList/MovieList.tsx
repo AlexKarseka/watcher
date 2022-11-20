@@ -23,15 +23,15 @@ const MovieList = () => {
 
     return (
         <PageBase footerBg={false}>
-            <div className="relative px-14 pt-56 pb-16">
+            <div className="relative px-4 sm:px-14 sm:pt-56 pb-4 sm:pb-16">
                 <BgList poster={details.poster_path} />
 
                 <HeaderList nameCategory='movies' nameMovie={details.title}/>
 
                 <LogoNameList logo={details.images.logos} nameMovie={details.title}/>
 
-                <div className="flex justify-between gap-10 relative z-20">
-                    <div className="w-2/4">
+                <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-10 relative z-20">
+                    <div className="w-full sm:w-2/4">
                         <ButtonList
                             homepage={details.homepage}
                             id_movie={details.id}
@@ -42,7 +42,7 @@ const MovieList = () => {
                         <DescriptionList description={details} elementsGenres={4}/>
                     </div>
 
-                    <div className="w-2/4">
+                    <div className="w-full sm:w-2/4">
                         <FounderList founder={details.production_companies}/>
                         <BudgetList budget={details}/>
                     </div>
