@@ -21,9 +21,9 @@ const SearchPage = () => {
 
                 <Header />
 
-                <div className="border-b-2 border-[#d8d8d8] mb-8 mx-14">
+                <div className="border-b-2 border-[#d8d8d8] mb-8 mx-4 sm:mx-14">
                     <input
-                        className="w-full bg-[transparent] text-2xl text-[#d8d8d8] pb-2 outline-none"
+                        className="w-full bg-[transparent] text-base sm:text-2xl text-[#d8d8d8] pb-2 outline-none"
                         type="text"
                         placeholder="Serial or movie name..."
                         value={searchValue}
