@@ -40,12 +40,12 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
     };
 
     return content.length > 0 ?
-        <div className="grid grid-cols-3 gap-6 px-14">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-14">
             {content.map((movie) => {
                 return movie.backdrop_path ?
                     <div
                         key={movie.id}
-                        className="overflow-hidden bg-[#1f2125] h-[360px] border border-[hsla(0,0%,100%,.08)] border-b-2 border-b-amber-400 rounded cursor-pointer duration-300 hover:scale-110"
+                        className="overflow-hidden bg-[#1f2125] h-[360px] border border-[hsla(0,0%,100%,.08)] border-b-2 border-b-amber-400 rounded cursor-pointer duration-300 sm:hover:scale-110"
                     >
                         <img
                             className="w-full h-3/5 rounded-t drop-shadow-[0_9px_3px_black]"

@@ -28,11 +28,11 @@ const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typ
     const genres: Array<IGenresList> = data
 
     return (
-        <div className="relative pt-6 pb-10 px-14">
+        <div className="relative pt-6 pb-10 px-4 sm:px-14">
             <div
-                className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-48 py-6 px-14 z-50 bg-[#434852]`}
+                className={`${genresList ? 'hidden' : ''} absolute w-full left-0 -bottom-96 sm:-bottom-64 md:-bottom-48 py-6 px-14 z-50 bg-[#434852]`}
             >
-                <div className="grid grid-cols-4 gap-4 text-white text-sm">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-white text-sm">
                     <Link
                         to={`/${typeLink}`}
                         className="text-left"
@@ -63,7 +63,7 @@ const MenuSettings = ({styleCard, typeGenres, paginationCount, cleaningData, typ
                 </div>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-6">
                 <button
                     onClick={() => {
                         setGenresList(!genresList)

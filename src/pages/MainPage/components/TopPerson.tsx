@@ -30,7 +30,7 @@ const TopPerson = () => {
                 type="button"
                 disabled={!canScrollLeft}
                 onClick={() => scrollContainerBy(-297)}
-                className={cn("hidden sm:flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 left-0 z-10 h-full -mt-10 w-24 transition sm:hover:scale-110 drop-shadow-[0_4px_3px_black]", {
                     "sm:hidden": !canScrollLeft
                 })}
             >
@@ -40,7 +40,7 @@ const TopPerson = () => {
             <button
                 type="button"
                 onClick={() => scrollContainerBy(297)}
-                className={cn("hidden sm:flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition hover:scale-110 drop-shadow-[0_4px_3px_black]", {
+                className={cn("hidden sm:flex justify-center items-center absolute top-12 right-0 z-10 h-full -mt-10 w-24 transition sm:hover:scale-110 drop-shadow-[0_4px_3px_black]", {
                     "": !canScrollRight
                 })}
             >
@@ -64,7 +64,7 @@ const TopPerson = () => {
                     return (
                         <li
                             key={actor.id}
-                            className="flex items-center justify-center shrink-0 cursor-pointer will-change-transform duration-300 transition hover:scale-105"
+                            className="flex items-center justify-center shrink-0 cursor-pointer will-change-transform duration-300 transition sm:hover:scale-105"
                         >
                             <Link to={`/list/person/${actor.id}`} className="mr-4">
                                 <img

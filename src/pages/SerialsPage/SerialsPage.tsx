@@ -42,9 +42,9 @@ const SerialsPage = () => {
                 }
             </div>
 
-            <div className="pt-14 pb-11">
+            <div className="px-4 sm:px-0 pt-14 pb-11">
                 <button
-                    className='flex items-center justify-center mx-auto w-72 bg-gray-700 rounded h-10 text-white hover:bg-gray-800'
+                    className='flex items-center justify-center mx-auto w-full sm:w-72 bg-gray-700 rounded h-10 text-white hover:bg-gray-800'
                     type='button'
                     onClick={addNewPage}
                 >

@@ -13,7 +13,7 @@ interface SecondCardVersionProps {
 
 const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
     return content.length > 0 ?
-        <div className="grid grid-cols-4 gap-y-6 gap-x-4 px-14">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-3 lg:gap-y-6 gap-x-2 lg:gap-x-4 px-4 sm:px-14">
             {content.map((movie) => {
                 return movie.backdrop_path ?
                     <div className="relative"  key={movie.id}>
@@ -33,9 +33,9 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                         }
                         <Link to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}>
                             <div
-                                className="relative h-52 rounded cursor-pointer duration-300 hover:opacity-70 hover:scale-105 hover:drop-shadow-[0_4px_3px_black]">
+                                className="relative h-32 sm:h-52 rounded cursor-pointer duration-300 sm:hover:opacity-70 sm:hover:scale-105 sm:hover:drop-shadow-[0_4px_3px_black]">
                                 <img
-                                    className="w-full h-52 rounded"
+                                    className="w-full h-32 sm:h-52 rounded"
                                     src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                                     alt="logo"
                                 />
