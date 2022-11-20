@@ -6,10 +6,10 @@ const Footer = () => {
     const {inputRef, copyToClipboard} = useCopyText();
 
     return (
-        <div className="relative bottom-0 left-0 flex justify-between items-center h-20 px-14 bg-[#111113]">
+        <div className="relative bottom-0 left-0 flex flex-col sm:flex-row justify-between items-center sm:h-20 pt-4 sm:pt-0 px-4 sm:px-14 bg-[#111113]">
             <div className="flex items-center text-[#565c67] text-xs">
                 <div className="border border-[#565c67] rounded p-0.5 mr-4">18+</div>
-                <div className="max-w-sm leading-4">
+                <div className="sm:max-w-sm leading-4">
                     © 2022 Watcher, All rights reserved. Watcher® and all related service marks are the property of Alex Karseka.
                 </div>
             </div>

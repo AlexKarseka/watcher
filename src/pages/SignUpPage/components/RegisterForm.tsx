@@ -13,14 +13,14 @@ const RegisterForm = ({handleClick}: RegisterFormProps) => {
     const {emailValid, passValid} = useValidationForm(email, pass);
 
     return (
-        <div className="relative -top-[50px] mx-auto">
-            <div className="flex flex-col items-center justify-center mb-4">
-                <div className="text-3xl pb-4 text-white">Registration</div>
-                <div className="text-sm text-white">Register to watch and download movies and series</div>
+        <div className="relative top-[20px] md:-top-[50px] mx-auto">
+            <div className="flex flex-col items-center justify-center px-4 sm:px-0 mb-4">
+                <div className="text-base sm:text-3xl pb-4 text-white">Registration</div>
+                <div className="text-[10px] sm:text-sm text-white">Register to watch and download movies and series</div>
             </div>
 
             <div
-                className="flex flex-col justify-center border border-[#565c67] bg-[rgba(31,33,37,.8)] rounded-lg px-8 max-w-sm mx-auto h-96"
+                className="flex flex-col justify-center border border-[#565c67] bg-[rgba(31,33,37,.8)] rounded-lg px-8 max-w-sm mx-auto h-80 sm:h-96"
             >
                 <form>
                     <div className="mb-4">
