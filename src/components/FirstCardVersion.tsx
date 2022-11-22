@@ -82,7 +82,7 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                             </div>
                             <div className="flex gap-2">
                                 <Link
-                                    className={`${isAuth ? 'w-2/4' : 'w-full'} flex items-center justify-center bg-amber-400 rounded mt-2 h-8 hover:bg-amber-500`}
+                                    className={`${isAuth ? 'w-2/4' : 'w-full'} flex items-center justify-center bg-amber-400 rounded mt-2 h-8 sm:hover:bg-amber-500`}
                                     to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}
                                 >
                                     <img className="h-3.5" src={Play} alt="Play"/>

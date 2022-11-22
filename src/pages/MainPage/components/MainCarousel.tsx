@@ -64,7 +64,7 @@ const MainCarousel = () => {
                     <div className="flex items-center gap-2 sm:gap-6 mt-6">
                         <Link
                             to={`/list/movies/${carouselList[activeSlide].id}`}
-                            className="w-2/4 flex items-center justify-center bg-amber-400 rounded-lg h-10 hover:bg-amber-500"
+                            className="w-2/4 flex items-center justify-center bg-amber-400 rounded-lg h-10 sm:hover:bg-amber-500"
                         >
                             <img className="h-3.5" src={Play} alt="Play"/>
                             <div className="ml-2 text-xs sm:text-sm text-black">Watch</div>
