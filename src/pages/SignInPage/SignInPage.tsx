@@ -6,10 +6,12 @@ import { setUser } from "../../store/slices/userSlice";
 
 import SignBasePage from "../SignBasePage/SignBasePage";
 import EntryForm from "./components/EntryForm";
+import ErrorModal from "./components/ErrorModal";
 
 const SignInPage = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const [menuModalOpen, setMenuModalOpen] = React.useState<boolean>(false);
 
     const handleLogin = (email: string, password: string) => {
         const auth = getAuth();
@@ -22,11 +24,12 @@ const SignInPage = () => {
                 }));
                 navigate('/');
             })
-            .catch(() => alert('Invalid user!'))
+            .catch(() => setMenuModalOpen(true))
     }
 
     return (
         <SignBasePage>
+            <ErrorModal isOpen={menuModalOpen} onClose={() => setMenuModalOpen(false)} />
             <EntryForm handleClick={handleLogin} />
         </SignBasePage>
     );
