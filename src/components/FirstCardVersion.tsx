@@ -86,7 +86,7 @@ const FirstCardVersion = ({content, typeGenres}: FirstCardVersionProps) => {
                                     to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}
                                 >
                                     <img className="h-3.5" src={Play} alt="Play"/>
-                                    <div className="ml-2 text-xs">Watch</div>
+                                    <div className="ml-2 text-xs text-black">Watch</div>
                                 </Link>
 
                                 {isAuth ?

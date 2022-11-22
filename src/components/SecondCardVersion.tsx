@@ -12,6 +12,8 @@ interface SecondCardVersionProps {
 }
 
 const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
+    const windowWidth: number = document.documentElement.clientWidth;
+
     return content.length > 0 ?
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-3 lg:gap-y-6 gap-x-2 lg:gap-x-4 px-4 sm:px-14">
             {content.map((movie) => {
@@ -28,7 +30,7 @@ const SecondCardVersion = ({content, year}: SecondCardVersionProps) => {
                                     }
                                 }
                             >
-                                Delete from favourites
+                                {windowWidth < 640 ? "Delete" : "Delete from favourites"}
                             </button> : null
                         }
                         <Link to={`/list/${movie.name ? 'serials' : 'movies'}/${movie.id}`}>

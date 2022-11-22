@@ -11,7 +11,7 @@ const Header = () => {
     const {isAuth, email} = useAuth();
 
     return (
-        <div className="relative z-20 flex items-center justify-between w-full h-20 px-20">
+        <div className="relative z-20 flex items-center justify-between w-full h-20 px-3 sm:px-10 md:px-20">
             <ul className="flex items-center justify-center">
                 <li
                     className="uppercase mr-8 text-white border-2 border-white rounded-md p-1.5 text-2xl font-bold opacity-80 drop-shadow-[0_4px_3px_black] hover:opacity-100"

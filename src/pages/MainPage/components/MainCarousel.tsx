@@ -46,13 +46,13 @@ const MainCarousel = () => {
 
                     {windowWidth < 550 ? null :
                         carouselList[activeSlide].file_path === '' ?
-                            <div className="text-amber-200 text-5xl uppercase">
+                            <div className="text-amber-200 text-xl sm:text-3xl md:text-5xl uppercase">
                                 {carouselList[activeSlide].title}
                             </div>
                             :
                             <div>
                                 <img
-                                    className="max-h-60"
+                                    className="max-h-16 sm:max-h-32 sm:max-h-60"
                                     src={`https://image.tmdb.org/t/p/w500${carouselList[activeSlide].file_path}`}
                                     alt="logo"
                                 />
@@ -67,7 +67,7 @@ const MainCarousel = () => {
                             className="w-2/4 flex items-center justify-center bg-amber-400 rounded-lg h-10 hover:bg-amber-500"
                         >
                             <img className="h-3.5" src={Play} alt="Play"/>
-                            <div className="ml-2 text-sm">Watch</div>
+                            <div className="ml-2 text-xs sm:text-sm text-black">Watch</div>
                         </Link>
 
                         {isAuth ?
@@ -78,10 +78,10 @@ const MainCarousel = () => {
                                     backdrop_path={carouselList[activeSlide].backdrop_path}
                                     name={carouselList[activeSlide].title}
                                     genreSeparator='movies'
-                                    location="h-10 rounded-lg text-sm"
+                                    location="h-10 rounded-lg text-xs sm:text-sm"
                                 />
                                 :
-                                <GoFavouriteButton location="h-10 rounded-lg text-sm"/>
+                                <GoFavouriteButton location="h-10 rounded-lg text-xs sm:text-sm"/>
                             :
                             null
                         }

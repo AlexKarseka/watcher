@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import SearchService from "../../../services/SearchService";
 
 import SecondCardVersion from "../../../components/SecondCardVersion";
+import UnsuccessfulSearch from "./UnsuccessfulSearch";
 
 interface SearchContentProps {
     found: string
@@ -24,12 +25,14 @@ const SearchContent = ({found}: SearchContentProps) => {
 
     const searchData = [...movies, ...serials];
 
+    console.log(searchData)
+
     return (
         <div className="pb-11">
             <div className="text-xl text-white mb-4 px-4 sm:px-14">
                 Search results:
             </div>
-            <SecondCardVersion content={searchData} year={false}/>
+            {searchData.length <= 0 ? <UnsuccessfulSearch /> : <SecondCardVersion content={searchData} year={false} />}
         </div>
     );
 };
